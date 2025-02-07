@@ -36,7 +36,8 @@ namespace QL_SNAC.Login
 
             //Buoc 1: xac định CSDL sẽ lam việc
             //Buớc 2: Xac đinh chuoi ket noi
-            string connString = "Data Source=NHAT\\SQLEXPRESS;Initial Catalog=QL_SNAC;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+            //string connString = "Data Source=NHAT\\SQLEXPRESS;Initial Catalog=QL_SNAC;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
+            string connString = "Data Source=.;Initial Catalog=QL_SNAC;Integrated Security=True;Trust Server Certificate=True";
             //Buoc 3: Tao doi tuong ket noi
             SqlConnection connect = null;
             try

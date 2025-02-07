@@ -1,4 +1,5 @@
 using QL_SNAC.Login;
+using QL_SNAC.MainForm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace QL_SNAC
             ApplicationConfiguration.Initialize();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmMain());
         }
     }
 }
