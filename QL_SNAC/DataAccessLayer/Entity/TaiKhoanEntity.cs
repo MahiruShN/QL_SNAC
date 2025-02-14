@@ -10,7 +10,7 @@ namespace DataAccessLayer.Entity
     {
         public int ID_TAIKHOAN { get; set; }
         public string EMAIL { get; set; }
-        public string PASS {  get; set; }
+        public string MatKhau {  get; set; }
         public bool TinhTrang { get; set; }
         public string MSNguoiDung { get; set; }
         public string Quyen {  get; set; }

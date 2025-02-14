@@ -17,7 +17,7 @@ namespace DataAccessLayer.Responsitories
         {
             try
             {
-                string sql = " select ID_TAIKHOAN, EMAIL,PASS, TINH_TRANG,MS_NGUOI_DUNG,QUYEN , NGAY_TAO, NGUOI_TAO " +
+                string sql = " select ID_TAIKHOAN, EMAIL,Matkhau, TINH_TRANG,MS_NGUOI_DUNG,QUYEN , NGAY_TAO, NGUOI_TAO " +
                              " from TAI_KHOAN where TINH_TRANG = 'true' ";
                 var rs = DB.GetDataFromDB(sql, CommandType.Text, ref error);
                 return rs;
@@ -45,14 +45,14 @@ namespace DataAccessLayer.Responsitories
 
                 // 2. Thêm tài khoản với ID tự động tăng
                 string sqlInsert = @"
-                    INSERT INTO TAI_KHOAN (ID_TAIKHOAN, EMAIL, PASS, TINH_TRANG, MS_NGUOI_DUNG, QUYEN, NGUOI_TAO, NGAY_TAO)
+                    INSERT INTO TAI_KHOAN (ID_TAIKHOAN, EMAIL, [Matkhau], TINH_TRANG, MS_NGUOI_DUNG, QUYEN, NGUOI_TAO, NGAY_TAO)
                     VALUES (@ID_TAIKHOAN, @email, @pass, 'true', @msNguoidung, @Quyen, @NguoiTao, GETDATE());
                 ";
 
                 bool insertResult = DB.ProcessData(sqlInsert, CommandType.Text, ref error,
                     new SqlParameter("@ID_TAIKHOAN", nextID), // Sử dụng ID đã tính toán
                     new SqlParameter("@email", Entity.EMAIL),
-                    new SqlParameter("@pass", Entity.PASS),
+                    new SqlParameter("@pass", Entity.MatKhau),
                     new SqlParameter("@msNguoidung", Entity.MSNguoiDung),
                     new SqlParameter("@Quyen", Entity.Quyen),
                     new SqlParameter("@NguoiTao", Entity.NguoiTao));
@@ -92,27 +92,29 @@ namespace DataAccessLayer.Responsitories
         {
             try
             {
-                #region Xu ly du lieu
-                string sql = " update TAI_KHOAN set EMAIL=@email " +
-                             "        PASS=@pass,TINH_TRANG=@TinhTrang, " +
-                             "        MS_NGUOI_DUNG=@msnguoidung, " +
-                             "        QUYEN=@Quyen,NGAY_TAO=getdate(),NGUOI_TAO=@NguoiTao " +
-                             "  where ID_TAIKHOAN like @idTaiKhoan";
-                var rs = DB.ProcessData(sql, CommandType.Text, ref error, new SqlParameter("@email", Entity.EMAIL),
-                                                        new SqlParameter("@pass", Entity.PASS),
-                                                        new SqlParameter("@TinhTrang", Entity.TinhTrang),
-                                                        new SqlParameter("@Quyen", Entity.Quyen),
-                                                        new SqlParameter("@NguoiTao", Entity.NguoiTao),
-                                                        new SqlParameter("@idTaiKhoan", Entity.ID_TAIKHOAN));
-                return rs;
-                #endregion
+                string sql = @"
+                    UPDATE TAI_KHOAN 
+                    SET EMAIL = @email, [Matkhau] = @pass, TINH_TRANG = @TinhTrang, 
+                        MS_NGUOI_DUNG = @msnguoidung, QUYEN = @Quyen, NGUOI_TAO = @NguoiTao, NGAY_TAO = GETDATE()
+                    WHERE ID_TAIKHOAN = @idTaiKhoan";
+
+                // Use your DB class's ProcessData method:
+                return DB.ProcessData(sql, CommandType.Text, ref error,
+                    new SqlParameter("@email", Entity.EMAIL),
+                    new SqlParameter("@pass", Entity.MatKhau), // Make sure Entity.MatKhau is hashed!
+                    new SqlParameter("@TinhTrang", Entity.TinhTrang),
+                    new SqlParameter("@msnguoidung", Entity.MSNguoiDung),
+                    new SqlParameter("@Quyen", Entity.Quyen),
+                    new SqlParameter("@NguoiTao", Entity.NguoiTao),
+                    new SqlParameter("@idTaiKhoan", Entity.ID_TAIKHOAN));
             }
             catch (Exception ex)
             {
-                error = "Ket noi lôi: " + ex.Message;
+                error = "Lỗi cập nhật tài khoản: " + ex.Message;
                 return false;
             }
         }
     }
+    
 
 }

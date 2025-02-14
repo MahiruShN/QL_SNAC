@@ -35,7 +35,7 @@
             panel3 = new Panel();
             btnThoat = new Button();
             btnLogin = new Button();
-            comboBox1 = new ComboBox();
+            cboQuyen = new ComboBox();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
@@ -96,7 +96,7 @@
             panel3.BackColor = SystemColors.ActiveCaption;
             panel3.Controls.Add(btnThoat);
             panel3.Controls.Add(btnLogin);
-            panel3.Controls.Add(comboBox1);
+            panel3.Controls.Add(cboQuyen);
             panel3.Controls.Add(label4);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(label2);
@@ -130,15 +130,15 @@
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
             // 
-            // comboBox1
+            // cboQuyen
             // 
-            comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "Giáo Viên", "ADMIN", "Học Sinh", "Giáo Viên Chủ Nhiệm", "Phụ Huynh", "Tuyển Sinh", "Quản Sinh" });
-            comboBox1.Location = new Point(254, 174);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(175, 36);
-            comboBox1.TabIndex = 5;
+            cboQuyen.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cboQuyen.FormattingEnabled = true;
+            cboQuyen.Items.AddRange(new object[] { "Giáo Viên", "ADMIN", "Học Sinh", "Giáo Viên Chủ Nhiệm", "Phụ Huynh", "Tuyển Sinh", "Quản Sinh" });
+            cboQuyen.Location = new Point(254, 174);
+            cboQuyen.Name = "cboQuyen";
+            cboQuyen.Size = new Size(175, 36);
+            cboQuyen.TabIndex = 5;
             // 
             // label4
             // 
@@ -216,7 +216,7 @@
         private Label label2;
         private TextBox txtMatkhau;
         private TextBox txtEmail;
-        private ComboBox comboBox1;
+        private ComboBox cboQuyen;
         private Label label4;
         private Button btnLogin;
         private Button btnThoat;

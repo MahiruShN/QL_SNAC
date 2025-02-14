@@ -42,7 +42,7 @@
             panel7 = new Panel();
             btnNguoiDung = new Button();
             panel8 = new Panel();
-            button1 = new Button();
+            btnReset = new Button();
             panel9 = new Panel();
             btnXoa = new Button();
             panel5 = new Panel();
@@ -218,32 +218,33 @@
             btnNguoiDung.AutoSize = true;
             btnNguoiDung.Location = new Point(21, 12);
             btnNguoiDung.Name = "btnNguoiDung";
-            btnNguoiDung.Size = new Size(218, 43);
+            btnNguoiDung.Size = new Size(221, 43);
             btnNguoiDung.TabIndex = 4;
-            btnNguoiDung.Text = "CẬP NHẬT NGƯỜI DÙNG";
+            btnNguoiDung.Text = "ĐỔI MẬT KHẨU NGƯỜI DÙNG";
             btnNguoiDung.UseMnemonic = false;
             btnNguoiDung.UseVisualStyleBackColor = true;
             // 
             // panel8
             // 
-            panel8.Controls.Add(button1);
+            panel8.Controls.Add(btnReset);
             panel8.Dock = DockStyle.Fill;
             panel8.Location = new Point(3, 213);
             panel8.Name = "panel8";
             panel8.Size = new Size(255, 64);
             panel8.TabIndex = 3;
             // 
-            // button1
+            // btnReset
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button1.AutoSize = true;
-            button1.Location = new Point(21, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(218, 43);
-            button1.TabIndex = 4;
-            button1.Text = "RESET MẬT KHẨU";
-            button1.UseMnemonic = false;
-            button1.UseVisualStyleBackColor = true;
+            btnReset.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnReset.AutoSize = true;
+            btnReset.Location = new Point(21, 12);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(218, 43);
+            btnReset.TabIndex = 4;
+            btnReset.Text = "RESET MẬT KHẨU";
+            btnReset.UseMnemonic = false;
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += btnReset_Click;
             // 
             // panel9
             // 
@@ -363,7 +364,7 @@
         private Panel panel9;
         private Button btnThem;
         private Button btnNguoiDung;
-        private Button button1;
+        private Button btnReset;
         private Button btnXoa;
     }
 }

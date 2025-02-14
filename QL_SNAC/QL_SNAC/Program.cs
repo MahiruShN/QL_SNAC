@@ -16,9 +16,17 @@ namespace QL_SNAC
         {
             
             ApplicationConfiguration.Initialize();
+            Application.Run(new frmLogin());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+
+            frmLogin loginForm = new frmLogin();
+            if (loginForm.ShowDialog() == DialogResult.OK) // Use ShowDialog()
+            {
+                string tenDayDu = CauHinhHeThong.TenDayDu; // Access from CauHinhHeThong
+
+                Application.Run(new frmMain(tenDayDu)); // Run with frmMain
+            }
         }
     }
 }

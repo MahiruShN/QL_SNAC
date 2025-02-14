@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DataAccessLayer.Responsitories;
 using Microsoft.Data.SqlClient;
+using System.Configuration;
 using QL_SNAC.MainForm;
 
 namespace QL_SNAC.Login
@@ -36,40 +37,60 @@ namespace QL_SNAC.Login
                 return;
             }
             #endregion
+            string connString = ConfigurationManager.ConnectionStrings["QL_SNAC_Connection"].ConnectionString;
 
-            //Buoc 1: xac định CSDL sẽ lam việc
-            //Buớc 2: Xac đinh chuoi ket noi
-            //string connString = "Data Source=NHAT\\SQLEXPRESS;Initial Catalog=QL_SNAC;Integrated Security=True;Encrypt=False;Trust Server Certificate=True";
-            string connString = "Data Source=.;Initial Catalog=QL_SNAC;Integrated Security=True;Trust Server Certificate=True";
-            //Buoc 3: Tao doi tuong ket noi
+            if (string.IsNullOrEmpty(connString))
+            {
+                MessageBox.Show("Connection string not found or invalid. Check your configuration.");
+                return;
+            }
+
             SqlConnection connect = null;
             try
             {
                 connect = new SqlConnection(connString);
                 connect.Open();
 
-                // 1. Hash the entered password using the same method as during registration
-                string enteredPasswordHash = db.HashPassword(txtMatkhau.Text); // Hash the input
+                string enteredPasswordHash = db.HashPassword(txtMatkhau.Text);
 
-                // 2. Query the database using the hashed password
-                string sql = "SELECT EMAIL FROM TAI_KHOAN WHERE EMAIL = @Email AND PASS = @Password"; // Use parameters!
-                SqlCommand command = new SqlCommand(sql, connect); // Combine query and connection
-
-                // 3. Add parameters to prevent SQL injection
-                command.Parameters.AddWithValue("@Email", txtEmail.Text);
-                command.Parameters.AddWithValue("@Password", enteredPasswordHash); // Use the hashed password
-
-                object data = command.ExecuteScalar();
-
-                if (data == null)
+                using (SqlCommand command = new SqlCommand("SELECT EMAIL FROM TAI_KHOAN WHERE EMAIL = @Email AND Matkhau = @Password", connect))
                 {
-                    MessageBox.Show("Lỗi tài khoản, đăng nhập không thành công");
-                }
-                else
-                {
-                    frmMain frm = new frmMain();
-                    frm.Show();
-                    this.Hide();
+                    command.Parameters.AddWithValue("@Email", txtEmail.Text);
+                    command.Parameters.AddWithValue("@Password", enteredPasswordHash);
+
+                    object data = command.ExecuteScalar();
+
+                    if (data == null)
+                    {
+                        MessageBox.Show("Lỗi tài khoản, đăng nhập không thành công");
+                    }
+                    else
+                    {
+                        CauHinhHeThong.Email = txtEmail.Text;
+                        string tenDayDu = LayTenDayDu(connect, txtEmail.Text); // Get TenDayDu
+                        CauHinhHeThong.TenDayDu = tenDayDu; // Store TenDayDu
+
+                        using (SqlCommand getQuyenCommand = new SqlCommand("SELECT Quyen FROM TAI_KHOAN WHERE EMAIL = @Email", connect))
+                        {
+                            getQuyenCommand.Parameters.AddWithValue("@Email", txtEmail.Text);
+                            string quyen = (string)getQuyenCommand.ExecuteScalar();
+
+                            if (!string.IsNullOrEmpty(quyen))
+                            {
+                                CauHinhHeThong.Quyen = GetQuyenAbbreviation(quyen);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Quyền người dùng không được tìm thấy.");
+                                return;
+                            }
+                        }
+
+                        frmMain frm = new frmMain(tenDayDu);
+                        this.Hide(); // Hide, don't close, the login form
+                        frm.ShowDialog(); // Show frmMain as a dialog
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -78,10 +99,69 @@ namespace QL_SNAC.Login
             }
             finally
             {
-                connect.Close(); // Use null-conditional operator to avoid potential null exceptions
+                connect?.Close();
+            }
+        }
+
+        private string LayTenDayDu(SqlConnection connection, string email)
+        {
+            string tenDayDu = null;
+
+            // Try for GiaoVien
+            tenDayDu = LayTenDayDuTheoVaiTro(connection, email, "THONG_TIN_GIAO_VIEN", "MSGV", "Ho", "Ten");
+            if (!string.IsNullOrEmpty(tenDayDu)) return tenDayDu;
+
+            // Try for HocSinh
+            tenDayDu = LayTenDayDuTheoVaiTro(connection, email, "THONG_TIN_HOC_SINH", "MSHS", "Ho", "Ten");
+            if (!string.IsNullOrEmpty(tenDayDu)) return tenDayDu;
+
+            // Try for PhuHuynh
+            tenDayDu = LayTenDayDuTheoVaiTro(connection, email, "THONG_TIN_PHU_HUYNH", "ID_PHU_HUYNH", "Ho", "Ten");
+            if (!string.IsNullOrEmpty(tenDayDu)) return tenDayDu;
+
+            return null; // Not found in any table
+        }
+
+
+        private string LayTenDayDuTheoVaiTro(SqlConnection connection, string email, string tenBang, string cotKhoaNgoai, string cotHo, string cotTen)
+        {
+            string tenDayDu = null;
+            string sql;
+            if (!string.IsNullOrEmpty(cotTen))
+            {
+                sql = $"SELECT {cotHo} + ' ' + {cotTen} AS TenDayDu FROM TAI_KHOAN tk INNER JOIN {tenBang} nv ON nv.{cotKhoaNgoai} = tk.MS_NGUOI_DUNG WHERE tk.EMAIL = @Email";
+            }
+            else
+            {
+                sql = $"SELECT {cotHo} AS TenDayDu FROM TAI_KHOAN tk INNER JOIN {tenBang} nv ON nv.{cotKhoaNgoai} = tk.MS_NGUOI_DUNG WHERE tk.EMAIL = @Email";
             }
 
 
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@Email", email);
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    tenDayDu = result.ToString();
+                }
+            }
+            return tenDayDu;
+        }
+
+        public string GetQuyenAbbreviation(string quyen)
+        {
+            switch (quyen.ToLower())
+            {
+                case "giáo viên": return "GV";
+                case "admin": return "AD";
+                case "học sinh": return "HS";
+                case "giáo viên chủ nhiệm": return "GVCN";
+                case "phụ huynh": return "PH";
+                case "tuyển sinh": return "TS";
+                case "quản sinh": return "QS";
+                default: return quyen; 
+            }
         }
     }
 }

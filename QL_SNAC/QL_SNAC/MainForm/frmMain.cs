@@ -13,12 +13,17 @@ namespace QL_SNAC.MainForm
 {
     public partial class frmMain : Form
     {
-
+        private string _tenDayDu;
         public frmMain()
         {
             InitializeComponent();
         }
-
+        public frmMain(string tenDayDu) // Constructor with TenDayDu
+        {
+            InitializeComponent();
+            _tenDayDu = tenDayDu; // Initialize the field
+            this.Text = "Chào mừng, " + _tenDayDu; // Set form title
+        }
         private ucQLTaiKhoan ucQLTK;
         private void menuTaiKhoan_Click(object sender, EventArgs e)
         {

@@ -257,3 +257,4 @@ E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\ref\QL_SNAC.dll
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLTaiKhoan.frmThemTaiKhoan.resources
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLTaiKhoan.frmLocChonThongTinNguoiDung.resources
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\bin\Debug\net8.0-windows\QL_SNAC.dll.config

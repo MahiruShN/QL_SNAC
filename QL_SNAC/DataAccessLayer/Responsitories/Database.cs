@@ -13,6 +13,7 @@ namespace DataAccessLayer.Responsitories
 {
     public class Database //tuong tac vs csdl
     {
+       
         private SqlConnection connect = null;
         private SqlCommand command = null;
         private string connString = "";

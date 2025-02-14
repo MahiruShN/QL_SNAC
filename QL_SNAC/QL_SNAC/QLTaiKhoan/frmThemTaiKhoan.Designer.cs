@@ -32,10 +32,7 @@
             panel1 = new Panel();
             lbTieuDe = new Label();
             panel2 = new Panel();
-            lbMSNguoiDung = new Label();
-            btnPH = new Button();
             btnHS = new Button();
-            btnGV = new Button();
             lbIdTaiKhoan = new Label();
             txtQuyen = new TextBox();
             txtRePass = new TextBox();
@@ -50,6 +47,7 @@
             panel3 = new Panel();
             btnThoat = new Button();
             btnThem = new Button();
+            lbMSNguoiDung = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -86,10 +84,10 @@
             // lbTieuDe
             // 
             lbTieuDe.AutoSize = true;
-            lbTieuDe.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbTieuDe.Location = new Point(166, 17);
+            lbTieuDe.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbTieuDe.Location = new Point(148, 6);
             lbTieuDe.Name = "lbTieuDe";
-            lbTieuDe.Size = new Size(210, 31);
+            lbTieuDe.Size = new Size(277, 41);
             lbTieuDe.TabIndex = 0;
             lbTieuDe.Text = "THÊM TÀI KHOẢN";
             // 
@@ -97,9 +95,7 @@
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
             panel2.Controls.Add(lbMSNguoiDung);
-            panel2.Controls.Add(btnPH);
             panel2.Controls.Add(btnHS);
-            panel2.Controls.Add(btnGV);
             panel2.Controls.Add(lbIdTaiKhoan);
             panel2.Controls.Add(txtQuyen);
             panel2.Controls.Add(txtRePass);
@@ -112,143 +108,122 @@
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Fill;
+            panel2.Font = new Font("Microsoft Sans Serif", 13.8F);
             panel2.Location = new Point(3, 66);
             panel2.Name = "panel2";
             panel2.Size = new Size(548, 437);
             panel2.TabIndex = 1;
             // 
-            // lbMSNguoiDung
-            // 
-            lbMSNguoiDung.AutoSize = true;
-            lbMSNguoiDung.Location = new Point(223, 269);
-            lbMSNguoiDung.Name = "lbMSNguoiDung";
-            lbMSNguoiDung.Size = new Size(60, 20);
-            lbMSNguoiDung.TabIndex = 17;
-            lbMSNguoiDung.Text = ".................";
-            // 
-            // btnPH
-            // 
-            btnPH.Location = new Point(426, 311);
-            btnPH.Name = "btnPH";
-            btnPH.Size = new Size(81, 31);
-            btnPH.TabIndex = 16;
-            btnPH.Text = "PH";
-            btnPH.UseVisualStyleBackColor = true;
-            // 
             // btnHS
             // 
-            btnHS.Location = new Point(328, 311);
+            btnHS.Font = new Font("Microsoft Sans Serif", 13.8F);
+            btnHS.Location = new Point(478, 300);
             btnHS.Name = "btnHS";
-            btnHS.Size = new Size(81, 31);
+            btnHS.Size = new Size(46, 31);
             btnHS.TabIndex = 15;
-            btnHS.Text = "Học Sinh";
+            btnHS.Text = "...";
             btnHS.UseVisualStyleBackColor = true;
             btnHS.Click += btnHS_Click;
-            // 
-            // btnGV
-            // 
-            btnGV.Location = new Point(223, 311);
-            btnGV.Name = "btnGV";
-            btnGV.Size = new Size(81, 31);
-            btnGV.TabIndex = 14;
-            btnGV.Text = "Giáo Viên";
-            btnGV.UseVisualStyleBackColor = true;
-            btnGV.Click += btnGV_Click;
             // 
             // lbIdTaiKhoan
             // 
             lbIdTaiKhoan.AutoSize = true;
-            lbIdTaiKhoan.Location = new Point(223, 51);
+            lbIdTaiKhoan.Font = new Font("Microsoft Sans Serif", 13.8F);
+            lbIdTaiKhoan.Location = new Point(240, 51);
             lbIdTaiKhoan.Name = "lbIdTaiKhoan";
-            lbIdTaiKhoan.Size = new Size(45, 20);
+            lbIdTaiKhoan.Size = new Size(85, 29);
             lbIdTaiKhoan.TabIndex = 11;
             lbIdTaiKhoan.Text = "............";
             // 
             // txtQuyen
             // 
-            txtQuyen.Location = new Point(223, 363);
+            txtQuyen.Font = new Font("Microsoft Sans Serif", 13.8F);
+            txtQuyen.Location = new Point(240, 363);
             txtQuyen.Name = "txtQuyen";
-            txtQuyen.Size = new Size(284, 27);
+            txtQuyen.Size = new Size(284, 34);
             txtQuyen.TabIndex = 10;
             // 
             // txtRePass
             // 
-            txtRePass.Location = new Point(223, 201);
+            txtRePass.Font = new Font("Microsoft Sans Serif", 13.8F);
+            txtRePass.Location = new Point(240, 228);
             txtRePass.Name = "txtRePass";
-            txtRePass.Size = new Size(284, 27);
+            txtRePass.Size = new Size(284, 34);
             txtRePass.TabIndex = 8;
             // 
             // txtPass
             // 
-            txtPass.Location = new Point(223, 147);
+            txtPass.Font = new Font("Microsoft Sans Serif", 13.8F);
+            txtPass.Location = new Point(240, 162);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(284, 27);
+            txtPass.Size = new Size(284, 34);
             txtPass.TabIndex = 7;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(223, 99);
+            txtEmail.Font = new Font("Microsoft Sans Serif", 13.8F);
+            txtEmail.Location = new Point(240, 100);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(284, 27);
+            txtEmail.Size = new Size(284, 34);
             txtEmail.TabIndex = 6;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 12F);
-            label6.Location = new Point(33, 363);
+            label6.Font = new Font("Microsoft Sans Serif", 13.8F);
+            label6.Location = new Point(9, 366);
             label6.Name = "label6";
-            label6.Size = new Size(150, 28);
+            label6.Size = new Size(181, 29);
             label6.TabIndex = 5;
             label6.Text = "Quyền Sử Dụng";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(33, 261);
+            label5.Font = new Font("Microsoft Sans Serif", 13.8F);
+            label5.Location = new Point(9, 300);
             label5.Name = "label5";
-            label5.Size = new Size(154, 28);
+            label5.Size = new Size(180, 29);
             label5.TabIndex = 4;
             label5.Text = "Mã Người Dùng";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F);
-            label4.Location = new Point(33, 197);
+            label4.Font = new Font("Microsoft Sans Serif", 13.8F);
+            label4.Location = new Point(9, 233);
             label4.Name = "label4";
-            label4.Size = new Size(178, 28);
+            label4.Size = new Size(215, 29);
             label4.TabIndex = 3;
             label4.Text = "Nhập Lại Mật Khẩu";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F);
-            label3.Location = new Point(33, 143);
+            label3.Font = new Font("Microsoft Sans Serif", 13.8F);
+            label3.Location = new Point(9, 167);
             label3.Name = "label3";
-            label3.Size = new Size(96, 28);
+            label3.Size = new Size(113, 29);
             label3.TabIndex = 2;
             label3.Text = "Mật Khẩu";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F);
-            label2.Location = new Point(33, 95);
+            label2.Font = new Font("Microsoft Sans Serif", 13.8F);
+            label2.Location = new Point(9, 103);
             label2.Name = "label2";
-            label2.Size = new Size(59, 28);
+            label2.Size = new Size(74, 29);
             label2.TabIndex = 1;
             label2.Text = "Email";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F);
-            label1.Location = new Point(33, 43);
+            label1.Font = new Font("Microsoft Sans Serif", 13.8F);
+            label1.Location = new Point(9, 51);
             label1.Name = "label1";
-            label1.Size = new Size(118, 28);
+            label1.Size = new Size(148, 29);
             label1.TabIndex = 0;
             label1.Text = "ID Tài khoản";
             // 
@@ -272,6 +247,7 @@
             btnThoat.TabIndex = 1;
             btnThoat.Text = "THOÁT";
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnThem
             // 
@@ -283,6 +259,16 @@
             btnThem.Text = "THÊM";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
+            // 
+            // lbMSNguoiDung
+            // 
+            lbMSNguoiDung.AutoSize = true;
+            lbMSNguoiDung.Font = new Font("Microsoft Sans Serif", 13.8F);
+            lbMSNguoiDung.Location = new Point(240, 300);
+            lbMSNguoiDung.Name = "lbMSNguoiDung";
+            lbMSNguoiDung.Size = new Size(85, 29);
+            lbMSNguoiDung.TabIndex = 19;
+            lbMSNguoiDung.Text = "............";
             // 
             // frmThemTaiKhoan
             // 
@@ -321,9 +307,7 @@
         private TextBox txtEmail;
         private Button btnThoat;
         private Button btnThem;
-        private Button btnPH;
         private Button btnHS;
-        private Button btnGV;
         private Label lbMSNguoiDung;
     }
 }

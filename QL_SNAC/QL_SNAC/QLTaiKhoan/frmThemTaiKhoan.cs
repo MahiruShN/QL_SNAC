@@ -42,6 +42,7 @@ namespace QL_SNAC.QLTaiKhoan
         {
             InitializeComponent();
             lbTieuDe.Text = "CẬP NHẬT TÀI KHOẢN";
+            btnThem.Text = "Cập Nhật";
             TKManager = new TaiKhoanManager();
             TKDaChon = _TKDaChon;
             lbIdTaiKhoan.Text = TKDaChon.ID_TAIKHOAN.ToString();
@@ -85,7 +86,7 @@ namespace QL_SNAC.QLTaiKhoan
             entity.EMAIL = txtEmail.Text.Replace(" ", "");
 
             string hashedPassword = db.HashPassword(txtPass.Text);
-            entity.PASS = hashedPassword;
+            entity.MatKhau = hashedPassword;
 
             entity.MSNguoiDung = lbMSNguoiDung.Text.Replace(" ", "");
             entity.Quyen = txtQuyen.Text.Replace(" ", "");
@@ -114,7 +115,20 @@ namespace QL_SNAC.QLTaiKhoan
             TKDaChon.MSNguoiDung = lbMSNguoiDung.Text.Replace(" ", "");
             TKDaChon.Quyen = txtQuyen.Text.Replace(" ", "");
 
-            bool ketqua = TKManager.CapNhatTaiKhoan(TKDaChon, ref error); // Gọi hàm cập nhật
+            // *** Check if new password is provided ***
+            if (!string.IsNullOrEmpty(txtPass.Text) && !string.IsNullOrEmpty(txtRePass.Text))
+            {
+                if (txtPass.Text != txtRePass.Text)
+                {
+                    MessageBox.Show("Mật khẩu nhập chưa khớp!");
+                    return;
+                }
+
+                string hashedPassword = db.HashPassword(txtPass.Text);
+                TKDaChon.MatKhau = hashedPassword; // Update the password only if new one is given
+            }
+
+            bool ketqua = TKManager.CapNhatTaiKhoan(TKDaChon, ref error);
             if (ketqua)
             {
                 MessageBox.Show("Cập nhật thành công");
@@ -126,6 +140,7 @@ namespace QL_SNAC.QLTaiKhoan
                 MessageBox.Show("Lỗi: " + error);
             }
         }
+
 
 
         private void btnHS_Click(object sender, EventArgs e)
@@ -142,6 +157,11 @@ namespace QL_SNAC.QLTaiKhoan
             frmLocChonThongTinNguoiDung frm = new frmLocChonThongTinNguoiDung(this);
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.ShowDialog();
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

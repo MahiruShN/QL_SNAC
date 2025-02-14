@@ -41,12 +41,21 @@
             btnBack = new Button();
             btnThem = new Button();
             panel3 = new Panel();
-            dgDSNguoiDung = new DataGridView();
+            TabControl = new TabControl();
+            tabPage1 = new TabPage();
+            dgDSHocSinh = new DataGridView();
+            tabPage2 = new TabPage();
+            dgDSGiaoVien = new DataGridView();
+            tabPage3 = new TabPage();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgDSNguoiDung).BeginInit();
+            TabControl.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgDSHocSinh).BeginInit();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgDSGiaoVien).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -176,24 +185,81 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(dgDSNguoiDung);
+            panel3.Controls.Add(TabControl);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 208);
             panel3.Name = "panel3";
             panel3.Size = new Size(677, 304);
             panel3.TabIndex = 2;
             // 
-            // dgDSNguoiDung
+            // TabControl
             // 
-            dgDSNguoiDung.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgDSNguoiDung.Dock = DockStyle.Fill;
-            dgDSNguoiDung.Location = new Point(0, 0);
-            dgDSNguoiDung.Name = "dgDSNguoiDung";
-            dgDSNguoiDung.RowHeadersWidth = 51;
-            dgDSNguoiDung.Size = new Size(677, 304);
-            dgDSNguoiDung.TabIndex = 0;
-            dgDSNguoiDung.CellClick += dgDSNguoiDung_CellClick;
-            dgDSNguoiDung.CellDoubleClick += dgDSNguoiDung_CellDoubleClick;
+            TabControl.Controls.Add(tabPage1);
+            TabControl.Controls.Add(tabPage2);
+            TabControl.Controls.Add(tabPage3);
+            TabControl.Dock = DockStyle.Fill;
+            TabControl.Location = new Point(0, 0);
+            TabControl.Name = "TabControl";
+            TabControl.SelectedIndex = 0;
+            TabControl.Size = new Size(677, 304);
+            TabControl.TabIndex = 1;
+            TabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(dgDSHocSinh);
+            tabPage1.Location = new Point(4, 29);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(669, 271);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "tabPage1";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgDSHocSinh
+            // 
+            dgDSHocSinh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgDSHocSinh.Dock = DockStyle.Fill;
+            dgDSHocSinh.Location = new Point(3, 3);
+            dgDSHocSinh.Name = "dgDSHocSinh";
+            dgDSHocSinh.RowHeadersWidth = 51;
+            dgDSHocSinh.Size = new Size(663, 265);
+            dgDSHocSinh.TabIndex = 0;
+            dgDSHocSinh.CellClick += dgDSHocSinh_CellClick;
+            dgDSHocSinh.CellDoubleClick += dgDSHocSinh_CellDoubleClick;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(dgDSGiaoVien);
+            tabPage2.Location = new Point(4, 29);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(669, 271);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgDSGiaoVien
+            // 
+            dgDSGiaoVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgDSGiaoVien.Dock = DockStyle.Fill;
+            dgDSGiaoVien.Location = new Point(3, 3);
+            dgDSGiaoVien.Name = "dgDSGiaoVien";
+            dgDSGiaoVien.RowHeadersWidth = 51;
+            dgDSGiaoVien.Size = new Size(663, 265);
+            dgDSGiaoVien.TabIndex = 0;
+            dgDSGiaoVien.CellClick += dgDSGiaoVien_CellClick;
+            dgDSGiaoVien.CellDoubleClick += dgDSGiaoVien_CellDoubleClick;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(669, 271);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "tabPage3";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // frmLocChonThongTinNguoiDung
             // 
@@ -208,7 +274,11 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgDSNguoiDung).EndInit();
+            TabControl.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgDSHocSinh).EndInit();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgDSGiaoVien).EndInit();
             ResumeLayout(false);
         }
 
@@ -225,8 +295,13 @@
         private Label lbTieuDe;
         private Panel panel2;
         private Panel panel3;
-        private DataGridView dgDSNguoiDung;
         private Button btnBack;
         private Button btnThem;
+        private DataGridView dgDSHocSinh;
+        private TabControl TabControl;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private TabPage tabPage3;
+        private DataGridView dgDSGiaoVien;
     }
 }

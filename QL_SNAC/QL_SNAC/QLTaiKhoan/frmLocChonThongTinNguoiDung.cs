@@ -18,116 +18,134 @@ namespace QL_SNAC.QLTaiKhoan
         private HocSinhManager HSManager;
         private GiaoVienManager GVManager;
         private TaiKhoanManager TKManager;
-      
-        private DataTable data = null;
-        private string error = "";
-        private bool DangSua = false;
 
-        public Action<string> AddressSelected { get; set; }
-        public TaiKhoanEntity SelectedHocSinh { get; set; }
+        private string error = "";
+
+        public TaiKhoanEntity SelectedNguoiDung { get; set; }
+        public string SelectedMaSo { get; set; }
+
         public frmLocChonThongTinNguoiDung()
         {
             InitializeComponent();
         }
+
         public frmLocChonThongTinNguoiDung(frmThemTaiKhoan frmThongTinNguoiDungInstance)
         {
             InitializeComponent();
-            lbTieuDe.Text = "THÔNG TIN HỌC SINH";
             this.frmThongTinNguoiDungInstance = frmThongTinNguoiDungInstance;
+
             HSManager = new HocSinhManager();
+            GVManager = new GiaoVienManager();
             TKManager = new TaiKhoanManager();
-            HienThiDSHS();
 
-
+            this.TabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
+            LoadData(0); // Load Hoc Sinh data initially
         }
-        //public frmLocChonThongTinNguoiDung(frmThemTaiKhoan frmThongTinNguoiDungInstance)
-        //{
-        //    InitializeComponent();
-        //    lbTieuDe.Text = "THÔNG TIN GIÁO VIÊN";
-        //    this.frmThongTinNguoiDungInstance = frmThongTinNguoiDungInstance;
-        //    GiaoVienManager = new HocSinhManager();
-        //    TKManager = new TaiKhoanManager();
-        //    HienThiDSHS();
-
-
-        //}
+        private TaiKhoanEntity TKDuocChon = new TaiKhoanEntity();
         public frmLocChonThongTinNguoiDung(TaiKhoanEntity taiKhoan)
         {
             InitializeComponent();
-            lbTieuDe.Text = "THÔNG TIN HỌC SINH";
             TKDuocChon = taiKhoan;
             HSManager = new HocSinhManager();
+            GVManager = new GiaoVienManager();
             TKManager = new TaiKhoanManager();
-            HienThiDSHS();
-
-
+            LoadData(0); // Load Hoc Sinh data initially
         }
 
-        private void HienThiDSHS()
+
+        private void LoadData(int tabIndex)
+        {
+            if (tabIndex == 0) // Hoc Sinh
+            {
+                LoadHocSinhData();
+                lbTieuDe.Text = "THÔNG TIN HỌC SINH";
+            }
+            else if (tabIndex == 1) // Giao Vien
+            {
+                LoadGiaoVienData();
+                lbTieuDe.Text = "THÔNG TIN GIÁO VIÊN";
+            }
+        }
+
+        private void LoadHocSinhData()
         {
             var data = HSManager.HienThiLocDSHSRutGon(ref error);
-            dgDSNguoiDung.DataSource = data;
-            if (data == null)
+            dgDSHocSinh.DataSource = data;
+            HandleDataLoadResult(dgDSHocSinh, "Học Sinh"); // Centralized error handling
+        }
+
+        private void LoadGiaoVienData()
+        {
+            var data = GVManager.HienThiLocDSGVRutGon(ref error);
+            dgDSGiaoVien.DataSource = data;
+            HandleDataLoadResult(dgDSGiaoVien, "Giáo Viên"); // Centralized error handling
+        }
+
+        private void HandleDataLoadResult(DataGridView dataGridView, string userType)
+        {
+            if (dataGridView.DataSource == null)
             {
-                MessageBox.Show("Khong co du lieu: " + error);
-            }
-            else
-            {
-                dgDSNguoiDung.DataSource = data;
+                MessageBox.Show($"Không có dữ liệu {userType}: {error}");
             }
         }
-        private TaiKhoanEntity TKDuocChon = new TaiKhoanEntity();
-        private void dgDSNguoiDung_CellClick(object sender, DataGridViewCellEventArgs e)
+
+
+        private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataGridViewRow rowselected = dgDSNguoiDung.Rows[e.RowIndex];
+            LoadData(TabControl.SelectedIndex);
+        }
 
-            if (e.RowIndex >= 0 && e.RowIndex < dgDSNguoiDung.RowCount)
+        private void dgDSHocSinh_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            HandleCellClick(dgDSHocSinh, e, "MSHS");
+        }
+        private void dgDSGiaoVien_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            HandleCellClick(dgDSGiaoVien, e, "MSGV");
+        }
+     
+
+        private void dgDSHocSinh_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            HandleCellDoubleClick(dgDSHocSinh, e, "MSHS");
+        }
+        private void dgDSGiaoVien_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            HandleCellDoubleClick(dgDSGiaoVien, e, "MSGV");
+        }
+
+
+        private void HandleCellClick(DataGridView dataGridView, DataGridViewCellEventArgs e, string maSoColumnName)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView.RowCount)
             {
-                rowselected = dgDSNguoiDung.Rows[e.RowIndex];
-                #region Hien thi gia tri len label
-                lbMSNguoiDung.Text = rowselected.Cells["MSHS"].Value.ToString();
-                lbHo.Text = rowselected.Cells["HO"].Value.ToString();
-                lbTen.Text = rowselected.Cells["TEN"].Value.ToString();
+                DataGridViewRow row = dataGridView.Rows[e.RowIndex];
 
-                #endregion
+                string maNguoiDung = row.Cells[maSoColumnName].Value?.ToString();
+                string ho = row.Cells["HO"].Value?.ToString();
+                string ten = row.Cells["TEN"].Value?.ToString();
 
+                lbMSNguoiDung.Text = maNguoiDung;
+                lbHo.Text = ho;
+                lbTen.Text = ten;
 
-                #region Gan gia tri vao entity tai khoan da chon        
-                string maHocSinh = rowselected.Cells["MSHS"].Value.ToString();
-                string Ho = rowselected.Cells["HO"].Value.ToString();
-                string Ten = rowselected.Cells["TEN"].Value.ToString();
-                string Gioitinh = rowselected.Cells["GIOITINH"].Value.ToString();
-                string NgaySinh = rowselected.Cells["NGAY_SINH"].Value.ToString();
-
-                // Assign the selected customer information to KHDuocChon
-                TKDuocChon.MSNguoiDung = maHocSinh;
-
-
-                // Create a new DonDatHangEntity object with the selected customer information
-                SelectedHocSinh = new TaiKhoanEntity
+                SelectedNguoiDung = new TaiKhoanEntity
                 {
-                    MSNguoiDung = maHocSinh,
-
+                    MSNguoiDung = maNguoiDung,
                 };
-                //frmChiTietDonDatHang frm = new frmChiTietDonDatHang(KHDuocChon);
-                //frm.ShowDialog();
-                //this.DialogResult = DialogResult.OK;  // Set the dialog result
-                //this.Close();  // Close the form
-
-                #endregion
-
             }
         }
 
-        private void dgDSNguoiDung_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void HandleCellDoubleClick(DataGridView dataGridView, DataGridViewCellEventArgs e, string maSoColumnName)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < dgDSNguoiDung.RowCount)
+            if (e.RowIndex >= 0 && e.RowIndex < dataGridView.RowCount)
             {
-                DataGridViewRow rowselected = dgDSNguoiDung.Rows[e.RowIndex];
-
-                frmThongTinNguoiDungInstance.MSNguoiDunglabelText = rowselected.Cells["MSHS"].Value.ToString();
+                DataGridViewRow row = dataGridView.Rows[e.RowIndex];
+                SelectedMaSo = row.Cells[maSoColumnName].Value?.ToString();
+                frmThongTinNguoiDungInstance.MSNguoiDunglabelText = SelectedMaSo;
                 this.Close();
             }
         }
+
     }
 }

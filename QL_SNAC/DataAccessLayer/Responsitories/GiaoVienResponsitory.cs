@@ -14,7 +14,7 @@ namespace DataAccessLayer.Responsitories
         {
             try
             {
-                string sql = " select MSGV,HO, TEN,NGAYSINH " +
+                string sql = " select MSGV,HO, TEN, GIOITINH,NGAY_SINH " +
                              " from THONG_TIN_GIAO_VIEN";
                 var rs = DB.GetDataFromDB(sql, CommandType.Text, ref error);
                 return rs;

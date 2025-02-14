@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer.Manager;
 using DataAccessLayer.Entity;
+using DataAccessLayer.Responsitories;
 using QL_SNAC.MainForm;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -19,6 +20,7 @@ namespace QL_SNAC.QLTaiKhoan
         private TaiKhoanManager tkManager = null;
         private DataTable DSTaiKhoan = null;
         private string error = "";
+        private Database DB = new Database();
         public ucQLTaiKhoan()
         {
             InitializeComponent();
@@ -97,7 +99,7 @@ namespace QL_SNAC.QLTaiKhoan
                 #region Gan gia tri vao entity tai khoan da chon
                 TaiKhoanDaChon.ID_TAIKHOAN = int.Parse(rowselected.Cells["ID_TAIKHOAN"].Value.ToString());
                 TaiKhoanDaChon.EMAIL = rowselected.Cells["EMAIL"].Value.ToString();
-                TaiKhoanDaChon.PASS = rowselected.Cells["PASS"].Value.ToString();
+                TaiKhoanDaChon.MatKhau = rowselected.Cells["Matkhau"].Value.ToString();
                 TaiKhoanDaChon.MSNguoiDung = rowselected.Cells["MS_NGUOI_DUNG"].Value.ToString();
                 TaiKhoanDaChon.TinhTrang = bool.Parse(rowselected.Cells["TINH_TRANG"].Value.ToString());
                 TaiKhoanDaChon.Quyen = rowselected.Cells["QUYEN"].Value.ToString();
@@ -141,6 +143,49 @@ namespace QL_SNAC.QLTaiKhoan
             frmThemTaiKhoan frm = new frmThemTaiKhoan(TaiKhoanDaChon);
             frm.ShowDialog();
             LayDanhSachTaiKhoan();
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            // 1. Check if an account is selected
+            if (TaiKhoanDaChon.ID_TAIKHOAN <= 0)
+            {
+                MessageBox.Show("Vui lòng chọn tài khoản cần đặt lại mật khẩu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // 2. Confirm password reset with the user (important!)
+            DialogResult confirmation = MessageBox.Show($"Bạn có chắc chắn muốn đặt lại mật khẩu cho tài khoản {TaiKhoanDaChon.EMAIL} về mặc định?", "Xác nhận đặt lại mật khẩu", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmation == DialogResult.Yes)
+            {
+                try
+                {
+                    // Hash the default password
+                    string defaultPassword = "1234";
+                    string hashedPassword = DB.HashPassword(defaultPassword); // Assuming DB is your Database class instance
+
+                    // Update the TaiKhoanDaChon object with the new hashed password
+                    TaiKhoanDaChon.MatKhau = hashedPassword;
+
+                    // Call the update method in your manager/repository
+                    bool ketqua = tkManager.CapNhatTaiKhoan(TaiKhoanDaChon, ref error);
+
+                    if (ketqua)
+                    {
+                        MessageBox.Show("Đặt lại mật khẩu thành công.");
+                        LayDanhSachTaiKhoan(); // Refresh the DataGridView
+                    }
+                    else
+                    {
+                        MessageBox.Show("Lỗi đặt lại mật khẩu: " + error, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
