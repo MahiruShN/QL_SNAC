@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccessLayer.Responsitories;
 using Microsoft.Data.SqlClient;
 using QL_SNAC.MainForm;
 
@@ -14,6 +16,7 @@ namespace QL_SNAC.Login
 {
     public partial class frmLogin : Form
     {
+        private Database db = new Database();
         public frmLogin()
         {
             InitializeComponent();
@@ -42,42 +45,43 @@ namespace QL_SNAC.Login
             SqlConnection connect = null;
             try
             {
-                //ket noi csdl
                 connect = new SqlConnection(connString);
                 connect.Open();
-                //Xử lý truy van
-                #region Xu ly du lieu
-                string sql = "select EMAIL from TAI_KHOAN where EMAIL like '" + txtEmail.Text + "' and PASS like '" + txtMatkhau.Text + "'";
-                SqlCommand command = new SqlCommand();
-                command.Connection = connect;
-                command.CommandText = sql;
-                command.CommandType = CommandType.Text;
+
+                // 1. Hash the entered password using the same method as during registration
+                string enteredPasswordHash = db.HashPassword(txtMatkhau.Text); // Hash the input
+
+                // 2. Query the database using the hashed password
+                string sql = "SELECT EMAIL FROM TAI_KHOAN WHERE EMAIL = @Email AND PASS = @Password"; // Use parameters!
+                SqlCommand command = new SqlCommand(sql, connect); // Combine query and connection
+
+                // 3. Add parameters to prevent SQL injection
+                command.Parameters.AddWithValue("@Email", txtEmail.Text);
+                command.Parameters.AddWithValue("@Password", enteredPasswordHash); // Use the hashed password
+
                 object data = command.ExecuteScalar();
 
                 if (data == null)
                 {
-                    MessageBox.Show("Loi tai khoan, dang nhap khong thanh cong");
+                    MessageBox.Show("Lỗi tài khoản, đăng nhập không thành công");
                 }
                 else
                 {
-                    //MessageBox.Show("Dan nhap thanh cong, ten nguoi dang la: "+data.ToString());
-                    //clsCauHinhHeThong.TenDangNhap = txtDangNhap.Text;
-                    //clsCauHinhHeThong.TenDayDu = data.ToString();
                     frmMain frm = new frmMain();
                     frm.Show();
                     this.Hide();
                 }
-                #endregion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ket noi lôi: " + ex.Message);
+                MessageBox.Show("Lỗi kết nối: " + ex.Message);
             }
             finally
             {
-                connect.Close();
+                connect.Close(); // Use null-conditional operator to avoid potential null exceptions
             }
-        
-    }
+
+
+        }
     }
 }

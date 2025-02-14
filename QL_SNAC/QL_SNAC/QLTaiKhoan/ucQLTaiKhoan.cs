@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer.Manager;
+using DataAccessLayer.Entity;
 using QL_SNAC.MainForm;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -67,7 +68,79 @@ namespace QL_SNAC.QLTaiKhoan
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Hide(); 
+            this.Hide();
+        }
+
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            int addedAccountId = -1; // Khai báo biến
+            frmThemTaiKhoan frm = new frmThemTaiKhoan(out addedAccountId); // Truyền tham số out
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            DialogResult result = frm.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                // addedAccountId đã chứa ID, nhưng lbIdTaiKhoan đã được cập nhật bên trong frmThemTaiKhoan rồi
+                LayDanhSachTaiKhoan(); // Refresh datagridview
+            }
+        }
+        private TaiKhoanEntity TaiKhoanDaChon = new TaiKhoanEntity();
+        private void dgDSTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dgDSTaiKhoan.RowCount)
+            {
+                DataGridViewRow rowselected = dgDSTaiKhoan.Rows[e.RowIndex];
+                #region Hien thi gia tri len label
+
+                #endregion
+
+                #region Gan gia tri vao entity tai khoan da chon
+                TaiKhoanDaChon.ID_TAIKHOAN = int.Parse(rowselected.Cells["ID_TAIKHOAN"].Value.ToString());
+                TaiKhoanDaChon.EMAIL = rowselected.Cells["EMAIL"].Value.ToString();
+                TaiKhoanDaChon.PASS = rowselected.Cells["PASS"].Value.ToString();
+                TaiKhoanDaChon.MSNguoiDung = rowselected.Cells["MS_NGUOI_DUNG"].Value.ToString();
+                TaiKhoanDaChon.TinhTrang = bool.Parse(rowselected.Cells["TINH_TRANG"].Value.ToString());
+                TaiKhoanDaChon.Quyen = rowselected.Cells["QUYEN"].Value.ToString();
+                TaiKhoanDaChon.NguoiTao = rowselected.Cells["NGUOI_TAO"].Value.ToString();
+                #endregion
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            // 1. Check if an account is selected
+            if (TaiKhoanDaChon.ID_TAIKHOAN <= 0) // Or any other appropriate check for a valid ID
+            {
+                MessageBox.Show("Vui lòng chọn tài khoản cần xóa.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // More user-friendly message
+                return; // Exit the event handler
+            }
+
+            // 2. Confirm deletion with the user (important!)
+            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn muốn xóa tài khoản này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmation == DialogResult.Yes)
+            {
+                bool ketqua = tkManager.XoaTaiKhoan(TaiKhoanDaChon.ID_TAIKHOAN, ref error); // Use TaiKhoanDaChon.ID_TAIKHOAN
+
+                if (ketqua)
+                {
+                    MessageBox.Show("Xóa tài khoản thành công.");
+                    LayDanhSachTaiKhoan(); // Refresh the DataGridView
+                                           // Reset TaiKhoanDaChon (optional, but good practice)
+                    TaiKhoanDaChon = new TaiKhoanEntity(); // Or clear individual properties
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi xóa tài khoản: " + error, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // Display the error message from tkManager
+                }
+            }
+        }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            frmThemTaiKhoan frm = new frmThemTaiKhoan(TaiKhoanDaChon);
+            frm.ShowDialog();
+            LayDanhSachTaiKhoan();
         }
     }
 }

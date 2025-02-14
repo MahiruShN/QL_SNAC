@@ -1,25 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {}
+    "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
+    "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\BusinessLogicLayer\\BusinessLogicLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "projectUniqueName": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
         "projectName": "BusinessLogicLayer",
-        "projectPath": "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
-        "packagesPath": "C:\\Users\\Quan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\BusinessLogicLayer\\obj\\",
+        "projectPath": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\BusinessLogicLayer\\BusinessLogicLayer.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\BusinessLogicLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Quan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,7 +25,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -35,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj": {
-                "projectPath": "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj"
+              "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj": {
+                "projectPath": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj"
               }
             }
           }
@@ -45,6 +42,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -76,26 +78,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj": {
+    "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj",
+        "projectUniqueName": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj",
         "projectName": "DataAccessLayer",
-        "projectPath": "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj",
-        "packagesPath": "C:\\Users\\Quan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quan\\Desktop\\SNAC\\QL_SNAC\\DataAccessLayer\\obj\\",
+        "projectPath": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Quan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -103,7 +103,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
@@ -117,6 +116,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -148,7 +152,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
