@@ -16,9 +16,10 @@ namespace QL_SNAC
         {
             
             ApplicationConfiguration.Initialize();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new frmLogin());
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
 
             frmLogin loginForm = new frmLogin();
             if (loginForm.ShowDialog() == DialogResult.OK) // Use ShowDialog()

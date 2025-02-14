@@ -39,7 +39,7 @@ namespace BusinessLogicLayer.Manager
                 return false;
             }
 
-            if (string.IsNullOrEmpty(Entity.MatKhau))
+            if (string.IsNullOrEmpty(Entity.PASS))
             {
                 error = "Mật khẩu không được để trống.";
                 return false;

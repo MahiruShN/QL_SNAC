@@ -99,7 +99,7 @@ namespace QL_SNAC.QLTaiKhoan
                 #region Gan gia tri vao entity tai khoan da chon
                 TaiKhoanDaChon.ID_TAIKHOAN = int.Parse(rowselected.Cells["ID_TAIKHOAN"].Value.ToString());
                 TaiKhoanDaChon.EMAIL = rowselected.Cells["EMAIL"].Value.ToString();
-                TaiKhoanDaChon.MatKhau = rowselected.Cells["Matkhau"].Value.ToString();
+                TaiKhoanDaChon.PASS = rowselected.Cells["Matkhau"].Value.ToString();
                 TaiKhoanDaChon.MSNguoiDung = rowselected.Cells["MS_NGUOI_DUNG"].Value.ToString();
                 TaiKhoanDaChon.TinhTrang = bool.Parse(rowselected.Cells["TINH_TRANG"].Value.ToString());
                 TaiKhoanDaChon.Quyen = rowselected.Cells["QUYEN"].Value.ToString();
@@ -166,7 +166,7 @@ namespace QL_SNAC.QLTaiKhoan
                     string hashedPassword = DB.HashPassword(defaultPassword); // Assuming DB is your Database class instance
 
                     // Update the TaiKhoanDaChon object with the new hashed password
-                    TaiKhoanDaChon.MatKhau = hashedPassword;
+                    TaiKhoanDaChon.PASS = hashedPassword;
 
                     // Call the update method in your manager/repository
                     bool ketqua = tkManager.CapNhatTaiKhoan(TaiKhoanDaChon, ref error);

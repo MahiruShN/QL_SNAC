@@ -53,7 +53,7 @@ namespace QL_SNAC.Login
 
                 string enteredPasswordHash = db.HashPassword(txtMatkhau.Text);
 
-                using (SqlCommand command = new SqlCommand("SELECT EMAIL FROM TAI_KHOAN WHERE EMAIL = @Email AND Matkhau = @Password", connect))
+                using (SqlCommand command = new SqlCommand("SELECT EMAIL FROM TAI_KHOAN WHERE EMAIL = @Email AND PASS = @Password", connect))
                 {
                     command.Parameters.AddWithValue("@Email", txtEmail.Text);
                     command.Parameters.AddWithValue("@Password", enteredPasswordHash);

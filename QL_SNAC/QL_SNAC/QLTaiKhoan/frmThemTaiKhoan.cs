@@ -86,7 +86,7 @@ namespace QL_SNAC.QLTaiKhoan
             entity.EMAIL = txtEmail.Text.Replace(" ", "");
 
             string hashedPassword = db.HashPassword(txtPass.Text);
-            entity.MatKhau = hashedPassword;
+            entity.PASS = hashedPassword;
 
             entity.MSNguoiDung = lbMSNguoiDung.Text.Replace(" ", "");
             entity.Quyen = txtQuyen.Text.Replace(" ", "");
@@ -125,7 +125,7 @@ namespace QL_SNAC.QLTaiKhoan
                 }
 
                 string hashedPassword = db.HashPassword(txtPass.Text);
-                TKDaChon.MatKhau = hashedPassword; // Update the password only if new one is given
+                TKDaChon.PASS = hashedPassword; // Update the password only if new one is given
             }
 
             bool ketqua = TKManager.CapNhatTaiKhoan(TKDaChon, ref error);

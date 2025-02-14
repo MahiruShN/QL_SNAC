@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BusinessLogicLayer
-build_property.ProjectDir = E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\BusinessLogicLayer\
+build_property.ProjectDir = C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
