@@ -7,6 +7,12 @@
     <Compile Update="MainForm\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="QLHocSinh\frmThongTinHS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="QLHocSinh\ucQLHocSinh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="QLTaiKhoan\frmLocChonThongTinNguoiDung.cs">
       <SubType>Form</SubType>
     </Compile>

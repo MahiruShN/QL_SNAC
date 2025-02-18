@@ -30,5 +30,19 @@ namespace BusinessLogicLayer.Manager
                 return null; // Hoặc throw; nếu muốn lỗi lan lên ucQLTaiKhoan
             }
         }
+
+        public DataTable HienThiDSHocsinhTheoLop(string classId, ref string error)
+        {
+            try
+            {
+                return process.HienThiDSHocsinhTheoLop(classId, ref error);
+            }
+            catch (Exception ex)
+            {
+                error = "Error retrieving students: " + ex.Message;
+                return null;
+            }
+        }
+
     }
 }

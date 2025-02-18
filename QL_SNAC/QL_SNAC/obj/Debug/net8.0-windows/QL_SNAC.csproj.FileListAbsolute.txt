@@ -326,3 +326,4 @@ C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\refi
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.pdb
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.genruntimeconfig.cache
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\ref\QL_SNAC.dll
+C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLHocSinh.ucQLHocSinh.resources
