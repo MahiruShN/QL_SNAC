@@ -38,24 +38,31 @@
             label1 = new Label();
             lbTieuDe = new Label();
             panel2 = new Panel();
-            btnBack = new Button();
-            btnThem = new Button();
             panel3 = new Panel();
             TabControl = new TabControl();
-            tabPage1 = new TabPage();
+            tbHocSinh = new TabPage();
             dgDSHocSinh = new DataGridView();
-            tabPage2 = new TabPage();
+            tbGiaoVien = new TabPage();
             dgDSGiaoVien = new DataGridView();
-            tabPage3 = new TabPage();
+            tbPhuHuynh = new TabPage();
+            dgDSPhuHuynh = new DataGridView();
+            panel4 = new Panel();
+            btnBack = new Button();
+            btnThem = new Button();
+            txtSearch = new TextBox();
+            lbSearch = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             TabControl.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tbHocSinh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgDSHocSinh).BeginInit();
-            tabPage2.SuspendLayout();
+            tbGiaoVien.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgDSGiaoVien).BeginInit();
+            tbPhuHuynh.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgDSPhuHuynh).BeginInit();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,13 +72,15 @@
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
             tableLayoutPanel1.Controls.Add(panel2, 0, 1);
             tableLayoutPanel1.Controls.Add(panel3, 0, 2);
+            tableLayoutPanel1.Controls.Add(panel4, 0, 3);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowCount = 4;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 30F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.Size = new Size(683, 515);
             tableLayoutPanel1.TabIndex = 0;
             // 
@@ -157,31 +166,13 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveBorder;
-            panel2.Controls.Add(btnBack);
-            panel2.Controls.Add(btnThem);
+            panel2.Controls.Add(lbSearch);
+            panel2.Controls.Add(txtSearch);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 157);
             panel2.Name = "panel2";
             panel2.Size = new Size(677, 45);
             panel2.TabIndex = 1;
-            // 
-            // btnBack
-            // 
-            btnBack.Location = new Point(544, 3);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(100, 39);
-            btnBack.TabIndex = 1;
-            btnBack.Text = "TRỞ LẠI";
-            btnBack.UseVisualStyleBackColor = true;
-            // 
-            // btnThem
-            // 
-            btnThem.Location = new Point(412, 3);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(100, 39);
-            btnThem.TabIndex = 0;
-            btnThem.Text = "THÊM";
-            btnThem.UseVisualStyleBackColor = true;
             // 
             // panel3
             // 
@@ -189,32 +180,32 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 208);
             panel3.Name = "panel3";
-            panel3.Size = new Size(677, 304);
+            panel3.Size = new Size(677, 251);
             panel3.TabIndex = 2;
             // 
             // TabControl
             // 
-            TabControl.Controls.Add(tabPage1);
-            TabControl.Controls.Add(tabPage2);
-            TabControl.Controls.Add(tabPage3);
+            TabControl.Controls.Add(tbHocSinh);
+            TabControl.Controls.Add(tbGiaoVien);
+            TabControl.Controls.Add(tbPhuHuynh);
             TabControl.Dock = DockStyle.Fill;
             TabControl.Location = new Point(0, 0);
             TabControl.Name = "TabControl";
             TabControl.SelectedIndex = 0;
-            TabControl.Size = new Size(677, 304);
+            TabControl.Size = new Size(677, 251);
             TabControl.TabIndex = 1;
             TabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
             // 
-            // tabPage1
+            // tbHocSinh
             // 
-            tabPage1.Controls.Add(dgDSHocSinh);
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(669, 271);
-            tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
-            tabPage1.UseVisualStyleBackColor = true;
+            tbHocSinh.Controls.Add(dgDSHocSinh);
+            tbHocSinh.Location = new Point(4, 29);
+            tbHocSinh.Name = "tbHocSinh";
+            tbHocSinh.Padding = new Padding(3);
+            tbHocSinh.Size = new Size(669, 218);
+            tbHocSinh.TabIndex = 0;
+            tbHocSinh.Text = "Học Sinh";
+            tbHocSinh.UseVisualStyleBackColor = true;
             // 
             // dgDSHocSinh
             // 
@@ -223,21 +214,21 @@
             dgDSHocSinh.Location = new Point(3, 3);
             dgDSHocSinh.Name = "dgDSHocSinh";
             dgDSHocSinh.RowHeadersWidth = 51;
-            dgDSHocSinh.Size = new Size(663, 265);
+            dgDSHocSinh.Size = new Size(663, 212);
             dgDSHocSinh.TabIndex = 0;
             dgDSHocSinh.CellClick += dgDSHocSinh_CellClick;
             dgDSHocSinh.CellDoubleClick += dgDSHocSinh_CellDoubleClick;
             // 
-            // tabPage2
+            // tbGiaoVien
             // 
-            tabPage2.Controls.Add(dgDSGiaoVien);
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(669, 271);
-            tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
-            tabPage2.UseVisualStyleBackColor = true;
+            tbGiaoVien.Controls.Add(dgDSGiaoVien);
+            tbGiaoVien.Location = new Point(4, 29);
+            tbGiaoVien.Name = "tbGiaoVien";
+            tbGiaoVien.Padding = new Padding(3);
+            tbGiaoVien.Size = new Size(669, 218);
+            tbGiaoVien.TabIndex = 1;
+            tbGiaoVien.Text = "Giáo Viên";
+            tbGiaoVien.UseVisualStyleBackColor = true;
             // 
             // dgDSGiaoVien
             // 
@@ -246,20 +237,79 @@
             dgDSGiaoVien.Location = new Point(3, 3);
             dgDSGiaoVien.Name = "dgDSGiaoVien";
             dgDSGiaoVien.RowHeadersWidth = 51;
-            dgDSGiaoVien.Size = new Size(663, 265);
+            dgDSGiaoVien.Size = new Size(663, 212);
             dgDSGiaoVien.TabIndex = 0;
             dgDSGiaoVien.CellClick += dgDSGiaoVien_CellClick;
             dgDSGiaoVien.CellDoubleClick += dgDSGiaoVien_CellDoubleClick;
             // 
-            // tabPage3
+            // tbPhuHuynh
             // 
-            tabPage3.Location = new Point(4, 29);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(669, 271);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "tabPage3";
-            tabPage3.UseVisualStyleBackColor = true;
+            tbPhuHuynh.Controls.Add(dgDSPhuHuynh);
+            tbPhuHuynh.Location = new Point(4, 29);
+            tbPhuHuynh.Name = "tbPhuHuynh";
+            tbPhuHuynh.Padding = new Padding(3);
+            tbPhuHuynh.Size = new Size(669, 218);
+            tbPhuHuynh.TabIndex = 2;
+            tbPhuHuynh.Text = "Phụ Huynh";
+            tbPhuHuynh.UseVisualStyleBackColor = true;
+            // 
+            // dgDSPhuHuynh
+            // 
+            dgDSPhuHuynh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgDSPhuHuynh.Dock = DockStyle.Fill;
+            dgDSPhuHuynh.Location = new Point(3, 3);
+            dgDSPhuHuynh.Name = "dgDSPhuHuynh";
+            dgDSPhuHuynh.RowHeadersWidth = 51;
+            dgDSPhuHuynh.Size = new Size(663, 212);
+            dgDSPhuHuynh.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            panel4.BackColor = SystemColors.ActiveBorder;
+            panel4.Controls.Add(btnBack);
+            panel4.Controls.Add(btnThem);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new Point(3, 465);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(677, 47);
+            panel4.TabIndex = 3;
+            // 
+            // btnBack
+            // 
+            btnBack.Location = new Point(568, 3);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(100, 39);
+            btnBack.TabIndex = 1;
+            btnBack.Text = "TRỞ LẠI";
+            btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
+            // 
+            // btnThem
+            // 
+            btnThem.Location = new Point(442, 5);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(100, 39);
+            btnThem.TabIndex = 0;
+            btnThem.Text = "THÊM";
+            btnThem.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            txtSearch.Location = new Point(35, 3);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(385, 27);
+            txtSearch.TabIndex = 0;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
+            // lbSearch
+            // 
+            lbSearch.AutoSize = true;
+            lbSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbSearch.Location = new Point(442, 3);
+            lbSearch.Name = "lbSearch";
+            lbSearch.Size = new Size(75, 28);
+            lbSearch.TabIndex = 1;
+            lbSearch.Text = "Search";
             // 
             // frmLocChonThongTinNguoiDung
             // 
@@ -273,12 +323,16 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
+            panel2.PerformLayout();
             panel3.ResumeLayout(false);
             TabControl.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
+            tbHocSinh.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgDSHocSinh).EndInit();
-            tabPage2.ResumeLayout(false);
+            tbGiaoVien.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgDSGiaoVien).EndInit();
+            tbPhuHuynh.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgDSPhuHuynh).EndInit();
+            panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -299,9 +353,13 @@
         private Button btnThem;
         private DataGridView dgDSHocSinh;
         private TabControl TabControl;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
-        private TabPage tabPage3;
+        private TabPage tbHocSinh;
+        private TabPage tbGiaoVien;
+        private TabPage tbPhuHuynh;
         private DataGridView dgDSGiaoVien;
+        private DataGridView dgDSPhuHuynh;
+        private Panel panel4;
+        private Label lbSearch;
+        private TextBox txtSearch;
     }
 }

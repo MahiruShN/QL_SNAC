@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLogicLayer.Manager;
 using DataAccessLayer.Entity;
+using DataAccessLayer.Responsitories;
+using Microsoft.Data.SqlClient;
 
 namespace QL_SNAC.QLTaiKhoan
 {
@@ -18,6 +20,8 @@ namespace QL_SNAC.QLTaiKhoan
         private HocSinhManager HSManager;
         private GiaoVienManager GVManager;
         private TaiKhoanManager TKManager;
+        private Database DB = new Database();
+        //private HocSinhResponsitory HSRespository;
 
         private string error = "";
 
@@ -37,6 +41,7 @@ namespace QL_SNAC.QLTaiKhoan
             HSManager = new HocSinhManager();
             GVManager = new GiaoVienManager();
             TKManager = new TaiKhoanManager();
+            //HSRespository = new HocSinhResponsitory();
 
             this.TabControl.SelectedIndexChanged += TabControl_SelectedIndexChanged;
             LoadData(0); // Load Hoc Sinh data initially
@@ -103,7 +108,7 @@ namespace QL_SNAC.QLTaiKhoan
         {
             HandleCellClick(dgDSGiaoVien, e, "MSGV");
         }
-     
+
 
         private void dgDSHocSinh_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -144,6 +149,46 @@ namespace QL_SNAC.QLTaiKhoan
                 SelectedMaSo = row.Cells[maSoColumnName].Value?.ToString();
                 frmThongTinNguoiDungInstance.MSNguoiDunglabelText = SelectedMaSo;
                 this.Close();
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim(); // No need to ToLower() here
+            FilterData(searchText);
+        }
+       
+        private void FilterData(string searchText)
+        {
+            string error = "";
+            DataTable data = null;
+
+            if (TabControl.SelectedIndex == 0) // Hoc Sinh
+            {
+                data = DB.TimKiemNguoiDung("THONG_TIN_HOC_SINH", "HO", "TEN", "MSHS", searchText, ref error); // Sửa lỗi ở đây
+                dgDSHocSinh.DataSource = data;
+                HandleDataLoadResult(dgDSHocSinh, "Học Sinh");
+            }
+            else if (TabControl.SelectedIndex == 1) // Giao Vien
+            {
+                data = DB.TimKiemNguoiDung("THONG_TIN_GIAO_VIEN", "HO", "TEN", "MSGV", searchText, ref error); // Sửa lỗi ở đây
+                dgDSGiaoVien.DataSource = data;
+                HandleDataLoadResult(dgDSGiaoVien, "Giáo Viên");
+            }
+
+            if (data == null)
+            {
+                if (!string.IsNullOrEmpty(error))
+                {
+                    MessageBox.Show($"Lỗi khi lấy dữ liệu: {error}");
+                }
+                if (TabControl.SelectedIndex == 0) dgDSHocSinh.DataSource = null;
+                else if (TabControl.SelectedIndex == 1) dgDSGiaoVien.DataSource = null;
             }
         }
 

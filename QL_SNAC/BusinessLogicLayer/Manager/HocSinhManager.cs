@@ -31,18 +31,18 @@ namespace BusinessLogicLayer.Manager
             }
         }
 
-        public DataTable HienThiDSHocsinhTheoLop(string classId, ref string error)
-        {
-            try
-            {
-                return process.HienThiDSHocsinhTheoLop(classId, ref error);
-            }
-            catch (Exception ex)
-            {
-                error = "Error retrieving students: " + ex.Message;
-                return null;
-            }
-        }
+        //public DataTable HienThiDSHocsinhTheoLop(string classId, ref string error)
+        //{
+        //    try
+        //    {
+        //        return process.HienThiDSHocsinhTheoLop(classId, ref error);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        error = "Error retrieving students: " + ex.Message;
+        //        return null;
+        //    }
+        //}
 
     }
 }

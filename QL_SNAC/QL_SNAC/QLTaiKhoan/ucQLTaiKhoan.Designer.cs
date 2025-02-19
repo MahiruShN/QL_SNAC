@@ -74,11 +74,10 @@
             tableLayoutPanel1.Controls.Add(panel2, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(796, 389);
+            tableLayoutPanel1.Size = new Size(910, 519);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -86,10 +85,9 @@
             panel1.BackColor = SystemColors.AppWorkspace;
             panel1.Controls.Add(tbLayerQLButton);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 2);
-            panel1.Margin = new Padding(3, 2, 3, 2);
+            panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(232, 385);
+            panel1.Size = new Size(267, 513);
             panel1.TabIndex = 0;
             // 
             // tbLayerQLButton
@@ -101,13 +99,12 @@
             tbLayerQLButton.Controls.Add(panel5, 0, 2);
             tbLayerQLButton.Dock = DockStyle.Fill;
             tbLayerQLButton.Location = new Point(0, 0);
-            tbLayerQLButton.Margin = new Padding(3, 2, 3, 2);
             tbLayerQLButton.Name = "tbLayerQLButton";
             tbLayerQLButton.RowCount = 3;
             tbLayerQLButton.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tbLayerQLButton.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
             tbLayerQLButton.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tbLayerQLButton.Size = new Size(232, 385);
+            tbLayerQLButton.Size = new Size(267, 513);
             tbLayerQLButton.TabIndex = 0;
             // 
             // panel3
@@ -116,10 +113,9 @@
             panel3.AutoSize = true;
             panel3.BackColor = SystemColors.ActiveCaption;
             panel3.Controls.Add(lbQLTaiKhoan);
-            panel3.Location = new Point(3, 2);
-            panel3.Margin = new Padding(3, 2, 3, 2);
+            panel3.Location = new Point(3, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(226, 73);
+            panel3.Size = new Size(261, 96);
             panel3.TabIndex = 0;
             // 
             // lbQLTaiKhoan
@@ -127,9 +123,9 @@
             lbQLTaiKhoan.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lbQLTaiKhoan.AutoSize = true;
             lbQLTaiKhoan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbQLTaiKhoan.Location = new Point(20, 22);
+            lbQLTaiKhoan.Location = new Point(23, 29);
             lbQLTaiKhoan.Name = "lbQLTaiKhoan";
-            lbQLTaiKhoan.Size = new Size(169, 21);
+            lbQLTaiKhoan.Size = new Size(214, 28);
             lbQLTaiKhoan.TabIndex = 0;
             lbQLTaiKhoan.Text = "QUẢN LÝ TÀI KHOẢN";
             // 
@@ -138,10 +134,9 @@
             panel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel.BackColor = SystemColors.ActiveCaption;
             panel.Controls.Add(tableLayoutPanel2);
-            panel.Location = new Point(3, 79);
-            panel.Margin = new Padding(3, 2, 3, 2);
+            panel.Location = new Point(3, 105);
             panel.Name = "panel";
-            panel.Size = new Size(226, 265);
+            panel.Size = new Size(261, 353);
             panel.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -155,7 +150,6 @@
             tableLayoutPanel2.Controls.Add(panel9, 0, 4);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
-            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 5;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
@@ -163,27 +157,25 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel2.Size = new Size(226, 265);
+            tableLayoutPanel2.Size = new Size(261, 353);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // panel4
             // 
             panel4.Controls.Add(btnThem);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(3, 2);
-            panel4.Margin = new Padding(3, 2, 3, 2);
+            panel4.Location = new Point(3, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(220, 49);
+            panel4.Size = new Size(255, 64);
             panel4.TabIndex = 0;
             // 
             // btnThem
             // 
             btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnThem.AutoSize = true;
-            btnThem.Location = new Point(18, 9);
-            btnThem.Margin = new Padding(3, 2, 3, 2);
+            btnThem.Location = new Point(21, 12);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(191, 33);
+            btnThem.Size = new Size(222, 44);
             btnThem.TabIndex = 4;
             btnThem.Text = "THÊM";
             btnThem.UseMnemonic = false;
@@ -194,20 +186,18 @@
             // 
             panel6.Controls.Add(btnCapNhat);
             panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(3, 55);
-            panel6.Margin = new Padding(3, 2, 3, 2);
+            panel6.Location = new Point(3, 73);
             panel6.Name = "panel6";
-            panel6.Size = new Size(220, 49);
+            panel6.Size = new Size(255, 64);
             panel6.TabIndex = 1;
             // 
             // btnCapNhat
             // 
             btnCapNhat.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnCapNhat.AutoSize = true;
-            btnCapNhat.Location = new Point(18, 9);
-            btnCapNhat.Margin = new Padding(3, 2, 3, 2);
+            btnCapNhat.Location = new Point(21, 12);
             btnCapNhat.Name = "btnCapNhat";
-            btnCapNhat.Size = new Size(191, 33);
+            btnCapNhat.Size = new Size(222, 44);
             btnCapNhat.TabIndex = 4;
             btnCapNhat.Text = "CẬP NHẬT TÀI KHOẢN";
             btnCapNhat.UseVisualStyleBackColor = true;
@@ -217,20 +207,18 @@
             // 
             panel7.Controls.Add(btnNguoiDung);
             panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(3, 108);
-            panel7.Margin = new Padding(3, 2, 3, 2);
+            panel7.Location = new Point(3, 143);
             panel7.Name = "panel7";
-            panel7.Size = new Size(220, 49);
+            panel7.Size = new Size(255, 64);
             panel7.TabIndex = 2;
             // 
             // btnNguoiDung
             // 
             btnNguoiDung.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnNguoiDung.AutoSize = true;
-            btnNguoiDung.Location = new Point(18, 9);
-            btnNguoiDung.Margin = new Padding(3, 2, 3, 2);
+            btnNguoiDung.Location = new Point(21, 12);
             btnNguoiDung.Name = "btnNguoiDung";
-            btnNguoiDung.Size = new Size(193, 33);
+            btnNguoiDung.Size = new Size(253, 44);
             btnNguoiDung.TabIndex = 4;
             btnNguoiDung.Text = "ĐỔI MẬT KHẨU NGƯỜI DÙNG";
             btnNguoiDung.UseMnemonic = false;
@@ -240,20 +228,18 @@
             // 
             panel8.Controls.Add(btnReset);
             panel8.Dock = DockStyle.Fill;
-            panel8.Location = new Point(3, 161);
-            panel8.Margin = new Padding(3, 2, 3, 2);
+            panel8.Location = new Point(3, 213);
             panel8.Name = "panel8";
-            panel8.Size = new Size(220, 49);
+            panel8.Size = new Size(255, 64);
             panel8.TabIndex = 3;
             // 
             // btnReset
             // 
             btnReset.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnReset.AutoSize = true;
-            btnReset.Location = new Point(18, 9);
-            btnReset.Margin = new Padding(3, 2, 3, 2);
+            btnReset.Location = new Point(21, 12);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(191, 33);
+            btnReset.Size = new Size(222, 44);
             btnReset.TabIndex = 4;
             btnReset.Text = "RESET MẬT KHẨU";
             btnReset.UseMnemonic = false;
@@ -264,20 +250,18 @@
             // 
             panel9.Controls.Add(btnXoa);
             panel9.Dock = DockStyle.Fill;
-            panel9.Location = new Point(3, 214);
-            panel9.Margin = new Padding(3, 2, 3, 2);
+            panel9.Location = new Point(3, 283);
             panel9.Name = "panel9";
-            panel9.Size = new Size(220, 49);
+            panel9.Size = new Size(255, 67);
             panel9.TabIndex = 4;
             // 
             // btnXoa
             // 
             btnXoa.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnXoa.AutoSize = true;
-            btnXoa.Location = new Point(18, 10);
-            btnXoa.Margin = new Padding(3, 2, 3, 2);
+            btnXoa.Location = new Point(21, 13);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(191, 32);
+            btnXoa.Size = new Size(222, 45);
             btnXoa.TabIndex = 5;
             btnXoa.Text = "XÓA TÀI KHOẢN";
             btnXoa.UseMnemonic = false;
@@ -289,19 +273,17 @@
             panel5.BackColor = SystemColors.ActiveCaption;
             panel5.Controls.Add(btnThoat);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(3, 348);
-            panel5.Margin = new Padding(3, 2, 3, 2);
+            panel5.Location = new Point(3, 464);
             panel5.Name = "panel5";
-            panel5.Size = new Size(226, 35);
+            panel5.Size = new Size(261, 46);
             panel5.TabIndex = 2;
             // 
             // btnThoat
             // 
             btnThoat.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnThoat.Location = new Point(20, 2);
-            btnThoat.Margin = new Padding(3, 2, 3, 2);
+            btnThoat.Location = new Point(23, 3);
             btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(185, 33);
+            btnThoat.Size = new Size(214, 43);
             btnThoat.TabIndex = 3;
             btnThoat.Text = "THOÁT";
             btnThoat.UseMnemonic = false;
@@ -312,10 +294,9 @@
             // 
             panel2.Controls.Add(dgDSTaiKhoan);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(241, 2);
-            panel2.Margin = new Padding(3, 2, 3, 2);
+            panel2.Location = new Point(276, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(552, 385);
+            panel2.Size = new Size(631, 513);
             panel2.TabIndex = 1;
             // 
             // dgDSTaiKhoan
@@ -324,21 +305,19 @@
             dgDSTaiKhoan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgDSTaiKhoan.Dock = DockStyle.Fill;
             dgDSTaiKhoan.Location = new Point(0, 0);
-            dgDSTaiKhoan.Margin = new Padding(3, 2, 3, 2);
             dgDSTaiKhoan.Name = "dgDSTaiKhoan";
             dgDSTaiKhoan.RowHeadersWidth = 51;
-            dgDSTaiKhoan.Size = new Size(552, 385);
+            dgDSTaiKhoan.Size = new Size(631, 513);
             dgDSTaiKhoan.TabIndex = 0;
             dgDSTaiKhoan.CellClick += dgDSTaiKhoan_CellClick;
             // 
             // ucQLTaiKhoan
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(tableLayoutPanel1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "ucQLTaiKhoan";
-            Size = new Size(796, 389);
+            Size = new Size(910, 519);
             Resize += ucQLTaiKhoan_Resize;
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);

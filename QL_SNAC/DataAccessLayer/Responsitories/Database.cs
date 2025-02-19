@@ -181,6 +181,32 @@ namespace DataAccessLayer.Responsitories
                 return builder.ToString();
             }
         }
+        public DataTable TimKiemNguoiDung(string tenBang, string tenCotHo, string tenCotTen, string tenCotMaSo, string searchText, ref string error)
+        {
+            try
+            {
+                string sql = $@"
+            SELECT * -- Chọn tất cả các cột
+            FROM {tenBang}
+            WHERE {tenCotHo} + ' ' + {tenCotTen} LIKE @TenDayDu  -- Tìm kiếm theo tên đầy đủ
+               OR {tenCotMaSo} LIKE @MaSo;
+        ";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@TenDayDu", "%" + searchText + "%"), // Tìm kiếm gần đúng theo tên đầy đủ
+            new SqlParameter("@MaSo", "%" + searchText + "%") // Tìm kiếm gần đúng theo mã số
+                };
+
+                return GetDataFromDB(sql, CommandType.Text, ref error, parameters);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi tìm kiếm người dùng: " + ex.Message;
+                return null;
+            }
+        }
+
     }
 }
 

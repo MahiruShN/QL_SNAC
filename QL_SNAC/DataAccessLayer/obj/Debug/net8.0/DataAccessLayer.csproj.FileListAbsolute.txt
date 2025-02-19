@@ -61,3 +61,16 @@ C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\Data
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\refint\DataAccessLayer.dll
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.deps.json
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.dll
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\bin\Debug\net8.0\DataAccessLayer.pdb
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.AssemblyReference.cache
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfoInputs.cache
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.AssemblyInfo.cs
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.csproj.CoreCompileInputs.cache
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.sourcelink.json
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.dll
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\refint\DataAccessLayer.dll
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\DataAccessLayer.pdb
+E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\DataAccessLayer\obj\Debug\net8.0\ref\DataAccessLayer.dll
