@@ -29,27 +29,7 @@ namespace QL_SNAC.MainForm
         private ucQLTaiKhoan ucQLTK;
         private ucQLHocSinh ucQLHocSinh;
 
-        private void menuTaiKhoan_Click(object sender, EventArgs e)
-        {
-
-            if (ucQLTK == null) // Kiểm tra xem ucQLTK có null không (chưa bao giờ được tạo)
-            {
-                ucQLTK = new ucQLTaiKhoan();
-                ucQLTK.Dock = DockStyle.Fill;
-                pnMain.Controls.Add(ucQLTK);
-            }
-
-            // Bây giờ, ucQLTK đã tồn tại. Hiển thị hoặc ẩn tùy theo nhu cầu.
-            if (ucQLTK.Visible)
-            {
-                ucQLTK.Hide(); // Ẩn nếu nó hiện đang hiển thị
-            }
-            else
-            {
-                ucQLTK.Show(); // Hiển thị nếu nó hiện đang ẩn
-                ucQLTK.BringToFront(); // Đảm bảo nó ở trên cùng
-            }
-        }
+        
 
         private void họcSinhToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -75,6 +55,27 @@ namespace QL_SNAC.MainForm
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void QLTaiKhoanMenuTool_Click(object sender, EventArgs e)
+        {
+            if (ucQLTK == null) // Kiểm tra xem ucQLTK có null không (chưa bao giờ được tạo)
+            {
+                ucQLTK = new ucQLTaiKhoan();
+                ucQLTK.Dock = DockStyle.Fill;
+                pnMain.Controls.Add(ucQLTK);
+            }
+
+            // Bây giờ, ucQLTK đã tồn tại. Hiển thị hoặc ẩn tùy theo nhu cầu.
+            if (ucQLTK.Visible)
+            {
+                ucQLTK.Hide(); // Ẩn nếu nó hiện đang hiển thị
+            }
+            else
+            {
+                ucQLTK.Show(); // Hiển thị nếu nó hiện đang ẩn
+                ucQLTK.BringToFront(); // Đảm bảo nó ở trên cùng
+            }
         }
     }
 }

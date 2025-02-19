@@ -172,10 +172,9 @@
             // btnThem
             // 
             btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnThem.AutoSize = true;
-            btnThem.Location = new Point(21, 12);
+            btnThem.Location = new Point(23, 3);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(222, 44);
+            btnThem.Size = new Size(223, 43);
             btnThem.TabIndex = 4;
             btnThem.Text = "THÊM";
             btnThem.UseMnemonic = false;
@@ -194,8 +193,7 @@
             // btnCapNhat
             // 
             btnCapNhat.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnCapNhat.AutoSize = true;
-            btnCapNhat.Location = new Point(21, 12);
+            btnCapNhat.Location = new Point(23, 3);
             btnCapNhat.Name = "btnCapNhat";
             btnCapNhat.Size = new Size(222, 44);
             btnCapNhat.TabIndex = 4;
@@ -215,10 +213,9 @@
             // btnNguoiDung
             // 
             btnNguoiDung.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnNguoiDung.AutoSize = true;
-            btnNguoiDung.Location = new Point(21, 12);
+            btnNguoiDung.Location = new Point(23, 3);
             btnNguoiDung.Name = "btnNguoiDung";
-            btnNguoiDung.Size = new Size(253, 44);
+            btnNguoiDung.Size = new Size(223, 43);
             btnNguoiDung.TabIndex = 4;
             btnNguoiDung.Text = "ĐỔI MẬT KHẨU NGƯỜI DÙNG";
             btnNguoiDung.UseMnemonic = false;
@@ -236,10 +233,9 @@
             // btnReset
             // 
             btnReset.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnReset.AutoSize = true;
-            btnReset.Location = new Point(21, 12);
+            btnReset.Location = new Point(23, 3);
             btnReset.Name = "btnReset";
-            btnReset.Size = new Size(222, 44);
+            btnReset.Size = new Size(223, 43);
             btnReset.TabIndex = 4;
             btnReset.Text = "RESET MẬT KHẨU";
             btnReset.UseMnemonic = false;
@@ -258,10 +254,9 @@
             // btnXoa
             // 
             btnXoa.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnXoa.AutoSize = true;
-            btnXoa.Location = new Point(21, 13);
+            btnXoa.Location = new Point(23, 3);
             btnXoa.Name = "btnXoa";
-            btnXoa.Size = new Size(222, 45);
+            btnXoa.Size = new Size(223, 43);
             btnXoa.TabIndex = 5;
             btnXoa.Text = "XÓA TÀI KHOẢN";
             btnXoa.UseMnemonic = false;
@@ -283,7 +278,7 @@
             btnThoat.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnThoat.Location = new Point(23, 3);
             btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(214, 43);
+            btnThoat.Size = new Size(223, 43);
             btnThoat.TabIndex = 3;
             btnThoat.Text = "THOÁT";
             btnThoat.UseMnemonic = false;
@@ -301,6 +296,7 @@
             // 
             // dgDSTaiKhoan
             // 
+            dgDSTaiKhoan.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgDSTaiKhoan.BackgroundColor = SystemColors.ActiveCaption;
             dgDSTaiKhoan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgDSTaiKhoan.Dock = DockStyle.Fill;
@@ -328,15 +324,10 @@
             panel.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             panel6.ResumeLayout(false);
-            panel6.PerformLayout();
             panel7.ResumeLayout(false);
-            panel7.PerformLayout();
             panel8.ResumeLayout(false);
-            panel8.PerformLayout();
             panel9.ResumeLayout(false);
-            panel9.PerformLayout();
             panel5.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgDSTaiKhoan).EndInit();
