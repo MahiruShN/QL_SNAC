@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|e:\\project\\qltruonghoc\\du an\\ql_snac\\ql_snac\\ql_snac\\ql_snac\\qltaikhoan\\ucqltaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|solutionrelative:ql_snac\\qltaikhoan\\ucqltaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1C956022-1289-446C-8DEF-19C9CD22A677}|DataAccessLayer\\DataAccessLayer.csproj|e:\\project\\qltruonghoc\\du an\\ql_snac\\ql_snac\\ql_snac\\dataaccesslayer\\responsitories\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C956022-1289-446C-8DEF-19C9CD22A677}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\responsitories\\database.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -19,15 +23,11 @@
       "RelativeMoniker": "D:0:0:{1C956022-1289-446C-8DEF-19C9CD22A677}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\responsitories\\taikhoanresponsitory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|e:\\project\\qltruonghoc\\du an\\ql_snac\\ql_snac\\ql_snac\\ql_snac\\qltaikhoan\\ucqltaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|solutionrelative:ql_snac\\qltaikhoan\\ucqltaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|e:\\project\\qltruonghoc\\du an\\ql_snac\\ql_snac\\ql_snac\\ql_snac\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|solutionrelative:ql_snac\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|e:\\project\\qltruonghoc\\du an\\ql_snac\\ql_snac\\ql_snac\\ql_snac\\qltaikhoan\\frmlocchonthongtinnguoidung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\ql_snac\\qltaikhoan\\frmlocchonthongtinnguoidung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|solutionrelative:ql_snac\\qltaikhoan\\frmlocchonthongtinnguoidung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -35,7 +35,7 @@
       "RelativeMoniker": "D:0:0:{C828B15D-2EB6-4B89-834F-533BFFD523E7}|BusinessLogicLayer\\BusinessLogicLayer.csproj|solutionrelative:businesslogiclayer\\manager\\hocsinhmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|e:\\project\\qltruonghoc\\du an\\ql_snac\\ql_snac\\ql_snac\\ql_snac\\qlhocsinh\\frmthongtinhs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\ql_snac\\qlhocsinh\\frmthongtinhs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{6EAA946C-BDB4-4994-994A-764EEB333414}|QL_SNAC\\QL_SNAC.csproj|solutionrelative:ql_snac\\qlhocsinh\\frmthongtinhs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -50,17 +50,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ucQLTaiKhoan.cs",
               "DocumentMoniker": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QLTaiKhoan\\ucQLTaiKhoan.cs",
               "RelativeDocumentMoniker": "QL_SNAC\\QLTaiKhoan\\ucQLTaiKhoan.cs",
               "ToolTip": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QLTaiKhoan\\ucQLTaiKhoan.cs",
               "RelativeToolTip": "QL_SNAC\\QLTaiKhoan\\ucQLTaiKhoan.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAGIAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAYwGUAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-14T10:04:17.09Z",
               "IsPinned": true,
@@ -68,20 +68,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Database.cs",
               "DocumentMoniker": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\Responsitories\\Database.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Responsitories\\Database.cs",
               "ToolTip": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\Responsitories\\Database.cs",
               "RelativeToolTip": "DataAccessLayer\\Responsitories\\Database.cs",
-              "ViewState": "AgIAALwAAAAAAAAAAAAkwM8AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAALkAAAAAAAAAAAAowM8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-19T07:57:56.304Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "HocSinhResponsitory.cs",
               "DocumentMoniker": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\Responsitories\\HocSinhResponsitory.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Responsitories\\HocSinhResponsitory.cs",
@@ -89,8 +89,7 @@
               "RelativeToolTip": "DataAccessLayer\\Responsitories\\HocSinhResponsitory.cs",
               "ViewState": "AgIAACgAAAAAAAAAAAAAADgAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T07:57:09.018Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T07:57:09.018Z"
             },
             {
               "$type": "Document",
@@ -102,12 +101,11 @@
               "RelativeToolTip": "QL_SNAC\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2025-02-19T07:54:36.365Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-19T07:54:36.365Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "frmLocChonThongTinNguoiDung.cs",
               "DocumentMoniker": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QLTaiKhoan\\frmLocChonThongTinNguoiDung.cs",
               "RelativeDocumentMoniker": "QL_SNAC\\QLTaiKhoan\\frmLocChonThongTinNguoiDung.cs",
@@ -127,8 +125,7 @@
               "ToolTip": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QLTaiKhoan\\frmLocChonThongTinNguoiDung.cs [Design]",
               "RelativeToolTip": "QL_SNAC\\QLTaiKhoan\\frmLocChonThongTinNguoiDung.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T07:18:44.26Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-19T07:18:44.26Z"
             },
             {
               "$type": "Document",
@@ -139,8 +136,7 @@
               "ToolTip": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QL_SNAC\\QLHocSinh\\frmThongTinHS.cs [Design]",
               "RelativeToolTip": "QL_SNAC\\QLHocSinh\\frmThongTinHS.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T07:16:32.961Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-02-19T07:16:32.961Z"
             },
             {
               "$type": "Document",
@@ -152,12 +148,11 @@
               "RelativeToolTip": "QL_SNAC\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-10T04:06:48.738Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-10T04:06:48.738Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "TaiKhoanResponsitory.cs",
               "DocumentMoniker": "E:\\Project\\QLTruongHoc\\Du An\\QL_SNAC\\QL_SNAC\\QL_SNAC\\DataAccessLayer\\Responsitories\\TaiKhoanResponsitory.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Responsitories\\TaiKhoanResponsitory.cs",
@@ -165,8 +160,7 @@
               "RelativeToolTip": "DataAccessLayer\\Responsitories\\TaiKhoanResponsitory.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAHUAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T09:58:57.059Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T09:58:57.059Z"
             },
             {
               "$type": "Document",
@@ -178,8 +172,7 @@
               "RelativeToolTip": "BusinessLogicLayer\\Manager\\HocSinhManager.cs",
               "ViewState": "AgIAABkAAAAAAAAAAAAgwBwAAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-14T09:13:36.443Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-14T09:13:36.443Z"
             }
           ]
         }

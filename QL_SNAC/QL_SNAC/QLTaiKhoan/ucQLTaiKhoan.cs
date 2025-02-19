@@ -99,7 +99,7 @@ namespace QL_SNAC.QLTaiKhoan
                 #region Gan gia tri vao entity tai khoan da chon
                 TaiKhoanDaChon.ID_TAIKHOAN = int.Parse(rowselected.Cells["ID_TAIKHOAN"].Value.ToString());
                 TaiKhoanDaChon.EMAIL = rowselected.Cells["EMAIL"].Value.ToString();
-                TaiKhoanDaChon.PASS = rowselected.Cells["Matkhau"].Value.ToString();
+                TaiKhoanDaChon.PASS = rowselected.Cells["PASS"].Value.ToString();
                 TaiKhoanDaChon.MSNguoiDung = rowselected.Cells["MS_NGUOI_DUNG"].Value.ToString();
                 TaiKhoanDaChon.TinhTrang = bool.Parse(rowselected.Cells["TINH_TRANG"].Value.ToString());
                 TaiKhoanDaChon.Quyen = rowselected.Cells["QUYEN"].Value.ToString();
