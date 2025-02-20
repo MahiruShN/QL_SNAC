@@ -320,7 +320,6 @@ C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_S
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.AssemblyInfo.cs
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.csproj.CoreCompileInputs.cache
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.sourcelink.json
-C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.csproj.CopyComplete
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.dll
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\refint\QL_SNAC.dll
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.pdb
@@ -399,3 +398,8 @@ E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-wi
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\ref\QL_SNAC.dll
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLTaiKhoan.frmDoiMatKhau.resources
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLTaiKhoan.frmThongTinTaiKhoan.resources
+C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLHocSinh.frmThongTinHS.resources
+C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLTaiKhoan.frmDoiMatKhau.resources
+C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLTaiKhoan.frmThongTinTaiKhoan.resources
+C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.csproj.Up2Date
+C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLHocSinh.frmEditHocSinh.resources

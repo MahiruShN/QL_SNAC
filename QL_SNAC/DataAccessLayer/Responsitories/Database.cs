@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Security.Cryptography;
+using System.Diagnostics;
 //using System.Data.SqlClient;
 
 
@@ -42,6 +43,7 @@ namespace DataAccessLayer.Responsitories
                 command.Parameters.Clear();
                 if (paramlist != null)
                 {
+                    Debug.WriteLine($"Executing SQL: {sql}");
                     foreach (var paraitem in paramlist)
                     {
                         command.Parameters.Add(paraitem);

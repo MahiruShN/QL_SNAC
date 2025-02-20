@@ -30,10 +30,10 @@
         {
             dgvHocSinh = new DataGridView();
             panel1 = new Panel();
-            panel2 = new Panel();
-            button1 = new Button();
-            button2 = new Button();
             button3 = new Button();
+            button2 = new Button();
+            button1 = new Button();
+            panel2 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvHocSinh).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -46,6 +46,7 @@
             dgvHocSinh.Name = "dgvHocSinh";
             dgvHocSinh.Size = new Size(1671, 802);
             dgvHocSinh.TabIndex = 0;
+            dgvHocSinh.CellClick += dgvHocSinh_CellClick;
             dgvHocSinh.CellContentClick += dgvHocSinh_CellContentClick;
             // 
             // panel1
@@ -58,13 +59,24 @@
             panel1.Size = new Size(237, 911);
             panel1.TabIndex = 1;
             // 
-            // panel2
+            // button3
             // 
-            panel2.Controls.Add(dgvHocSinh);
-            panel2.Location = new Point(246, 166);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1671, 911);
-            panel2.TabIndex = 2;
+            button3.Location = new Point(3, 163);
+            button3.Name = "button3";
+            button3.Size = new Size(231, 74);
+            button3.TabIndex = 2;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(3, 83);
+            button2.Name = "button2";
+            button2.Size = new Size(231, 74);
+            button2.TabIndex = 1;
+            button2.Text = "Thêm học sinh";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -75,23 +87,13 @@
             button1.Text = "Thêm học sinh";
             button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // panel2
             // 
-            button2.Location = new Point(3, 83);
-            button2.Name = "button2";
-            button2.Size = new Size(231, 74);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(3, 163);
-            button3.Name = "button3";
-            button3.Size = new Size(231, 74);
-            button3.TabIndex = 2;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
+            panel2.Controls.Add(dgvHocSinh);
+            panel2.Location = new Point(246, 166);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1671, 911);
+            panel2.TabIndex = 2;
             // 
             // ucQLHocSinh
             // 

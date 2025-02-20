@@ -31,18 +31,28 @@ namespace BusinessLogicLayer.Manager
             }
         }
 
-        //public DataTable HienThiDSHocsinhTheoLop(string classId, ref string error)
-        //{
-        //    try
-        //    {
-        //        return process.HienThiDSHocsinhTheoLop(classId, ref error);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        error = "Error retrieving students: " + ex.Message;
-        //        return null;
-        //    }
-        //}
+        public DataTable GetHocSinhByMSHS(string mshs, ref string error)
+        {
+            try
+            {
+                return process.GetHocSinhByMSHS(mshs, ref error);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi lấy thông tin học sinh: " + ex.Message;
+                return null;
+            }
+        }
+
+        public bool UpdateHocSinh(int mshs, string ho, string ten, string gioiTinh, DateTime ngaySinh,
+                                  string noiSinh, string danToc, string quocTich, string diaChi,
+                                  string dcThuongTru, string dcTamTru, ref string error)
+        {
+            return process.UpdateHocSinh(mshs, ho, ten, gioiTinh, ngaySinh, noiSinh, danToc,
+                                             quocTich, diaChi, dcThuongTru, dcTamTru, ref error);
+        }
+
+
 
     }
 }
