@@ -95,7 +95,11 @@ namespace QL_SNAC.MainForm
 
         private void ThongTinTaiKhoanMenuTool_Click(object sender, EventArgs e)
         {
+            int idTaiKhoan = CauHinhHeThong.ID_TaiKhoan;
+            string email = CauHinhHeThong.Email;
 
+            string tenDayDu = CauHinhHeThong.TenDayDu;
+            string maNguoiDung = CauHinhHeThong.MSNguoiDung;
         }
     }
 }

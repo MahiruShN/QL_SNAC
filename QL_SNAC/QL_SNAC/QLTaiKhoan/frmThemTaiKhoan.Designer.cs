@@ -32,10 +32,13 @@
             panel1 = new Panel();
             lbTieuDe = new Label();
             panel2 = new Panel();
+            panel4 = new Panel();
+            radNgungHD = new RadioButton();
+            radHoatDong = new RadioButton();
+            label7 = new Label();
             lbMSNguoiDung = new Label();
             btnHS = new Button();
             lbIdTaiKhoan = new Label();
-            txtQuyen = new TextBox();
             txtRePass = new TextBox();
             txtPass = new TextBox();
             txtEmail = new TextBox();
@@ -48,15 +51,12 @@
             panel3 = new Panel();
             btnThoat = new Button();
             btnThem = new Button();
-            label7 = new Label();
-            panel4 = new Panel();
-            radHoatDong = new RadioButton();
-            radNgungHD = new RadioButton();
+            cboQuyen = new ComboBox();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
             panel4.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -99,12 +99,12 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
+            panel2.Controls.Add(cboQuyen);
             panel2.Controls.Add(panel4);
             panel2.Controls.Add(label7);
             panel2.Controls.Add(lbMSNguoiDung);
             panel2.Controls.Add(btnHS);
             panel2.Controls.Add(lbIdTaiKhoan);
-            panel2.Controls.Add(txtQuyen);
             panel2.Controls.Add(txtRePass);
             panel2.Controls.Add(txtPass);
             panel2.Controls.Add(txtEmail);
@@ -120,6 +120,49 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(556, 437);
             panel2.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(radNgungHD);
+            panel4.Controls.Add(radHoatDong);
+            panel4.Location = new Point(240, 310);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(299, 50);
+            panel4.TabIndex = 21;
+            // 
+            // radNgungHD
+            // 
+            radNgungHD.AutoSize = true;
+            radNgungHD.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            radNgungHD.Location = new Point(119, 17);
+            radNgungHD.Name = "radNgungHD";
+            radNgungHD.Size = new Size(173, 29);
+            radNgungHD.TabIndex = 1;
+            radNgungHD.TabStop = true;
+            radNgungHD.Text = "Ngưng Sử Dụng";
+            radNgungHD.UseVisualStyleBackColor = true;
+            // 
+            // radHoatDong
+            // 
+            radHoatDong.AutoSize = true;
+            radHoatDong.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            radHoatDong.Location = new Point(3, 17);
+            radHoatDong.Name = "radHoatDong";
+            radHoatDong.Size = new Size(110, 29);
+            radHoatDong.TabIndex = 0;
+            radHoatDong.TabStop = true;
+            radHoatDong.Text = "Sử Dụng";
+            radHoatDong.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 13.8F);
+            label7.Location = new Point(9, 331);
+            label7.Name = "label7";
+            label7.Size = new Size(143, 29);
+            label7.TabIndex = 20;
+            label7.Text = "Tình Trạng :";
             // 
             // lbMSNguoiDung
             // 
@@ -151,14 +194,6 @@
             lbIdTaiKhoan.Size = new Size(85, 29);
             lbIdTaiKhoan.TabIndex = 11;
             lbIdTaiKhoan.Text = "............";
-            // 
-            // txtQuyen
-            // 
-            txtQuyen.Font = new Font("Microsoft Sans Serif", 13.8F);
-            txtQuyen.Location = new Point(240, 379);
-            txtQuyen.Name = "txtQuyen";
-            txtQuyen.Size = new Size(299, 34);
-            txtQuyen.TabIndex = 10;
             // 
             // txtRePass
             // 
@@ -277,48 +312,15 @@
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
-            // label7
+            // cboQuyen
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Microsoft Sans Serif", 13.8F);
-            label7.Location = new Point(9, 331);
-            label7.Name = "label7";
-            label7.Size = new Size(143, 29);
-            label7.TabIndex = 20;
-            label7.Text = "Tình Trạng :";
-            // 
-            // panel4
-            // 
-            panel4.Controls.Add(radNgungHD);
-            panel4.Controls.Add(radHoatDong);
-            panel4.Location = new Point(240, 310);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(299, 50);
-            panel4.TabIndex = 21;
-            // 
-            // radHoatDong
-            // 
-            radHoatDong.AutoSize = true;
-            radHoatDong.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            radHoatDong.Location = new Point(3, 17);
-            radHoatDong.Name = "radHoatDong";
-            radHoatDong.Size = new Size(110, 29);
-            radHoatDong.TabIndex = 0;
-            radHoatDong.TabStop = true;
-            radHoatDong.Text = "Sử Dụng";
-            radHoatDong.UseVisualStyleBackColor = true;
-            // 
-            // radNgungHD
-            // 
-            radNgungHD.AutoSize = true;
-            radNgungHD.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            radNgungHD.Location = new Point(119, 17);
-            radNgungHD.Name = "radNgungHD";
-            radNgungHD.Size = new Size(173, 29);
-            radNgungHD.TabIndex = 1;
-            radNgungHD.TabStop = true;
-            radNgungHD.Text = "Ngưng Sử Dụng";
-            radNgungHD.UseVisualStyleBackColor = true;
+            cboQuyen.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cboQuyen.FormattingEnabled = true;
+            cboQuyen.Items.AddRange(new object[] { "Giáo Viên", "ADMIN", "Học Sinh", "Giáo Viên Chủ Nhiệm", "Phụ Huynh", "Tuyển Sinh", "Quản Sinh" });
+            cboQuyen.Location = new Point(240, 384);
+            cboQuyen.Name = "cboQuyen";
+            cboQuyen.Size = new Size(299, 36);
+            cboQuyen.TabIndex = 23;
             // 
             // frmThemTaiKhoan
             // 
@@ -333,9 +335,9 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel3.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -353,7 +355,6 @@
         private Label label5;
         private Label label4;
         private Label lbIdTaiKhoan;
-        private TextBox txtQuyen;
         private TextBox txtRePass;
         private TextBox txtPass;
         private TextBox txtEmail;
@@ -365,5 +366,6 @@
         private Panel panel4;
         private RadioButton radNgungHD;
         private RadioButton radHoatDong;
+        private ComboBox cboQuyen;
     }
 }

@@ -18,7 +18,7 @@ namespace DataAccessLayer.Responsitories
             try
             {
                 string sql = " select ID_TAIKHOAN, EMAIL,PASS, TINH_TRANG,MS_NGUOI_DUNG,QUYEN , NGAY_TAO, NGUOI_TAO " +
-                             " from TAI_KHOAN where TINH_TRANG = 'true' ";
+                             " from TAI_KHOAN  ";
                 var rs = DB.GetDataFromDB(sql, CommandType.Text, ref error);
                 return rs;
             }

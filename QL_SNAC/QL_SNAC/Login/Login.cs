@@ -57,7 +57,7 @@ namespace QL_SNAC.Login
 
                 // Convert full role name to abbreviation
                 string selectedQuyenAbbr = GetQuyenAbbreviation(selectedQuyenFull);
-                int idTaiKhoan = -1;
+
                 using (SqlCommand command = new SqlCommand("SELECT EMAIL FROM TAI_KHOAN WHERE EMAIL = @Email AND PASS = @Password AND QUYEN = @Quyen", connect))
                 {
                     command.Parameters.AddWithValue("@Email", txtEmail.Text);
@@ -78,59 +78,70 @@ namespace QL_SNAC.Login
 
                         // Lấy ID_TaiKhoan
 
-                        using (SqlCommand getIdCommand = new SqlCommand("SELECT ID_TAIKHOAN FROM TAI_KHOAN WHERE EMAIL = @Email AND PASS = @Password AND QUYEN = @Quyen", connect)) // Added PASS and QUYEN
+                        using (SqlCommand getIdCommand = new SqlCommand("SELECT ID_TAIKHOAN, MS_NGUOI_DUNG, NGAY_TAO, NGUOI_TAO FROM TAI_KHOAN WHERE EMAIL = @Email AND PASS = @Password AND QUYEN = @Quyen", connect)) // Get all needed data in one query
                         {
                             getIdCommand.Parameters.AddWithValue("@Email", txtEmail.Text);
-                            getIdCommand.Parameters.AddWithValue("@Password", enteredPasswordHash); // Add password parameter
-                            getIdCommand.Parameters.AddWithValue("@Quyen", selectedQuyenAbbr); // Use the abbreviated role
+                            getIdCommand.Parameters.AddWithValue("@Password", enteredPasswordHash);
+                            getIdCommand.Parameters.AddWithValue("@Quyen", selectedQuyenAbbr);
 
-                            object idResult = getIdCommand.ExecuteScalar();
-                            if (idResult != null && int.TryParse(idResult.ToString(), out idTaiKhoan))
+                            using (SqlDataReader reader = getIdCommand.ExecuteReader())
                             {
-                                CauHinhHeThong.ID_TaiKhoan = idTaiKhoan;
-                                // ***CHECK TINH_TRANG IMMEDIATELY AFTER GETTING ID***
-                                using (SqlCommand checkTinhTrangCommand = new SqlCommand("SELECT TINH_TRANG FROM TAI_KHOAN WHERE ID_TAIKHOAN = @ID_TAIKHOAN", connect))
+                                if (reader.Read())
                                 {
-                                    checkTinhTrangCommand.Parameters.AddWithValue("@ID_TAIKHOAN", idTaiKhoan);
-                                    object tinhTrangResult = checkTinhTrangCommand.ExecuteScalar();
+                                    int idTaiKhoan = reader.GetInt32(0);
+                                    string msNguoiDung = reader.GetString(1);
+                                    DateTime ngayTao = reader.GetDateTime(2);
+                                    string nguoiTao = reader.GetString(3);
 
-                                    if (tinhTrangResult == null || tinhTrangResult == DBNull.Value || !(bool)tinhTrangResult)
+                                    CauHinhHeThong.ID_TaiKhoan = idTaiKhoan;
+                                    CauHinhHeThong.MSNguoiDung = msNguoiDung;
+                                    CauHinhHeThong.NgayTao = ngayTao;
+                                    CauHinhHeThong.NguoiTao = nguoiTao;
+                                    reader.Close();
+
+                                    // ***CHECK TINH_TRANG IMMEDIATELY AFTER GETTING ID***
+                                    using (SqlCommand checkTinhTrangCommand = new SqlCommand("SELECT TINH_TRANG FROM TAI_KHOAN WHERE ID_TAIKHOAN = @ID_TAIKHOAN", connect))
                                     {
-                                        MessageBox.Show("Tài khoản này hiện đang bị khóa. Vui lòng liên hệ quản trị viên.");
-                                        return; // Stop login if TINH_TRANG is false or null
-                                    }
-                                } // End of checkTinhTrangCommand using block
+                                        checkTinhTrangCommand.Parameters.AddWithValue("@ID_TAIKHOAN", idTaiKhoan);
+                                        object tinhTrangResult = checkTinhTrangCommand.ExecuteScalar();
 
-                            }
-                            else
-                            {
-                                MessageBox.Show("Không thể lấy ID tài khoản.");
-                                return; // Exit the login process if ID cannot be retrieved.
+                                        if (tinhTrangResult == null || tinhTrangResult == DBNull.Value || !(bool)tinhTrangResult)
+                                        {
+                                            MessageBox.Show("Tài khoản này hiện đang bị khóa. Vui lòng liên hệ quản trị viên.");
+                                            return; // Stop login if TINH_TRANG is false or null
+                                        }
+                                    }
+
+
+                                    // *** NEW CODE TO GET Quyen based on cboQuyen.Text ***
+                                    // Get full role name from combo box
+
+
+                                    CauHinhHeThong.Quyen = selectedQuyenAbbr;  // Assign the abbreviated role to CauHinhHeThong.Quyen
+                                    string ngayTaoFormatted = CauHinhHeThong.NgayTao.ToString("dd/MM/yyyy"); // Or your preferred 
+
+                                    string message = $"Email: {CauHinhHeThong.Email}\n" +
+                                                          $"ID_TaiKhoan: {CauHinhHeThong.ID_TaiKhoan}\n" +
+                                                          $"Ten Day Du: {CauHinhHeThong.TenDayDu}\n" +
+                                                          $"Quyen: {CauHinhHeThong.Quyen}\n" +
+                                                          $"MS_Nguoi_Dung: {CauHinhHeThong.MSNguoiDung}\n" +
+                                                          $"Ngay Tao: {ngayTaoFormatted}\n" + // Use formatted date
+                                                          $"Nguoi Tao: {CauHinhHeThong.NguoiTao}";
+
+                                    MessageBox.Show(message, "Thông tin người dùng", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    frmMain frm = new frmMain(tenDayDu);
+                                    this.Hide(); // Hide, don't close, the login form
+                                    frm.ShowDialog(); // Show frmMain as a dialog
+                                    this.Close();
+                                }
                             }
                         }
-
-
-                        // *** NEW CODE TO GET Quyen based on cboQuyen.Text ***
-                         // Get full role name from combo box
-                        
-
-                        CauHinhHeThong.Quyen = selectedQuyenAbbr;  // Assign the abbreviated role to CauHinhHeThong.Quyen
-
-
-                        string message = $"Email: {CauHinhHeThong.Email}\n" +
-                     $"ID_TaiKhoan: {CauHinhHeThong.ID_TaiKhoan}\n" +
-                     $"Ten Day Du: {CauHinhHeThong.TenDayDu}\n" +
-                     $"Quyen: {CauHinhHeThong.Quyen}";
-
-                        MessageBox.Show(message, "Thông tin người dùng", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        frmMain frm = new frmMain(tenDayDu);
-                        this.Hide(); // Hide, don't close, the login form
-                        frm.ShowDialog(); // Show frmMain as a dialog
-                        this.Close();
                     }
                 }
             }
+
+
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi kết nối: " + ex.Message);

@@ -38,7 +38,6 @@ namespace QL_SNAC.QLTaiKhoan
             radHoatDong.Checked = true;
             radNgungHD.Checked = false;
 
-
         }
 
         public frmThemTaiKhoan(TaiKhoanEntity _TKDaChon)
@@ -51,7 +50,8 @@ namespace QL_SNAC.QLTaiKhoan
             lbIdTaiKhoan.Text = TKDaChon.ID_TAIKHOAN.ToString();
             txtEmail.Text = TKDaChon.EMAIL;
             lbMSNguoiDung.Text = TKDaChon.MSNguoiDung;
-            txtQuyen.Text = TKDaChon.Quyen;
+            string quyenAbbr = GetQuyenAbbreviation(cboQuyen.Text); // Assuming txtQuyen is your ComboBox
+            _TKDaChon.Quyen = quyenAbbr;
             DangSua = true;
             // Ẩn textbox mật khẩu và re-pass khi cập nhật
             txtPass.Visible = false;
@@ -102,9 +102,11 @@ namespace QL_SNAC.QLTaiKhoan
             entity.PASS = hashedPassword;
 
             entity.MSNguoiDung = lbMSNguoiDung.Text.Replace(" ", "");
-            entity.Quyen = txtQuyen.Text.Replace(" ", "");
-            entity.NguoiTao = txtEmail.Text.Replace(" ", "");
+            entity.Quyen = cboQuyen.Text.Replace(" ", "");
+            entity.NguoiTao = CauHinhHeThong.Email;
             entity.TinhTrang = radHoatDong.Checked;
+            string quyenAbbr = GetQuyenAbbreviation(cboQuyen.SelectedItem.ToString()); // Get selected item text.
+            entity.Quyen = quyenAbbr;
 
             bool ketqua = TKManager.ThemTaiKhoan(entity, ref error);
             if (ketqua)
@@ -127,7 +129,9 @@ namespace QL_SNAC.QLTaiKhoan
         {
             TKDaChon.EMAIL = txtEmail.Text.Replace(" ", "");
             TKDaChon.MSNguoiDung = lbMSNguoiDung.Text.Replace(" ", "");
-            TKDaChon.Quyen = txtQuyen.Text.Replace(" ", "");
+            string quyenAbbr = GetQuyenAbbreviation(cboQuyen.SelectedItem.ToString()); // Get selected item text.
+            TKDaChon.Quyen = quyenAbbr;
+
             // Set TinhTrang as string "true" or "false"
             if (radHoatDong.Checked)
             {
@@ -168,7 +172,20 @@ namespace QL_SNAC.QLTaiKhoan
                 MessageBox.Show("Lỗi: " + error);
             }
         }
-
+        public string GetQuyenAbbreviation(string quyen)
+        {
+            switch (quyen.ToLower())
+            {
+                case "giáo viên": return "GV";
+                case "admin": return "AD";
+                case "học sinh": return "HS";
+                case "giáo viên chủ nhiệm": return "GVCN";
+                case "phụ huynh": return "PH";
+                case "tuyển sinh": return "TS";
+                case "quản sinh": return "QS";
+                default: return quyen; // Or handle the default case as needed
+            }
+        }
 
 
         private void btnHS_Click(object sender, EventArgs e)
@@ -191,5 +208,6 @@ namespace QL_SNAC.QLTaiKhoan
         {
             this.Close();
         }
+
     }
 }
