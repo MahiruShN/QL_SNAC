@@ -32,6 +32,7 @@
             panel1 = new Panel();
             lbTieuDe = new Label();
             panel2 = new Panel();
+            lbMSNguoiDung = new Label();
             btnHS = new Button();
             lbIdTaiKhoan = new Label();
             txtQuyen = new TextBox();
@@ -47,11 +48,15 @@
             panel3 = new Panel();
             btnThoat = new Button();
             btnThem = new Button();
-            lbMSNguoiDung = new Label();
+            label7 = new Label();
+            panel4 = new Panel();
+            radHoatDong = new RadioButton();
+            radNgungHD = new RadioButton();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -68,7 +73,7 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 70F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.Size = new Size(554, 633);
+            tableLayoutPanel1.Size = new Size(562, 633);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -78,7 +83,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(548, 57);
+            panel1.Size = new Size(556, 57);
             panel1.TabIndex = 0;
             // 
             // lbTieuDe
@@ -94,6 +99,8 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
+            panel2.Controls.Add(panel4);
+            panel2.Controls.Add(label7);
             panel2.Controls.Add(lbMSNguoiDung);
             panel2.Controls.Add(btnHS);
             panel2.Controls.Add(lbIdTaiKhoan);
@@ -111,15 +118,25 @@
             panel2.Font = new Font("Microsoft Sans Serif", 13.8F);
             panel2.Location = new Point(3, 66);
             panel2.Name = "panel2";
-            panel2.Size = new Size(548, 437);
+            panel2.Size = new Size(556, 437);
             panel2.TabIndex = 1;
+            // 
+            // lbMSNguoiDung
+            // 
+            lbMSNguoiDung.AutoSize = true;
+            lbMSNguoiDung.Font = new Font("Microsoft Sans Serif", 13.8F);
+            lbMSNguoiDung.Location = new Point(240, 268);
+            lbMSNguoiDung.Name = "lbMSNguoiDung";
+            lbMSNguoiDung.Size = new Size(85, 29);
+            lbMSNguoiDung.TabIndex = 19;
+            lbMSNguoiDung.Text = "............";
             // 
             // btnHS
             // 
             btnHS.Font = new Font("Microsoft Sans Serif", 13.8F);
-            btnHS.Location = new Point(478, 300);
+            btnHS.Location = new Point(493, 261);
             btnHS.Name = "btnHS";
-            btnHS.Size = new Size(46, 31);
+            btnHS.Size = new Size(46, 36);
             btnHS.TabIndex = 15;
             btnHS.Text = "...";
             btnHS.UseVisualStyleBackColor = true;
@@ -129,7 +146,7 @@
             // 
             lbIdTaiKhoan.AutoSize = true;
             lbIdTaiKhoan.Font = new Font("Microsoft Sans Serif", 13.8F);
-            lbIdTaiKhoan.Location = new Point(240, 51);
+            lbIdTaiKhoan.Location = new Point(240, 45);
             lbIdTaiKhoan.Name = "lbIdTaiKhoan";
             lbIdTaiKhoan.Size = new Size(85, 29);
             lbIdTaiKhoan.TabIndex = 11;
@@ -138,40 +155,40 @@
             // txtQuyen
             // 
             txtQuyen.Font = new Font("Microsoft Sans Serif", 13.8F);
-            txtQuyen.Location = new Point(240, 363);
+            txtQuyen.Location = new Point(240, 379);
             txtQuyen.Name = "txtQuyen";
-            txtQuyen.Size = new Size(284, 34);
+            txtQuyen.Size = new Size(299, 34);
             txtQuyen.TabIndex = 10;
             // 
             // txtRePass
             // 
             txtRePass.Font = new Font("Microsoft Sans Serif", 13.8F);
-            txtRePass.Location = new Point(240, 228);
+            txtRePass.Location = new Point(240, 208);
             txtRePass.Name = "txtRePass";
-            txtRePass.Size = new Size(284, 34);
+            txtRePass.Size = new Size(299, 34);
             txtRePass.TabIndex = 8;
             // 
             // txtPass
             // 
             txtPass.Font = new Font("Microsoft Sans Serif", 13.8F);
-            txtPass.Location = new Point(240, 162);
+            txtPass.Location = new Point(240, 152);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(284, 34);
+            txtPass.Size = new Size(299, 34);
             txtPass.TabIndex = 7;
             // 
             // txtEmail
             // 
             txtEmail.Font = new Font("Microsoft Sans Serif", 13.8F);
-            txtEmail.Location = new Point(240, 100);
+            txtEmail.Location = new Point(240, 95);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(284, 34);
+            txtEmail.Size = new Size(299, 34);
             txtEmail.TabIndex = 6;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 13.8F);
-            label6.Location = new Point(9, 366);
+            label6.Location = new Point(9, 384);
             label6.Name = "label6";
             label6.Size = new Size(181, 29);
             label6.TabIndex = 5;
@@ -181,7 +198,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 13.8F);
-            label5.Location = new Point(9, 300);
+            label5.Location = new Point(9, 268);
             label5.Name = "label5";
             label5.Size = new Size(180, 29);
             label5.TabIndex = 4;
@@ -191,7 +208,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 13.8F);
-            label4.Location = new Point(9, 233);
+            label4.Location = new Point(9, 213);
             label4.Name = "label4";
             label4.Size = new Size(215, 29);
             label4.TabIndex = 3;
@@ -201,7 +218,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 13.8F);
-            label3.Location = new Point(9, 167);
+            label3.Location = new Point(9, 157);
             label3.Name = "label3";
             label3.Size = new Size(113, 29);
             label3.TabIndex = 2;
@@ -211,7 +228,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 13.8F);
-            label2.Location = new Point(9, 103);
+            label2.Location = new Point(9, 100);
             label2.Name = "label2";
             label2.Size = new Size(74, 29);
             label2.TabIndex = 1;
@@ -221,7 +238,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 13.8F);
-            label1.Location = new Point(9, 51);
+            label1.Location = new Point(9, 45);
             label1.Name = "label1";
             label1.Size = new Size(148, 29);
             label1.TabIndex = 0;
@@ -235,7 +252,7 @@
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(3, 509);
             panel3.Name = "panel3";
-            panel3.Size = new Size(548, 121);
+            panel3.Size = new Size(556, 121);
             panel3.TabIndex = 2;
             // 
             // btnThoat
@@ -260,21 +277,54 @@
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
-            // lbMSNguoiDung
+            // label7
             // 
-            lbMSNguoiDung.AutoSize = true;
-            lbMSNguoiDung.Font = new Font("Microsoft Sans Serif", 13.8F);
-            lbMSNguoiDung.Location = new Point(240, 300);
-            lbMSNguoiDung.Name = "lbMSNguoiDung";
-            lbMSNguoiDung.Size = new Size(85, 29);
-            lbMSNguoiDung.TabIndex = 19;
-            lbMSNguoiDung.Text = "............";
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 13.8F);
+            label7.Location = new Point(9, 331);
+            label7.Name = "label7";
+            label7.Size = new Size(143, 29);
+            label7.TabIndex = 20;
+            label7.Text = "Tình Trạng :";
+            // 
+            // panel4
+            // 
+            panel4.Controls.Add(radNgungHD);
+            panel4.Controls.Add(radHoatDong);
+            panel4.Location = new Point(240, 310);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(299, 50);
+            panel4.TabIndex = 21;
+            // 
+            // radHoatDong
+            // 
+            radHoatDong.AutoSize = true;
+            radHoatDong.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            radHoatDong.Location = new Point(3, 17);
+            radHoatDong.Name = "radHoatDong";
+            radHoatDong.Size = new Size(110, 29);
+            radHoatDong.TabIndex = 0;
+            radHoatDong.TabStop = true;
+            radHoatDong.Text = "Sử Dụng";
+            radHoatDong.UseVisualStyleBackColor = true;
+            // 
+            // radNgungHD
+            // 
+            radNgungHD.AutoSize = true;
+            radNgungHD.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            radNgungHD.Location = new Point(119, 17);
+            radNgungHD.Name = "radNgungHD";
+            radNgungHD.Size = new Size(173, 29);
+            radNgungHD.TabIndex = 1;
+            radNgungHD.TabStop = true;
+            radNgungHD.Text = "Ngưng Sử Dụng";
+            radNgungHD.UseVisualStyleBackColor = true;
             // 
             // frmThemTaiKhoan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(554, 633);
+            ClientSize = new Size(562, 633);
             Controls.Add(tableLayoutPanel1);
             Name = "frmThemTaiKhoan";
             Text = "frmThemTaiKhoan";
@@ -284,6 +334,8 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -309,5 +361,9 @@
         private Button btnThem;
         private Button btnHS;
         private Label lbMSNguoiDung;
+        private Label label7;
+        private Panel panel4;
+        private RadioButton radNgungHD;
+        private RadioButton radHoatDong;
     }
 }

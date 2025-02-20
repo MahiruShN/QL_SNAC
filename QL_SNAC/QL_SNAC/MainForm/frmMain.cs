@@ -80,9 +80,9 @@ namespace QL_SNAC.MainForm
 
         private void DoiMatKhauMenuTool_Click(object sender, EventArgs e)
         {
-            int idTaiKhoan = CauHinhHeThong.ID_TaiKhoan; 
+            int idTaiKhoan = CauHinhHeThong.ID_TaiKhoan;
 
-            string email = CauHinhHeThong.Email;
+            string email = CauHinhHeThong.Email;
 
 
 
@@ -91,6 +91,11 @@ namespace QL_SNAC.MainForm
             frm.StartPosition = FormStartPosition.CenterScreen;
 
             frm.ShowDialog();
+        }
+
+        private void ThongTinTaiKhoanMenuTool_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

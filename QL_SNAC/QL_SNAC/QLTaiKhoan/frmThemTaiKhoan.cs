@@ -34,6 +34,9 @@ namespace QL_SNAC.QLTaiKhoan
             // Ẩn textbox mật khẩu và re-pass khi thêm mới
             txtPass.Visible = true;
             txtRePass.Visible = true;
+            // Set radHoatDong as default for adding
+            radHoatDong.Checked = true;
+            radNgungHD.Checked = false;
 
 
         }
@@ -53,6 +56,16 @@ namespace QL_SNAC.QLTaiKhoan
             // Ẩn textbox mật khẩu và re-pass khi cập nhật
             txtPass.Visible = false;
             txtRePass.Visible = false;
+            if (TKDaChon.TinhTrang == true) // Assuming TinhTrang is a boolean in your entity
+            {
+                radHoatDong.Checked = true;
+                radNgungHD.Checked = false;
+            }
+            else
+            {
+                radHoatDong.Checked = false;
+                radNgungHD.Checked = true;
+            }
 
         }
 
@@ -91,6 +104,7 @@ namespace QL_SNAC.QLTaiKhoan
             entity.MSNguoiDung = lbMSNguoiDung.Text.Replace(" ", "");
             entity.Quyen = txtQuyen.Text.Replace(" ", "");
             entity.NguoiTao = txtEmail.Text.Replace(" ", "");
+            entity.TinhTrang = radHoatDong.Checked;
 
             bool ketqua = TKManager.ThemTaiKhoan(entity, ref error);
             if (ketqua)
@@ -114,7 +128,21 @@ namespace QL_SNAC.QLTaiKhoan
             TKDaChon.EMAIL = txtEmail.Text.Replace(" ", "");
             TKDaChon.MSNguoiDung = lbMSNguoiDung.Text.Replace(" ", "");
             TKDaChon.Quyen = txtQuyen.Text.Replace(" ", "");
-
+            // Set TinhTrang as string "true" or "false"
+            if (radHoatDong.Checked)
+            {
+                TKDaChon.TinhTrang = true;
+            }
+            else if (radNgungHD.Checked)
+            {
+                TKDaChon.TinhTrang = false;
+            }
+            else
+            {
+                // Handle the case where neither radio button is checked (optional, but good practice)
+                MessageBox.Show("Vui lòng chọn trạng thái hoạt động.");
+                return; // Stop the update if no status is selected
+            }
             // *** Check if new password is provided ***
             if (!string.IsNullOrEmpty(txtPass.Text) && !string.IsNullOrEmpty(txtRePass.Text))
             {

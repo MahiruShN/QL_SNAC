@@ -76,5 +76,10 @@ namespace QL_SNAC.QLTaiKhoan
                 MessageBox.Show("Lỗi khi đổi mật khẩu: " + error, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

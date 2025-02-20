@@ -70,6 +70,7 @@
             ThongTinTaiKhoanMenuTool.Name = "ThongTinTaiKhoanMenuTool";
             ThongTinTaiKhoanMenuTool.Size = new Size(226, 26);
             ThongTinTaiKhoanMenuTool.Text = "Thông Tin Tài Khoản";
+            ThongTinTaiKhoanMenuTool.Click += ThongTinTaiKhoanMenuTool_Click;
             // 
             // DoiMatKhauMenuTool
             // 

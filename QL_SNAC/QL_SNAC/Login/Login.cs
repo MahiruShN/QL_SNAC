@@ -31,12 +31,13 @@ namespace QL_SNAC.Login
         private void btnLogin_Click(object sender, EventArgs e)
         {
             #region Kiem tra co nhap lieu vao textbox ko
-            if (string.IsNullOrEmpty(txtEmail.Text) == true || string.IsNullOrEmpty(txtMatkhau.Text) == true)
+            if (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtMatkhau.Text) || string.IsNullOrEmpty(cboQuyen.Text)) // Check cboQuyen.Text
             {
-                MessageBox.Show("Chua nhap Email hoac mat khau!");
+                MessageBox.Show("Vui lòng nhập đầy đủ Email, mật khẩu và chọn quyền!");
                 return;
             }
             #endregion
+
             string connString = ConfigurationManager.ConnectionStrings["QL_SNAC_Connection"].ConnectionString;
 
             if (string.IsNullOrEmpty(connString))
@@ -52,17 +53,22 @@ namespace QL_SNAC.Login
                 connect.Open();
 
                 string enteredPasswordHash = db.HashPassword(txtMatkhau.Text);
+                string selectedQuyenFull = cboQuyen.Text; // Get full role name from combo box
 
-                using (SqlCommand command = new SqlCommand("SELECT EMAIL FROM TAI_KHOAN WHERE EMAIL = @Email AND PASS = @Password", connect))
+                // Convert full role name to abbreviation
+                string selectedQuyenAbbr = GetQuyenAbbreviation(selectedQuyenFull);
+                int idTaiKhoan = -1;
+                using (SqlCommand command = new SqlCommand("SELECT EMAIL FROM TAI_KHOAN WHERE EMAIL = @Email AND PASS = @Password AND QUYEN = @Quyen", connect))
                 {
                     command.Parameters.AddWithValue("@Email", txtEmail.Text);
                     command.Parameters.AddWithValue("@Password", enteredPasswordHash);
+                    command.Parameters.AddWithValue("@Quyen", selectedQuyenAbbr); // Use abbreviation in query
 
                     object data = command.ExecuteScalar();
 
                     if (data == null)
                     {
-                        MessageBox.Show("Lỗi tài khoản, đăng nhập không thành công");
+                        MessageBox.Show("Lỗi tài khoản hoặc quyền truy cập. Đăng nhập không thành công.");
                     }
                     else
                     {
@@ -71,36 +77,45 @@ namespace QL_SNAC.Login
                         CauHinhHeThong.TenDayDu = tenDayDu;
 
                         // Lấy ID_TaiKhoan
-                        using (SqlCommand getIdCommand = new SqlCommand("SELECT ID_TAIKHOAN FROM TAI_KHOAN WHERE EMAIL = @Email", connect))
+
+                        using (SqlCommand getIdCommand = new SqlCommand("SELECT ID_TAIKHOAN FROM TAI_KHOAN WHERE EMAIL = @Email AND PASS = @Password AND QUYEN = @Quyen", connect)) // Added PASS and QUYEN
                         {
                             getIdCommand.Parameters.AddWithValue("@Email", txtEmail.Text);
+                            getIdCommand.Parameters.AddWithValue("@Password", enteredPasswordHash); // Add password parameter
+                            getIdCommand.Parameters.AddWithValue("@Quyen", selectedQuyenAbbr); // Use the abbreviated role
+
                             object idResult = getIdCommand.ExecuteScalar();
-                            if (idResult != null && int.TryParse(idResult.ToString(), out int idTaiKhoan))
+                            if (idResult != null && int.TryParse(idResult.ToString(), out idTaiKhoan))
                             {
                                 CauHinhHeThong.ID_TaiKhoan = idTaiKhoan;
+                                // ***CHECK TINH_TRANG IMMEDIATELY AFTER GETTING ID***
+                                using (SqlCommand checkTinhTrangCommand = new SqlCommand("SELECT TINH_TRANG FROM TAI_KHOAN WHERE ID_TAIKHOAN = @ID_TAIKHOAN", connect))
+                                {
+                                    checkTinhTrangCommand.Parameters.AddWithValue("@ID_TAIKHOAN", idTaiKhoan);
+                                    object tinhTrangResult = checkTinhTrangCommand.ExecuteScalar();
+
+                                    if (tinhTrangResult == null || tinhTrangResult == DBNull.Value || !(bool)tinhTrangResult)
+                                    {
+                                        MessageBox.Show("Tài khoản này hiện đang bị khóa. Vui lòng liên hệ quản trị viên.");
+                                        return; // Stop login if TINH_TRANG is false or null
+                                    }
+                                } // End of checkTinhTrangCommand using block
+
                             }
                             else
                             {
                                 MessageBox.Show("Không thể lấy ID tài khoản.");
-                                return;
+                                return; // Exit the login process if ID cannot be retrieved.
                             }
                         }
 
-                        using (SqlCommand getQuyenCommand = new SqlCommand("SELECT Quyen FROM TAI_KHOAN WHERE EMAIL = @Email", connect))
-                        {
-                            getQuyenCommand.Parameters.AddWithValue("@Email", txtEmail.Text);
-                            string quyen = (string)getQuyenCommand.ExecuteScalar();
 
-                            if (!string.IsNullOrEmpty(quyen))
-                            {
-                                CauHinhHeThong.Quyen = GetQuyenAbbreviation(quyen);
-                            }
-                            else
-                            {
-                                MessageBox.Show("Quyền người dùng không được tìm thấy.");
-                                return;
-                            }
-                        }
+                        // *** NEW CODE TO GET Quyen based on cboQuyen.Text ***
+                         // Get full role name from combo box
+                        
+
+                        CauHinhHeThong.Quyen = selectedQuyenAbbr;  // Assign the abbreviated role to CauHinhHeThong.Quyen
+
 
                         string message = $"Email: {CauHinhHeThong.Email}\n" +
                      $"ID_TaiKhoan: {CauHinhHeThong.ID_TaiKhoan}\n" +
