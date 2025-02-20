@@ -206,6 +206,48 @@ namespace DataAccessLayer.Responsitories
                 return null;
             }
         }
+        public DataTable GetTableData(string tableName, ref string error)
+        {
+            try
+            {
+                string sql = $"SELECT * FROM {tableName}";
+                return GetDataFromDB(sql, CommandType.Text, ref error);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi lấy dữ liệu bảng: " + ex.Message;
+                return null;
+            }
+        }
+
+        public string GetValueFromTable(string tableName, string columnName, string whereClause, ref string error)
+        {
+            try
+            {
+                string sql = $"SELECT {columnName} FROM {tableName} WHERE {whereClause}";
+                object result = GetValueFromDB(sql, CommandType.Text, ref error);
+                return result?.ToString(); // Use null-conditional operator
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi lấy giá trị từ bảng: " + ex.Message;
+                return null;
+            }
+        }
+
+
+        public DataTable GetDataFromTableWithJoin(string sql, ref string error, params SqlParameter[] paramlist)
+        {
+            try
+            {
+                return GetDataFromDB(sql, CommandType.Text, ref error, paramlist);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi lấy dữ liệu từ bảng với JOIN: " + ex.Message;
+                return null;
+            }
+        }
 
     }
 }

@@ -17,5 +17,7 @@ namespace QL_SNAC
         public static string MSNguoiDung { get; set; }
         public static string TenDayDu { get; set; }
         public static string Vaitro { get; set; }
+        public static string NgaySinh { get; set; }
+        public static string GioiTinh { get; set; }
     }
 }

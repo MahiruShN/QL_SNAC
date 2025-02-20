@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QL_SNAC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f0c195fba6ed2bc40a62e9c5fe05e8cede6932a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+238919daed95fcca21f7f58de3edbc0b3ebe674b")]
 [assembly: System.Reflection.AssemblyProductAttribute("QL_SNAC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QL_SNAC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

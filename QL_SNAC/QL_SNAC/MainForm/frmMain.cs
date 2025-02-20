@@ -97,9 +97,15 @@ namespace QL_SNAC.MainForm
         {
             int idTaiKhoan = CauHinhHeThong.ID_TaiKhoan;
             string email = CauHinhHeThong.Email;
-
             string tenDayDu = CauHinhHeThong.TenDayDu;
             string maNguoiDung = CauHinhHeThong.MSNguoiDung;
+            DateTime ngayTao = CauHinhHeThong.NgayTao;
+            string NgaySinh = CauHinhHeThong.NgaySinh;
+            string Gioitinh = CauHinhHeThong.GioiTinh;
+            string Quyen = CauHinhHeThong.Quyen;
+            frmThongTinTaiKhoan frm = new frmThongTinTaiKhoan(tenDayDu, idTaiKhoan, email, ngayTao, maNguoiDung , NgaySinh, Gioitinh , Quyen);
+            frm.StartPosition = FormStartPosition.CenterScreen;
+            frm.ShowDialog();
         }
     }
 }

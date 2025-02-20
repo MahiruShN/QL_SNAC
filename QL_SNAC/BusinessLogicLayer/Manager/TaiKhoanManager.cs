@@ -87,5 +87,9 @@ namespace BusinessLogicLayer.Manager
         {
             return process.DoiMatKhau(idTaiKhoan, matKhauMoi, ref error);
         }
+        public bool LayThongTinNguoiDung(int idTaiKhoan, ref string ngaySinh, ref string gioiTinh, ref string loaiTaiKhoan, ref string error)
+        {
+            return process.LayThongTinNguoiDung(idTaiKhoan, ref ngaySinh, ref gioiTinh, ref loaiTaiKhoan, ref error);
+        }
     }
 }

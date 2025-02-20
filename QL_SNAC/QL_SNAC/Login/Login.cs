@@ -12,6 +12,7 @@ using DataAccessLayer.Responsitories;
 using Microsoft.Data.SqlClient;
 using System.Configuration;
 using QL_SNAC.MainForm;
+using System.Globalization;
 
 namespace QL_SNAC.Login
 {
@@ -120,19 +121,56 @@ namespace QL_SNAC.Login
                                     CauHinhHeThong.Quyen = selectedQuyenAbbr;  // Assign the abbreviated role to CauHinhHeThong.Quyen
                                     string ngayTaoFormatted = CauHinhHeThong.NgayTao.ToString("dd/MM/yyyy"); // Or your preferred 
 
+                                    string ngaySinh = null;
+                                    string gioiTinh = null;
+                                    string error = null;
+
+                                    // Determine the correct table and column based on the user's role
+                                    string tableName = null;
+                                    string maNguoiDungColumn = null;
+
+                                    switch (CauHinhHeThong.Quyen.ToUpper()) // Use the stored Quyen
+                                    {
+                                        case "GV":
+                                        case "GVCN":
+                                            tableName = "THONG_TIN_GIAO_VIEN";
+                                            maNguoiDungColumn = "MSGV";
+                                            break;
+                                        case "HS":
+                                            tableName = "THONG_TIN_HOC_SINH";
+                                            maNguoiDungColumn = "MSHS";
+                                            break;
+                                        case "PH": // If you have PhuHuynh
+                                            tableName = "THONG_TIN_PHU_HUYNH";
+                                            maNguoiDungColumn = "ID_PHU_HUYNH"; // Or the correct column name
+                                            break;
+                                        default:
+                                            MessageBox.Show("Không hỗ trợ lấy thông tin cho loại tài khoản này.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            return; // Stop here if the role is not supported
+                                    }
+
+
+                                    // Now, use the correct table and column to get the info
+                                    LayThongTinNguoiDung(connect, CauHinhHeThong.MSNguoiDung);
+
+                                    string ngaySinhFormatted = CauHinhHeThong.NgaySinh != null ? CauHinhHeThong.NgaySinh.ToString() : "Chưa xác định";
+                                    string gioiTinhFormatted = CauHinhHeThong.GioiTinh ?? "Chưa xác định"; // Sử dụng null-coalescing operator
                                     string message = $"Email: {CauHinhHeThong.Email}\n" +
-                                                          $"ID_TaiKhoan: {CauHinhHeThong.ID_TaiKhoan}\n" +
-                                                          $"Ten Day Du: {CauHinhHeThong.TenDayDu}\n" +
-                                                          $"Quyen: {CauHinhHeThong.Quyen}\n" +
-                                                          $"MS_Nguoi_Dung: {CauHinhHeThong.MSNguoiDung}\n" +
-                                                          $"Ngay Tao: {ngayTaoFormatted}\n" + // Use formatted date
-                                                          $"Nguoi Tao: {CauHinhHeThong.NguoiTao}";
+                                                     $"ID_TaiKhoan: {CauHinhHeThong.ID_TaiKhoan}\n" +
+                                                     $"Ten Day Du: {CauHinhHeThong.TenDayDu}\n" +
+                                                     $"Quyen: {CauHinhHeThong.Quyen}\n" +
+                                                     $"MS_Nguoi_Dung: {CauHinhHeThong.MSNguoiDung}\n" +
+                                                     $"Ngay Tao: {CauHinhHeThong.NgayTao.ToString("dd/MM/yyyy")}\n" +
+                                                     $"Nguoi Tao: {CauHinhHeThong.NguoiTao}\n" +
+                                                     $"Ngày Sinh: {ngaySinhFormatted}\n" + // Sử dụng biến đã định dạng
+                                                     $"Giới Tính: {gioiTinhFormatted}"; // Sử dụng biến đã định dạng
+
 
                                     MessageBox.Show(message, "Thông tin người dùng", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                    frmMain frm = new frmMain(tenDayDu);
-                                    this.Hide(); // Hide, don't close, the login form
-                                    frm.ShowDialog(); // Show frmMain as a dialog
+                                    frmMain frm = new frmMain(CauHinhHeThong.TenDayDu);
+                                    this.Hide();
+                                    frm.ShowDialog();
                                     this.Close();
                                 }
                             }
@@ -171,7 +209,45 @@ namespace QL_SNAC.Login
             return null; // Not found in any table
         }
 
+        private void LayThongTinNguoiDung(SqlConnection connection, string msNguoiDung)
+        {
+            string sql = $@"SELECT HO, TEN, GIOITINH, NGAY_SINH
+                           FROM THONG_TIN_HOC_SINH
+                           WHERE MSHS = @MSNguoiDung
 
+                           UNION
+
+                           SELECT HO, TEN, GIOITINH, NGAY_SINH
+                           FROM THONG_TIN_GIAO_VIEN
+                           WHERE MSGV = @MSNguoiDung";
+
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@MSNguoiDung", msNguoiDung);
+
+                try
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            CauHinhHeThong.TenDayDu = $"{reader.GetString(0)} {reader.GetString(1)}";
+                            CauHinhHeThong.GioiTinh = reader.GetString(2);
+                            // Store NGAY_SINH as string, handling DBNull
+                            CauHinhHeThong.NgaySinh = reader.IsDBNull(3) ? null : reader.GetString(3);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không tìm thấy người dùng với mã số này.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi truy vấn: " + ex.Message);
+                }
+            }
+        }
         private string LayTenDayDuTheoVaiTro(SqlConnection connection, string email, string tenBang, string cotKhoaNgoai, string cotHo, string cotTen)
         {
             string tenDayDu = null;
