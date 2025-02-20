@@ -29,7 +29,7 @@ namespace QL_SNAC.MainForm
         private ucQLTaiKhoan ucQLTK;
         private ucQLHocSinh ucQLHocSinh;
 
-        
+
 
         private void họcSinhToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -76,6 +76,21 @@ namespace QL_SNAC.MainForm
                 ucQLTK.Show(); // Hiển thị nếu nó hiện đang ẩn
                 ucQLTK.BringToFront(); // Đảm bảo nó ở trên cùng
             }
+        }
+
+        private void DoiMatKhauMenuTool_Click(object sender, EventArgs e)
+        {
+            int idTaiKhoan = CauHinhHeThong.ID_TaiKhoan; 
+
+            string email = CauHinhHeThong.Email;
+
+
+
+            frmDoiMatKhau frm = new frmDoiMatKhau(idTaiKhoan, email);
+
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            frm.ShowDialog();
         }
     }
 }

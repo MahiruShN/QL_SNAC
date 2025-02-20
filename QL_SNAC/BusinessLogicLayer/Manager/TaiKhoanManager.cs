@@ -78,5 +78,14 @@ namespace BusinessLogicLayer.Manager
         {
             return process.SuaTaiKhoan(entity, ref error); // Gọi repository
         }
+        public bool KiemTraMatKhauCu(int idTaiKhoan, string matKhauCu, ref string error)
+        {
+            return process.KiemTraMatKhauCu(idTaiKhoan, matKhauCu, ref error);
+        }
+
+        public bool DoiMatKhau(int idTaiKhoan, string matKhauMoi, ref string error)
+        {
+            return process.DoiMatKhau(idTaiKhoan, matKhauMoi, ref error);
+        }
     }
 }

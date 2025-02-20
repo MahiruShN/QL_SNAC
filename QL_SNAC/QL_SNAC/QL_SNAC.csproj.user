@@ -13,6 +13,9 @@
     <Compile Update="QLHocSinh\ucQLHocSinh.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="QLTaiKhoan\frmDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="QLTaiKhoan\frmLocChonThongTinNguoiDung.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -28,7 +28,51 @@ namespace DataAccessLayer.Responsitories
                 return null;
             }
         }
+        public bool KiemTraMatKhauCu(int idTaiKhoan, string matKhauCu, ref string error)
+        {
+            try
+            {
+                // Hash mật khẩu cũ trước khi so sánh
+                string hashedMatKhauCu = DB.HashPassword(matKhauCu);
 
+                string sql = "SELECT 1 FROM TAI_KHOAN WHERE ID_TAIKHOAN = @idTaiKhoan AND PASS = @matKhauCu";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@idTaiKhoan", idTaiKhoan),
+            new SqlParameter("@matKhauCu", hashedMatKhauCu)
+                };
+
+                object result = DB.GetValueFromDB(sql, CommandType.Text, ref error, parameters);
+
+                return result != null && result != DBNull.Value && Convert.ToInt32(result) == 1;
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi kiểm tra mật khẩu cũ: " + ex.Message;
+                return false;
+            }
+        }
+        public bool DoiMatKhau(int idTaiKhoan, string matKhauMoi, ref string error)
+        {
+            try
+            {
+                string hashedMatKhauMoi = DB.HashPassword(matKhauMoi); // Hash mật khẩu mới
+
+                string sql = "UPDATE TAI_KHOAN SET PASS = @matKhauMoi WHERE ID_TAIKHOAN = @idTaiKhoan";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@idTaiKhoan", idTaiKhoan),
+            new SqlParameter("@matKhauMoi", hashedMatKhauMoi)
+                };
+
+                return DB.ProcessData(sql, CommandType.Text, ref error, parameters);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi đổi mật khẩu: " + ex.Message;
+                return false;
+            }
+        }
         public bool ThemTaiKhoan(TaiKhoanEntity Entity, ref string error)
         {
             try

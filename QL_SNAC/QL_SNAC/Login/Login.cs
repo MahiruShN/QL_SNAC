@@ -67,8 +67,24 @@ namespace QL_SNAC.Login
                     else
                     {
                         CauHinhHeThong.Email = txtEmail.Text;
-                        string tenDayDu = LayTenDayDu(connect, txtEmail.Text); // Get TenDayDu
-                        CauHinhHeThong.TenDayDu = tenDayDu; // Store TenDayDu
+                        string tenDayDu = LayTenDayDu(connect, txtEmail.Text);
+                        CauHinhHeThong.TenDayDu = tenDayDu;
+
+                        // Lấy ID_TaiKhoan
+                        using (SqlCommand getIdCommand = new SqlCommand("SELECT ID_TAIKHOAN FROM TAI_KHOAN WHERE EMAIL = @Email", connect))
+                        {
+                            getIdCommand.Parameters.AddWithValue("@Email", txtEmail.Text);
+                            object idResult = getIdCommand.ExecuteScalar();
+                            if (idResult != null && int.TryParse(idResult.ToString(), out int idTaiKhoan))
+                            {
+                                CauHinhHeThong.ID_TaiKhoan = idTaiKhoan;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Không thể lấy ID tài khoản.");
+                                return;
+                            }
+                        }
 
                         using (SqlCommand getQuyenCommand = new SqlCommand("SELECT Quyen FROM TAI_KHOAN WHERE EMAIL = @Email", connect))
                         {
@@ -85,6 +101,13 @@ namespace QL_SNAC.Login
                                 return;
                             }
                         }
+
+                        string message = $"Email: {CauHinhHeThong.Email}\n" +
+                     $"ID_TaiKhoan: {CauHinhHeThong.ID_TaiKhoan}\n" +
+                     $"Ten Day Du: {CauHinhHeThong.TenDayDu}\n" +
+                     $"Quyen: {CauHinhHeThong.Quyen}";
+
+                        MessageBox.Show(message, "Thông tin người dùng", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         frmMain frm = new frmMain(tenDayDu);
                         this.Hide(); // Hide, don't close, the login form

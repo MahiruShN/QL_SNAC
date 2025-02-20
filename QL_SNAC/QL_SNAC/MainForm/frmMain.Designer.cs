@@ -30,12 +30,12 @@
         {
             menuStrip1 = new MenuStrip();
             menuTaiKhoan = new ToolStripMenuItem();
-            họcSinhToolStripMenuItem = new ToolStripMenuItem();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            pnMain = new Panel();
             QLTaiKhoanMenuTool = new ToolStripMenuItem();
             ThongTinTaiKhoanMenuTool = new ToolStripMenuItem();
             DoiMatKhauMenuTool = new ToolStripMenuItem();
+            họcSinhToolStripMenuItem = new ToolStripMenuItem();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            pnMain = new Panel();
             menuStrip1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -57,7 +57,26 @@
             menuTaiKhoan.Name = "menuTaiKhoan";
             menuTaiKhoan.Size = new Size(100, 24);
             menuTaiKhoan.Text = "TÀI KHOẢN";
-            
+            // 
+            // QLTaiKhoanMenuTool
+            // 
+            QLTaiKhoanMenuTool.Name = "QLTaiKhoanMenuTool";
+            QLTaiKhoanMenuTool.Size = new Size(226, 26);
+            QLTaiKhoanMenuTool.Text = "Quản Lý Tài Khoản";
+            QLTaiKhoanMenuTool.Click += QLTaiKhoanMenuTool_Click;
+            // 
+            // ThongTinTaiKhoanMenuTool
+            // 
+            ThongTinTaiKhoanMenuTool.Name = "ThongTinTaiKhoanMenuTool";
+            ThongTinTaiKhoanMenuTool.Size = new Size(226, 26);
+            ThongTinTaiKhoanMenuTool.Text = "Thông Tin Tài Khoản";
+            // 
+            // DoiMatKhauMenuTool
+            // 
+            DoiMatKhauMenuTool.Name = "DoiMatKhauMenuTool";
+            DoiMatKhauMenuTool.Size = new Size(226, 26);
+            DoiMatKhauMenuTool.Text = "Đổi Mật Khẩu";
+            DoiMatKhauMenuTool.Click += DoiMatKhauMenuTool_Click;
             // 
             // họcSinhToolStripMenuItem
             // 
@@ -86,25 +105,6 @@
             pnMain.Name = "pnMain";
             pnMain.Size = new Size(983, 503);
             pnMain.TabIndex = 0;
-            // 
-            // QLTaiKhoanMenuTool
-            // 
-            QLTaiKhoanMenuTool.Name = "QLTaiKhoanMenuTool";
-            QLTaiKhoanMenuTool.Size = new Size(226, 26);
-            QLTaiKhoanMenuTool.Text = "Quản Lý Tài Khoản";
-            QLTaiKhoanMenuTool.Click += QLTaiKhoanMenuTool_Click;
-            // 
-            // ThongTinTaiKhoanMenuTool
-            // 
-            ThongTinTaiKhoanMenuTool.Name = "ThongTinTaiKhoanMenuTool";
-            ThongTinTaiKhoanMenuTool.Size = new Size(226, 26);
-            ThongTinTaiKhoanMenuTool.Text = "Thông Tin Tài Khoản";
-            // 
-            // DoiMatKhauMenuTool
-            // 
-            DoiMatKhauMenuTool.Name = "DoiMatKhauMenuTool";
-            DoiMatKhauMenuTool.Size = new Size(226, 26);
-            DoiMatKhauMenuTool.Text = "Đổi Mật Khẩu";
             // 
             // frmMain
             // 
