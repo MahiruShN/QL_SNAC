@@ -75,7 +75,7 @@ namespace QL_SNAC.QLTaiKhoan
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            int addedAccountId = -1; // Khai báo biến
+                int addedAccountId = -1; // Khai báo biến
             frmThemTaiKhoan frm = new frmThemTaiKhoan(out addedAccountId); // Truyền tham số out
             frm.StartPosition = FormStartPosition.CenterScreen;
             DialogResult result = frm.ShowDialog();

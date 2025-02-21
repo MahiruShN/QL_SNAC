@@ -278,7 +278,7 @@
             btnThoat.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             btnThoat.Location = new Point(23, 3);
             btnThoat.Name = "btnThoat";
-            btnThoat.Size = new Size(223, 43);
+            btnThoat.Size = new Size(224, 43);
             btnThoat.TabIndex = 3;
             btnThoat.Text = "THOÁT";
             btnThoat.UseMnemonic = false;

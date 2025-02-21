@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using System.Security.Cryptography;
+using System.Diagnostics;
 //using System.Data.SqlClient;
 
 
@@ -42,6 +43,7 @@ namespace DataAccessLayer.Responsitories
                 command.Parameters.Clear();
                 if (paramlist != null)
                 {
+                    Debug.WriteLine($"Executing SQL: {sql}");
                     foreach (var paraitem in paramlist)
                     {
                         command.Parameters.Add(paraitem);
@@ -235,7 +237,37 @@ namespace DataAccessLayer.Responsitories
             }
         }
 
+        public object GetDataScalar(string sql, CommandType commandtype, ref string error, params SqlParameter[] paramlist)
+        {
+            try
+            {
+                connect.Open();
+                command.CommandText = sql;
+                command.CommandType = commandtype;
+                command.Parameters.Clear();
 
+                if (paramlist != null)
+                {
+                    foreach (var paraitem in paramlist)
+                    {
+                        command.Parameters.Add(paraitem);
+                    }
+                }
+
+                object result = command.ExecuteScalar();
+                error = "";
+                return result;
+            }
+            catch (Exception ex)
+            {
+                error = "Error executing scalar query: " + ex.Message;
+                return null;
+            }
+            finally
+            {
+                connect.Close();
+            }
+        }
         public DataTable GetDataFromTableWithJoin(string sql, ref string error, params SqlParameter[] paramlist)
         {
             try

@@ -71,7 +71,6 @@ C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\B
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\BusinessLogicLayer.AssemblyInfo.cs
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\BusinessLogicLayer.csproj.CoreCompileInputs.cache
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\BusinessLogicLayer.sourcelink.json
-C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\BusinessLogicLayer.csproj.CopyComplete
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\BusinessLogicLayer.dll
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\refint\BusinessLogicLayer.dll
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\BusinessLogicLayer.pdb
@@ -92,3 +91,4 @@ E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\bin\Debu
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\bin\Debug\net8.0\DataAccessLayer.pdb
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\Business.450209FB.Up2Date
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\ref\BusinessLogicLayer.dll
+C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\BusinessLogicLayer\obj\Debug\net8.0\Business.450209FB.Up2Date
