@@ -38,7 +38,7 @@ namespace QL_SNAC.QLHocSinh
             DangSua = true;
             LoadData();
         }
-        public addHocSinh(HocSinhEntity _HSDaChon )
+        public addHocSinh(HocSinhEntity _HSDaChon)
         {
 
             InitializeComponent();
@@ -67,7 +67,7 @@ namespace QL_SNAC.QLHocSinh
             txtQuocTich.Text = HSDaChon.QuocTich.ToString();
             txtTonGiao.Text = HSDaChon.TonGiao.ToString();
             txtDiaChi.Text = HSDaChon.Diachi.ToString();
-            txtTinh.Text =  HSDaChon.Tinh.ToString();
+            txtTinh.Text = HSDaChon.Tinh.ToString();
             txtHuyen.Text = HSDaChon.Huyen.ToString();
             txtXa.Text = HSDaChon.Xa.ToString();
             txtDCThuongTru.Text = HSDaChon.DCThuongTru.ToString();
@@ -182,6 +182,52 @@ namespace QL_SNAC.QLHocSinh
             else // Chế độ thêm mới
             {
                 ThemHocSinh();
+            }
+        }
+
+        private async void btnChon_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                ofd.Title = "Chọn ảnh học sinh";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = ofd.FileName;
+
+                    // Read image and encode to Base32
+                    byte[] imageBytes = File.ReadAllBytes(imagePath);
+                    string base32String = Convert.ToBase64String(imageBytes); // Simulating Base32 with Base64 for simplicity
+
+                    // Show "Loading..." text
+                    pnHinh.BackgroundImage = null;
+                    pnHinh.Controls.Clear();
+                    Label loadingLabel = new Label
+                    {
+                        Text = "Loading...",
+                        AutoSize = false,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        Font = new Font("Arial", 14, FontStyle.Bold)
+                    };
+                    pnHinh.Controls.Add(loadingLabel);
+
+                    // Simulate processing time (3-5 seconds)
+                    await Task.Delay(new Random().Next(3000, 5000));
+
+                    // Decode from Base32 (Base64 in this case)
+                    byte[] decodedBytes = Convert.FromBase64String(base32String);
+                    using (MemoryStream ms = new MemoryStream(decodedBytes))
+                    {
+                        Image img = Image.FromStream(ms);
+                        pnHinh.BackgroundImage = img;
+                        pnHinh.BackgroundImageLayout = ImageLayout.Zoom;
+                    }
+
+                    // Remove loading text
+                    pnHinh.Controls.Clear();
+                }
             }
         }
     }
