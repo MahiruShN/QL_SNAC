@@ -16,6 +16,7 @@ namespace DataAccessLayer.Entity
         public string NoiSinh { get; set; }
         public string DanToc { get; set; }
         public string QuocTich { get; set; }
+        public string TonGiao { get; set; }
         public string Tinh { get; set; }
         public string Huyen { get; set; }
         public string Xa { get; set; }

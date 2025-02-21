@@ -60,7 +60,7 @@
             panel1 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel2 = new Panel();
-            label15 = new Label();
+            lbTieuDe = new Label();
             panel3 = new Panel();
             txtTonGiao = new TextBox();
             label14 = new Label();
@@ -135,7 +135,7 @@
             txtQuocTich.Location = new Point(141, 313);
             txtQuocTich.Margin = new Padding(3, 4, 3, 4);
             txtQuocTich.Name = "txtQuocTich";
-            txtQuocTich.Size = new Size(114, 34);
+            txtQuocTich.Size = new Size(306, 34);
             txtQuocTich.TabIndex = 43;
             // 
             // txtDanToc
@@ -144,7 +144,7 @@
             txtDanToc.Location = new Point(141, 262);
             txtDanToc.Margin = new Padding(3, 4, 3, 4);
             txtDanToc.Name = "txtDanToc";
-            txtDanToc.Size = new Size(114, 34);
+            txtDanToc.Size = new Size(306, 34);
             txtDanToc.TabIndex = 42;
             // 
             // dtNgaySinh
@@ -213,7 +213,7 @@
             label1.Name = "label1";
             label1.Size = new Size(73, 30);
             label1.TabIndex = 35;
-            label1.Text = "MSSH";
+            label1.Text = "MSHS";
             // 
             // txtDCTamTru
             // 
@@ -325,7 +325,7 @@
             txtTinh.Location = new Point(141, 414);
             txtTinh.Margin = new Padding(3, 4, 3, 4);
             txtTinh.Name = "txtTinh";
-            txtTinh.Size = new Size(114, 34);
+            txtTinh.Size = new Size(306, 34);
             txtTinh.TabIndex = 52;
             // 
             // txtHuyen
@@ -334,7 +334,7 @@
             txtHuyen.Location = new Point(141, 468);
             txtHuyen.Margin = new Padding(3, 4, 3, 4);
             txtHuyen.Name = "txtHuyen";
-            txtHuyen.Size = new Size(114, 34);
+            txtHuyen.Size = new Size(306, 34);
             txtHuyen.TabIndex = 53;
             // 
             // txtXa
@@ -343,7 +343,7 @@
             txtXa.Location = new Point(141, 515);
             txtXa.Margin = new Padding(3, 4, 3, 4);
             txtXa.Name = "txtXa";
-            txtXa.Size = new Size(114, 34);
+            txtXa.Size = new Size(306, 34);
             txtXa.TabIndex = 54;
             // 
             // tableLayoutPanel1
@@ -389,22 +389,22 @@
             // 
             panel2.BackColor = SystemColors.ActiveCaption;
             panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(label15);
+            panel2.Controls.Add(lbTieuDe);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
             panel2.Size = new Size(571, 72);
             panel2.TabIndex = 0;
             // 
-            // label15
+            // lbTieuDe
             // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label15.Location = new Point(155, 19);
-            label15.Name = "label15";
-            label15.Size = new Size(239, 38);
-            label15.TabIndex = 0;
-            label15.Text = "THÊM HỌC SINH";
+            lbTieuDe.AutoSize = true;
+            lbTieuDe.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbTieuDe.Location = new Point(155, 19);
+            lbTieuDe.Name = "lbTieuDe";
+            lbTieuDe.Size = new Size(239, 38);
+            lbTieuDe.TabIndex = 0;
+            lbTieuDe.Text = "THÊM HỌC SINH";
             // 
             // panel3
             // 
@@ -450,7 +450,7 @@
             txtTonGiao.Location = new Point(141, 365);
             txtTonGiao.Margin = new Padding(3, 4, 3, 4);
             txtTonGiao.Name = "txtTonGiao";
-            txtTonGiao.Size = new Size(114, 34);
+            txtTonGiao.Size = new Size(306, 34);
             txtTonGiao.TabIndex = 56;
             // 
             // label14
@@ -591,7 +591,7 @@
         private Panel panel4;
         private TextBox txtTonGiao;
         private Label label14;
-        private Label label15;
+        private Label lbTieuDe;
         private Button btnChon;
         private Panel panel5;
         private Button btnThoat;

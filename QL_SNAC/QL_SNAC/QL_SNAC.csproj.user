@@ -10,9 +10,6 @@
     <Compile Update="QLHocSinh\addHocSinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="QLHocSinh\frmEditHocSinh .cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="QLHocSinh\frmThongTinHS.cs">
       <SubType>Form</SubType>
     </Compile>

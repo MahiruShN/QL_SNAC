@@ -12,6 +12,7 @@ using DataAccessLayer.Entity;
 using DataAccessLayer.Responsitories;
 using QL_SNAC.MainForm;
 using QL_SNAC.QLTaiKhoan;
+using static System.ComponentModel.Design.ObjectSelectorEditor;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace QL_SNAC.QLHocSinh
@@ -50,28 +51,157 @@ namespace QL_SNAC.QLHocSinh
                 MessageBox.Show(ex.Message);
             }
         }
-        private void ucQLHocSinh_Load(object sender, EventArgs e)
-        {
-            string error = "";
-            var dataTable = HsManager.HienThiDSFull(ref error);
+     
 
-            if (dataTable != null)
-            {
-                dgvHocSinh.DataSource = dataTable;
-            }
-            else
-            {
-                MessageBox.Show("Lỗi: " + error, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void dgvHocSinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+        private HocSinhEntity HSDaChon = new HocSinhEntity();
         private void dgvHocSinh_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < dgvHocSinh.RowCount)
+            {
+             DataGridViewRow rowselected = dgvHocSinh.Rows[e.RowIndex];
+
+             #region Gan gia tri vao entity tai khoan da chon
+                        HSDaChon.MSHS = rowselected.Cells["MSHS"].Value.ToString();
+                        HSDaChon.Ho = rowselected.Cells["HO"].Value.ToString();
+                        HSDaChon.Ten = rowselected.Cells["TEN"].Value.ToString();
+                        HSDaChon.Gioitinh = rowselected.Cells["GIOITINH"].Value.ToString();
+                        HSDaChon.NgaySinh = rowselected.Cells["NGAY_SINH"].Value.ToString();
+                        HSDaChon.NoiSinh = rowselected.Cells["NOI_SINH"].Value.ToString();
+                        HSDaChon.DanToc = rowselected.Cells["DAN_TOC"].Value.ToString();
+                        HSDaChon.QuocTich = rowselected.Cells["QUOC_TICH"].Value.ToString();
+                        HSDaChon.TonGiao = rowselected.Cells["TONGIAO"].Value.ToString();
+                        HSDaChon.Tinh = rowselected.Cells["TINH"].Value.ToString();
+                        HSDaChon.Huyen = rowselected.Cells["HUYEN"].Value.ToString();
+                        HSDaChon.Xa = rowselected.Cells["XA"].Value.ToString();
+                        HSDaChon.Diachi = rowselected.Cells["DIA_CHI"].Value.ToString();
+                        HSDaChon.DCThuongTru = rowselected.Cells["DIA_CHI_THUONG_TRU"].Value.ToString();
+                        HSDaChon.DCTamTru = rowselected.Cells["DIA_CHI_TAM_TRU"].Value.ToString();
+            #endregion
+             }       
+        }
+        private List<HocSinhEntity> danhSachHSDaChon = new List<HocSinhEntity>(); // Danh sách các học sinh đã chọn
+
+        private void dgvHocSinh_SelectionChanged(object sender, EventArgs e)
+        {
+            danhSachHSDaChon.Clear(); // Xóa danh sách cũ
+
+            foreach (DataGridViewRow row in dgvHocSinh.SelectedRows)
+            {
+                HocSinhEntity hs = new HocSinhEntity();
+
+                // Kiểm tra giá trị null trước khi gán
+                hs.MSHS = row.Cells["MSHS"].Value?.ToString();
+                hs.Ho = row.Cells["HO"].Value?.ToString();
+                hs.Ten = row.Cells["TEN"].Value?.ToString();
+                hs.Gioitinh = row.Cells["GIOITINH"].Value?.ToString();
+                hs.NgaySinh = row.Cells["NGAY_SINH"].Value?.ToString();
+                hs.NoiSinh = row.Cells["NOI_SINH"].Value?.ToString();
+                hs.DanToc = row.Cells["DAN_TOC"].Value?.ToString();
+                hs.QuocTich = row.Cells["QUOC_TICH"].Value?.ToString();
+                hs.TonGiao = row.Cells["TONGIAO"].Value?.ToString();
+                hs.Tinh = row.Cells["TINH"].Value?.ToString();
+                hs.Huyen = row.Cells["HUYEN"].Value?.ToString();
+                hs.Xa = row.Cells["XA"].Value?.ToString();
+                hs.Diachi = row.Cells["DIA_CHI"].Value?.ToString();
+                hs.DCThuongTru = row.Cells["DIA_CHI_THUONG_TRU"].Value?.ToString();
+                hs.DCTamTru = row.Cells["DIA_CHI_TAM_TRU"].Value?.ToString();
+
+
+                danhSachHSDaChon.Add(hs);
+            }
+        }
+
+
+            private void btnThem_Click(object sender, EventArgs e)
+        {
+            addHocSinh frm = new addHocSinh();
+            DialogResult result = frm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LayDSHocSinh();
+            }
+
+
+        }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            addHocSinh frm = new addHocSinh(HSDaChon);
+            DialogResult result = frm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LayDSHocSinh();
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            //Xóa 1 học sinh
+            DialogResult confirmation = MessageBox.Show("Bạn có chắc chắn muốn xóa học sinh này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmation == DialogResult.Yes)
+            {
+                bool ketqua = HsManager.XoaHocSinh(HSDaChon.MSHS, ref error);
+
+                if (ketqua)
+                {
+                    MessageBox.Show("Xóa học sinh thành công.");
+                    LayDSHocSinh();
+                    HSDaChon = new HocSinhEntity();
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi xóa học sinh: " + error, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); // Display the error message from tkManager
+                }
+
+
+            }
+            ////Xóa nhiều học sinh
+            //if (dgvHocSinh.SelectedRows.Count == 0)
+            //{
+            //    MessageBox.Show("Vui lòng chọn ít nhất một học sinh để xóa.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            //DialogResult confirmation = MessageBox.Show($"Bạn có chắc chắn muốn xóa {dgvHocSinh.SelectedRows.Count} học sinh đã chọn?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //if (confirmation == DialogResult.Yes)
+            //{
+            //    string error = "";
+            //    bool success = true;
+
+            //    // Use danhSachHSDaChon (populated in dgvHocSinh_SelectionChanged)
+            //    foreach (HocSinhEntity hs in danhSachHSDaChon)
+            //    {
+            //        if (!HsManager.XoaHocSinh(hs.MSHS, ref error))
+            //        {
+            //            success = false;
+            //            // Consider accumulating errors for more detailed feedback
+            //            // error += $"Lỗi xóa MSHS {hs.MSHS}: {error}\n";
+            //        }
+            //    }
+
+            //    if (success)
+            //    {
+            //        MessageBox.Show("Xóa học sinh thành công.");
+            //        LayDSHocSinh(); // Refresh the DataGridView
+            //        danhSachHSDaChon.Clear(); // Clear the selected students list
+            //        HSDaChon = new HocSinhEntity(); // Reset HSDaChon (if needed)
+
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show($"Lỗi xóa học sinh:\n{error}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void dgvHocSinh_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -83,42 +213,15 @@ namespace QL_SNAC.QLHocSinh
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     DataRow row = dt.Rows[0];
-
-                    // Open the new form and pass the selected row data
                     frmThongTinHS detailsForm = new frmThongTinHS(row);
                     detailsForm.ShowDialog(); // Opens as a modal form
                 }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy thông tin học sinh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+               
             }
-        }
-
-
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            addHocSinh frm = new addHocSinh();
-            frm.ShowDialog();
-            LayDSHocSinh();
-
-
-        }
-
-        private void btnSua_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnXoa_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
-            this.Hide();
+            else
+            {
+                MessageBox.Show("Không tìm thấy thông tin học sinh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

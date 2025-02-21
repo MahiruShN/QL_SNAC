@@ -36,9 +36,10 @@ namespace QL_SNAC.QLHocSinh
                 txtNoiSinh.Text = _hocSinhRow["NOI_SINH"].ToString();
                 txtDanToc.Text = _hocSinhRow["DAN_TOC"].ToString();
                 txtQuocTich.Text = _hocSinhRow["QUOC_TICH"].ToString();
+                txtTonGiao.Text = _hocSinhRow["TONGIAO"].ToString();
                 string diaChi = $"{_hocSinhRow["DIA_CHI"]}, {_hocSinhRow["XA"]}, {_hocSinhRow["HUYEN"]}, {_hocSinhRow["TINH"]}";
                 string thuongTru = _hocSinhRow["DIA_CHI_THUONG_TRU"].ToString();
-                string tamTru = _hocSinhRow["DIA_CHI_THUONG_TRU"].ToString();
+                string tamTru = _hocSinhRow["DIA_CHI_TAM_TRU"].ToString();
 
                 txtDiaChi.Text = $"🏠 Địa chỉ: {diaChi}\n📌 Thường trú: {thuongTru}\n📍 Tạm trú: {tamTru}";
             }
@@ -51,7 +52,7 @@ namespace QL_SNAC.QLHocSinh
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            frmEditHocSinh editForm = new frmEditHocSinh(_hocSinhRow);
+            addHocSinh editForm = new addHocSinh(_hocSinhRow);
             if (editForm.ShowDialog() == DialogResult.OK)
             {
                 // Reload data after editing

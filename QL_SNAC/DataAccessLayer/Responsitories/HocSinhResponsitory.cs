@@ -34,7 +34,7 @@ namespace DataAccessLayer.Responsitories
             try
             {
                 string sql = " SELECT [MSHS],[HO],[TEN],[GIOITINH],[NGAY_SINH],[NOI_SINH],[DAN_TOC],"+
-                   "[QUOC_TICH],[TINH],[HUYEN],[XA],[DIA_CHI],[DIA_CHI_THUONG_TRU],[DIA_CHI_TAM_TRU]"+
+                   "[QUOC_TICH],[TONGIAO],[TINH],[HUYEN],[XA],[DIA_CHI],[DIA_CHI_THUONG_TRU],[DIA_CHI_TAM_TRU]"+
                     "FROM[QL_SNAC].[dbo].[THONG_TIN_HOC_SINH]";
                 var rs = DB.GetDataFromDB(sql, CommandType.Text, ref error);
                 return rs;
@@ -78,8 +78,8 @@ namespace DataAccessLayer.Responsitories
 
         public bool ThemHocSinh(HocSinhEntity hs, ref string error)
         {
-            string sql = @"INSERT INTO THONG_TIN_HOC_SINH (MSHS, HO, TEN, GIOITINH, NGAY_SINH, NOI_SINH, DAN_TOC, QUOC_TICH, TINH, HUYEN, XA, DIA_CHI, DIA_CHI_THUONG_TRU, DIA_CHI_TAM_TRU)
-                   VALUES (@MSHS, @HO, @TEN, @GIOITINH, @NGAY_SINH, @NOI_SINH, @DAN_TOC, @QUOC_TICH, @TINH, @HUYEN, @XA, @DIA_CHI, @DIA_CHI_THUONG_TRU, @DIA_CHI_TAM_TRU)";
+            string sql = @"INSERT INTO THONG_TIN_HOC_SINH (MSHS, HO, TEN, GIOITINH, NGAY_SINH, NOI_SINH, DAN_TOC, QUOC_TICH, TONGIAO, TINH, HUYEN, XA, DIA_CHI, DIA_CHI_THUONG_TRU, DIA_CHI_TAM_TRU)
+                   VALUES (@MSHS, @HO, @TEN, @GIOITINH, @NGAY_SINH, @NOI_SINH, @DAN_TOC, @QUOC_TICH, @TONGIAO, @TINH, @HUYEN, @XA, @DIA_CHI, @DIA_CHI_THUONG_TRU, @DIA_CHI_TAM_TRU)";
 
             SqlParameter[] parameters = new SqlParameter[]
             {
@@ -91,6 +91,7 @@ namespace DataAccessLayer.Responsitories
         new SqlParameter("@NOI_SINH", hs.NoiSinh),
         new SqlParameter("@DAN_TOC", hs.DanToc),
         new SqlParameter("@QUOC_TICH", hs.QuocTich),
+        new SqlParameter("@TONGIAO", hs.TonGiao),
         new SqlParameter("@TINH", hs.Tinh), // Assuming you have these properties in HocSinhEntity
         new SqlParameter("@HUYEN", hs.Huyen),
         new SqlParameter("@XA", hs.Xa),
@@ -101,7 +102,22 @@ namespace DataAccessLayer.Responsitories
 
             return DB.ProcessData(sql, CommandType.Text, ref error, parameters);
         }
+        public bool XoaHocSinh(string mshs, ref string error)
+        {
 
+            try
+            {
+                string sql = "DELETE FROM THONG_TIN_HOC_SINH WHERE MSHS = @MSHS";
+                SqlParameter[] parameters = { new SqlParameter("@MSHS", mshs) };
+
+                return DB.ProcessData(sql, CommandType.Text, ref error, parameters);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi xóa học sinh: " + ex.Message;
+                return false;
+            }
+        }
         public DataTable GetHocSinhByMSHS(string mshs, ref string error)
         {
             try
@@ -121,12 +137,12 @@ namespace DataAccessLayer.Responsitories
 
 
         public bool UpdateHocSinh(int mshs, string ho, string ten, string gioiTinh, string ngaySinh,
-                                  string noiSinh, string danToc, string quocTich, string diaChi,
+                                  string noiSinh, string danToc, string quocTich, string tonGiao, string tinh, string huyen, string xa, string diaChi,
                                   string dcThuongTru, string dcTamTru, ref string error)
         {
             string sql = @"UPDATE THONG_TIN_HOC_SINH 
                            SET HO = @HO, TEN = @TEN, GIOITINH = @GIOITINH, NGAY_SINH = @NGAY_SINH, 
-                               NOI_SINH = @NOI_SINH, DAN_TOC = @DAN_TOC, QUOC_TICH = @QUOC_TICH, 
+                               NOI_SINH = @NOI_SINH, DAN_TOC = @DAN_TOC, QUOC_TICH = @QUOC_TICH, TONGIAO = @TONGIAO, TINH = @TINH, HUYEN = @HUYEN, XA = @XA,
                                DIA_CHI = @DIA_CHI, DIA_CHI_THUONG_TRU = @DIA_CHI_THUONG_TRU, DIA_CHI_TAM_TRU = @DIA_CHI_TAM_TRU
                            WHERE MSHS = @MSHS";
 
@@ -140,6 +156,10 @@ namespace DataAccessLayer.Responsitories
                 new SqlParameter("@NOI_SINH", noiSinh),
                 new SqlParameter("@DAN_TOC", danToc),
                 new SqlParameter("@QUOC_TICH", quocTich),
+                new SqlParameter("@TONGIAO", tonGiao),
+                new SqlParameter("@TINH", tinh),
+                new SqlParameter("@HUYEN", huyen),
+                new SqlParameter("@XA", xa),
                 new SqlParameter("@DIA_CHI", diaChi),
                 new SqlParameter("@DIA_CHI_THUONG_TRU", dcThuongTru),
                 new SqlParameter("@DIA_CHI_TAM_TRU", dcTamTru)

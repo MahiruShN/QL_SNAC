@@ -42,15 +42,18 @@
             // 
             // dgvHocSinh
             // 
+            dgvHocSinh.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvHocSinh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHocSinh.Location = new Point(3, 4);
+            dgvHocSinh.Dock = DockStyle.Fill;
+            dgvHocSinh.Location = new Point(0, 0);
             dgvHocSinh.Margin = new Padding(3, 4, 3, 4);
             dgvHocSinh.Name = "dgvHocSinh";
+            dgvHocSinh.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvHocSinh.RowHeadersWidth = 51;
-            dgvHocSinh.Size = new Size(1910, 1069);
+            dgvHocSinh.Size = new Size(1910, 1215);
             dgvHocSinh.TabIndex = 0;
             dgvHocSinh.CellClick += dgvHocSinh_CellClick;
-            dgvHocSinh.CellContentClick += dgvHocSinh_CellContentClick;
+            dgvHocSinh.CellDoubleClick += dgvHocSinh_CellDoubleClick;
             // 
             // panel1
             // 
@@ -127,7 +130,6 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "ucQLHocSinh";
             Size = new Size(2194, 1440);
-            Load += ucQLHocSinh_Load;
             ((System.ComponentModel.ISupportInitialize)dgvHocSinh).EndInit();
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

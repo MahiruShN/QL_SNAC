@@ -44,7 +44,15 @@ namespace BusinessLogicLayer.Manager
                 return null; // Hoặc throw; nếu muốn lỗi lan lên ucQLTaiKhoan
             }
         }
-
+        public bool XoaHocSinh(string MSHS, ref string error)
+        {
+            if (string.IsNullOrEmpty(MSHS)) // Kiểm tra null hoặc empty
+            {
+                error = "MSHS không được để trống.";
+                return false;
+            }
+            return process.XoaHocSinh(MSHS, ref error);
+        }
         public DataTable GetHocSinhByMSHS(string mshs, ref string error)
         {
             try
@@ -59,11 +67,11 @@ namespace BusinessLogicLayer.Manager
         }
 
         public bool UpdateHocSinh(int mshs, string ho, string ten, string gioiTinh, string ngaySinh,
-                                  string noiSinh, string danToc, string quocTich, string diaChi,
+                                  string noiSinh, string danToc, string quocTich, string TonGiao, string tinh, string huyen, string xa, string diaChi,
                                   string dcThuongTru, string dcTamTru, ref string error)
         {
             return process.UpdateHocSinh(mshs, ho, ten, gioiTinh, ngaySinh, noiSinh, danToc,
-                                             quocTich, diaChi, dcThuongTru, dcTamTru, ref error);
+                                             quocTich, TonGiao,diaChi, tinh, huyen,xa, dcThuongTru, dcTamTru, ref error);
         }
         public string LayMaSoHS(string ngaySinhString, ref string error) // Correct: 2 arguments
         {
