@@ -51,33 +51,49 @@ namespace QL_SNAC.QLHocSinh
                 MessageBox.Show(ex.Message);
             }
         }
-     
+        private void LoadHocSinhData()
+        {
+            var data = HsManager.HienThiDSFull(ref error);
+            dgvHocSinh.DataSource = data;
+            HandleDataLoadResult(dgvHocSinh, "Học Sinh"); // Centralized error handling
+        }
 
         private HocSinhEntity HSDaChon = new HocSinhEntity();
         private void dgvHocSinh_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dgvHocSinh.RowCount)
             {
-             DataGridViewRow rowselected = dgvHocSinh.Rows[e.RowIndex];
+                DataGridViewRow rowselected = dgvHocSinh.Rows[e.RowIndex];
 
-             #region Gan gia tri vao entity tai khoan da chon
-                        HSDaChon.MSHS = rowselected.Cells["MSHS"].Value.ToString();
-                        HSDaChon.Ho = rowselected.Cells["HO"].Value.ToString();
-                        HSDaChon.Ten = rowselected.Cells["TEN"].Value.ToString();
-                        HSDaChon.Gioitinh = rowselected.Cells["GIOITINH"].Value.ToString();
-                        HSDaChon.NgaySinh = rowselected.Cells["NGAY_SINH"].Value.ToString();
-                        HSDaChon.NoiSinh = rowselected.Cells["NOI_SINH"].Value.ToString();
-                        HSDaChon.DanToc = rowselected.Cells["DAN_TOC"].Value.ToString();
-                        HSDaChon.QuocTich = rowselected.Cells["QUOC_TICH"].Value.ToString();
-                        HSDaChon.TonGiao = rowselected.Cells["TONGIAO"].Value.ToString();
-                        HSDaChon.Tinh = rowselected.Cells["TINH"].Value.ToString();
-                        HSDaChon.Huyen = rowselected.Cells["HUYEN"].Value.ToString();
-                        HSDaChon.Xa = rowselected.Cells["XA"].Value.ToString();
-                        HSDaChon.Diachi = rowselected.Cells["DIA_CHI"].Value.ToString();
-                        HSDaChon.DCThuongTru = rowselected.Cells["DIA_CHI_THUONG_TRU"].Value.ToString();
-                        HSDaChon.DCTamTru = rowselected.Cells["DIA_CHI_TAM_TRU"].Value.ToString();
-            #endregion
-             }       
+                #region Gan gia tri vao entity tai khoan da chon
+                HSDaChon.MSHS = rowselected.Cells["MSHS"].Value.ToString();
+                HSDaChon.Ho = rowselected.Cells["HO"].Value.ToString();
+                HSDaChon.Ten = rowselected.Cells["TEN"].Value.ToString();
+                HSDaChon.Gioitinh = rowselected.Cells["GIOITINH"].Value.ToString();
+                HSDaChon.NgaySinh = rowselected.Cells["NGAY_SINH"].Value.ToString();
+                HSDaChon.NoiSinh = rowselected.Cells["NOI_SINH"].Value.ToString();
+                HSDaChon.DanToc = rowselected.Cells["DAN_TOC"].Value.ToString();
+                HSDaChon.QuocTich = rowselected.Cells["QUOC_TICH"].Value.ToString();
+                HSDaChon.TonGiao = rowselected.Cells["TONGIAO"].Value.ToString();
+                HSDaChon.Tinh = rowselected.Cells["TINH"].Value.ToString();
+                HSDaChon.Huyen = rowselected.Cells["HUYEN"].Value.ToString();
+                HSDaChon.Xa = rowselected.Cells["XA"].Value.ToString();
+                HSDaChon.Diachi = rowselected.Cells["DIA_CHI"].Value.ToString();
+                HSDaChon.DCThuongTru = rowselected.Cells["DIA_CHI_THUONG_TRU"].Value.ToString();
+                HSDaChon.DCTamTru = rowselected.Cells["DIA_CHI_TAM_TRU"].Value.ToString();
+                #endregion
+                #region Hien thi gia tri len label
+                lbMSHS.Text = HSDaChon.MSHS;
+                lbHo.Text = HSDaChon.Ho;
+                lbTen.Text = HSDaChon.Ten;
+                lbGioiTinh.Text = HSDaChon.Gioitinh;
+                lbNgaySinh.Text = HSDaChon.NgaySinh;
+                lbNoiSinh.Text = HSDaChon.NoiSinh;
+                lbQuocTich.Text = HSDaChon.QuocTich;
+                lbDanToc.Text = HSDaChon.DanToc;
+
+                #endregion
+            }
         }
         private List<HocSinhEntity> danhSachHSDaChon = new List<HocSinhEntity>(); // Danh sách các học sinh đã chọn
 
@@ -112,7 +128,7 @@ namespace QL_SNAC.QLHocSinh
         }
 
 
-            private void btnThem_Click(object sender, EventArgs e)
+        private void btnThem_Click(object sender, EventArgs e)
         {
             addHocSinh frm = new addHocSinh();
             DialogResult result = frm.ShowDialog();
@@ -216,12 +232,45 @@ namespace QL_SNAC.QLHocSinh
                     frmThongTinHS detailsForm = new frmThongTinHS(row);
                     detailsForm.ShowDialog(); // Opens as a modal form
                 }
-               
+
             }
             else
             {
                 MessageBox.Show("Không tìm thấy thông tin học sinh.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+        private void HandleDataLoadResult(DataGridView dataGridView, string userType)
+        {
+            if (dataGridView.DataSource == null)
+            {
+                MessageBox.Show($"Không có dữ liệu {userType}: {error}");
+            }
+        }
+        private void FilterData(string searchText)
+        {
+            string error = "";
+            DataTable data = null;
+
+
+            data = DB.TimKiemNguoiDung("THONG_TIN_HOC_SINH", "HO", "TEN", "MSHS", searchText, ref error); // Sửa lỗi ở đây
+            dgvHocSinh.DataSource = data;
+            HandleDataLoadResult(dgvHocSinh, "Học Sinh");
+
+
+            if (data == null)
+            {
+                if (!string.IsNullOrEmpty(error))
+                {
+                    MessageBox.Show($"Lỗi khi lấy dữ liệu: {error}");
+                }
+
+            }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim(); // No need to ToLower() here
+            FilterData(searchText);
         }
     }
 }

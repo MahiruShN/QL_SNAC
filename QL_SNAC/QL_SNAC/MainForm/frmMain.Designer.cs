@@ -36,6 +36,8 @@
             họcSinhToolStripMenuItem = new ToolStripMenuItem();
             tableLayoutPanel1 = new TableLayoutPanel();
             pnMain = new Panel();
+            QLThongTinHocSinh_menutool = new ToolStripMenuItem();
+            ThongtinChitiet_menutool = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -81,10 +83,11 @@
             // 
             // họcSinhToolStripMenuItem
             // 
+            họcSinhToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { QLThongTinHocSinh_menutool, ThongtinChitiet_menutool });
             họcSinhToolStripMenuItem.Name = "họcSinhToolStripMenuItem";
-            họcSinhToolStripMenuItem.Size = new Size(80, 24);
-            họcSinhToolStripMenuItem.Text = "Học sinh";
-            họcSinhToolStripMenuItem.Click += họcSinhToolStripMenuItem_Click;
+            họcSinhToolStripMenuItem.Size = new Size(92, 24);
+            họcSinhToolStripMenuItem.Text = "HỌC SINH";
+            //họcSinhToolStripMenuItem.Click += họcSinhToolStripMenuItem_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -106,6 +109,19 @@
             pnMain.Name = "pnMain";
             pnMain.Size = new Size(983, 503);
             pnMain.TabIndex = 0;
+            // 
+            // QLThongTinHocSinh_menutool
+            // 
+            QLThongTinHocSinh_menutool.Name = "QLThongTinHocSinh_menutool";
+            QLThongTinHocSinh_menutool.Size = new Size(224, 26);
+            QLThongTinHocSinh_menutool.Text = "Quản Lý Thông Tin";
+            QLThongTinHocSinh_menutool.Click += QLThongTinHocSinh_menutool_Click;
+            // 
+            // ThongtinChitiet_menutool
+            // 
+            ThongtinChitiet_menutool.Name = "ThongtinChitiet_menutool";
+            ThongtinChitiet_menutool.Size = new Size(224, 26);
+            ThongtinChitiet_menutool.Text = "Thông Tin Chi Tiết";
             // 
             // frmMain
             // 
@@ -135,5 +151,7 @@
         private ToolStripMenuItem QLTaiKhoanMenuTool;
         private ToolStripMenuItem ThongTinTaiKhoanMenuTool;
         private ToolStripMenuItem DoiMatKhauMenuTool;
+        private ToolStripMenuItem QLThongTinHocSinh_menutool;
+        private ToolStripMenuItem ThongtinChitiet_menutool;
     }
 }

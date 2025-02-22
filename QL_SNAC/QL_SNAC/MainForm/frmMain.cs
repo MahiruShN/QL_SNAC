@@ -31,26 +31,10 @@ namespace QL_SNAC.MainForm
 
 
 
-        private void họcSinhToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (ucQLHocSinh == null) // Kiểm tra xem ucQLTK có null không (chưa bao giờ được tạo)
-            {
-                ucQLHocSinh = new ucQLHocSinh();
-                ucQLHocSinh.Dock = DockStyle.Fill;
-                pnMain.Controls.Add(ucQLHocSinh);
-            }
-
-            // Bây giờ, ucQLTK đã tồn tại. Hiển thị hoặc ẩn tùy theo nhu cầu.
-            if (ucQLHocSinh.Visible)
-            {
-                ucQLHocSinh.Hide(); // Ẩn nếu nó hiện đang hiển thị
-            }
-            else
-            {
-                ucQLHocSinh.Show(); // Hiển thị nếu nó hiện đang ẩn
-                ucQLHocSinh.BringToFront(); // Đảm bảo nó ở trên cùng
-            }
-        }
+        //private void họcSinhToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+            
+        //}
 
         private void frmMain_Load(object sender, EventArgs e)
         {
@@ -103,9 +87,30 @@ namespace QL_SNAC.MainForm
             string NgaySinh = CauHinhHeThong.NgaySinh;
             string Gioitinh = CauHinhHeThong.GioiTinh;
             string Quyen = CauHinhHeThong.Quyen;
-            frmThongTinTaiKhoan frm = new frmThongTinTaiKhoan(tenDayDu, idTaiKhoan, email, ngayTao, maNguoiDung , NgaySinh, Gioitinh , Quyen);
+            frmThongTinTaiKhoan frm = new frmThongTinTaiKhoan(tenDayDu, idTaiKhoan, email, ngayTao, maNguoiDung, NgaySinh, Gioitinh, Quyen);
             frm.StartPosition = FormStartPosition.CenterScreen;
             frm.ShowDialog();
+        }
+
+        private void QLThongTinHocSinh_menutool_Click(object sender, EventArgs e)
+        {
+            if (ucQLHocSinh == null) // Kiểm tra xem ucQLTK có null không (chưa bao giờ được tạo)
+            {
+                ucQLHocSinh = new ucQLHocSinh();
+                ucQLHocSinh.Dock = DockStyle.Fill;
+                pnMain.Controls.Add(ucQLHocSinh);
+            }
+
+            // Bây giờ, ucQLTK đã tồn tại. Hiển thị hoặc ẩn tùy theo nhu cầu.
+            if (ucQLHocSinh.Visible)
+            {
+                ucQLHocSinh.Hide(); // Ẩn nếu nó hiện đang hiển thị
+            }
+            else
+            {
+                ucQLHocSinh.Show(); // Hiển thị nếu nó hiện đang ẩn
+                ucQLHocSinh.BringToFront(); // Đảm bảo nó ở trên cùng
+            }
         }
     }
 }
