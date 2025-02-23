@@ -60,5 +60,10 @@ namespace QL_SNAC.QLGIaoVIen
                 LayDSGiaoVien();
             }
         }
+
+        private void dgvGiaoVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

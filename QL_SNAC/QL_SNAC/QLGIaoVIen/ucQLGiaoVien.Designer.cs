@@ -29,20 +29,16 @@
         private void InitializeComponent()
         {
             panel6 = new Panel();
-            lbQuocTich = new Label();
-            label8 = new Label();
-            lbDanToc = new Label();
-            label7 = new Label();
             lbNoiSinh = new Label();
             label5 = new Label();
             lbNgaySinh = new Label();
-            label4 = new Label();
+            lbl3 = new Label();
             lbGioiTinh = new Label();
             label3 = new Label();
             lbTen = new Label();
             lbHo = new Label();
-            label2 = new Label();
-            label1 = new Label();
+            lbl2 = new Label();
+            lbl1 = new Label();
             lbMSHS = new Label();
             panel8 = new Panel();
             dgvGiaoVien = new DataGridView();
@@ -61,6 +57,10 @@
             tableLayoutPanel3 = new TableLayoutPanel();
             panel3 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
+            lbl4 = new Label();
+            lblDCTamTru = new Label();
+            label8 = new Label();
+            lbQuocTich = new Label();
             panel6.SuspendLayout();
             panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGiaoVien).BeginInit();
@@ -78,18 +78,18 @@
             // 
             panel6.Controls.Add(lbQuocTich);
             panel6.Controls.Add(label8);
-            panel6.Controls.Add(lbDanToc);
-            panel6.Controls.Add(label7);
+            panel6.Controls.Add(lblDCTamTru);
+            panel6.Controls.Add(lbl4);
             panel6.Controls.Add(lbNoiSinh);
             panel6.Controls.Add(label5);
             panel6.Controls.Add(lbNgaySinh);
-            panel6.Controls.Add(label4);
+            panel6.Controls.Add(lbl3);
             panel6.Controls.Add(lbGioiTinh);
             panel6.Controls.Add(label3);
             panel6.Controls.Add(lbTen);
             panel6.Controls.Add(lbHo);
-            panel6.Controls.Add(label2);
-            panel6.Controls.Add(label1);
+            panel6.Controls.Add(lbl2);
+            panel6.Controls.Add(lbl1);
             panel6.Controls.Add(lbMSHS);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(3, 2);
@@ -97,46 +97,6 @@
             panel6.Name = "panel6";
             panel6.Size = new Size(1257, 211);
             panel6.TabIndex = 0;
-            // 
-            // lbQuocTich
-            // 
-            lbQuocTich.AutoSize = true;
-            lbQuocTich.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbQuocTich.Location = new Point(508, 94);
-            lbQuocTich.Name = "lbQuocTich";
-            lbQuocTich.Size = new Size(25, 21);
-            lbQuocTich.TabIndex = 14;
-            lbQuocTich.Text = ".....";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(393, 94);
-            label8.Name = "label8";
-            label8.Size = new Size(86, 21);
-            label8.TabIndex = 13;
-            label8.Text = "Quốc Tịch :";
-            // 
-            // lbDanToc
-            // 
-            lbDanToc.AutoSize = true;
-            lbDanToc.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbDanToc.Location = new Point(160, 94);
-            lbDanToc.Name = "lbDanToc";
-            lbDanToc.Size = new Size(25, 21);
-            lbDanToc.TabIndex = 12;
-            lbDanToc.Text = ".....";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label7.Location = new Point(31, 94);
-            label7.Name = "label7";
-            label7.Size = new Size(73, 21);
-            label7.TabIndex = 11;
-            label7.Text = "Dân Tộc :";
             // 
             // lbNoiSinh
             // 
@@ -168,15 +128,15 @@
             lbNgaySinh.TabIndex = 8;
             lbNgaySinh.Text = ".....";
             // 
-            // label4
+            // lbl3
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(31, 62);
-            label4.Name = "label4";
-            label4.Size = new Size(89, 21);
-            label4.TabIndex = 7;
-            label4.Text = "Ngày Sinh :";
+            lbl3.AutoSize = true;
+            lbl3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl3.Location = new Point(31, 62);
+            lbl3.Name = "lbl3";
+            lbl3.Size = new Size(89, 21);
+            lbl3.TabIndex = 7;
+            lbl3.Text = "Ngày Sinh :";
             // 
             // lbGioiTinh
             // 
@@ -218,25 +178,25 @@
             lbHo.TabIndex = 3;
             lbHo.Text = ".....";
             // 
-            // label2
+            // lbl2
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(31, 28);
-            label2.Name = "label2";
-            label2.Size = new Size(84, 21);
-            label2.TabIndex = 2;
-            label2.Text = "Họ và Tên :";
+            lbl2.AutoSize = true;
+            lbl2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl2.Location = new Point(31, 28);
+            lbl2.Name = "lbl2";
+            lbl2.Size = new Size(84, 21);
+            lbl2.TabIndex = 2;
+            lbl2.Text = "Họ và Tên :";
             // 
-            // label1
+            // lbl1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(31, 1);
-            label1.Name = "label1";
-            label1.Size = new Size(105, 21);
-            label1.TabIndex = 1;
-            label1.Text = "Mã Học Sinh :";
+            lbl1.AutoSize = true;
+            lbl1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl1.Location = new Point(31, 1);
+            lbl1.Name = "lbl1";
+            lbl1.Size = new Size(105, 21);
+            lbl1.TabIndex = 1;
+            lbl1.Text = "Mã Học Sinh :";
             // 
             // lbMSHS
             // 
@@ -269,6 +229,7 @@
             dgvGiaoVien.RowHeadersWidth = 51;
             dgvGiaoVien.Size = new Size(1257, 857);
             dgvGiaoVien.TabIndex = 0;
+            dgvGiaoVien.CellContentClick += dgvGiaoVien_CellContentClick;
             // 
             // panel4
             // 
@@ -441,6 +402,46 @@
             tableLayoutPanel1.Size = new Size(1586, 1080);
             tableLayoutPanel1.TabIndex = 4;
             // 
+            // lbl4
+            // 
+            lbl4.AutoSize = true;
+            lbl4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbl4.Location = new Point(31, 94);
+            lbl4.Name = "lbl4";
+            lbl4.Size = new Size(112, 21);
+            lbl4.TabIndex = 11;
+            lbl4.Text = "Địa chỉ tạm trú";
+            // 
+            // lblDCTamTru
+            // 
+            lblDCTamTru.AutoSize = true;
+            lblDCTamTru.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblDCTamTru.Location = new Point(160, 94);
+            lblDCTamTru.Name = "lblDCTamTru";
+            lblDCTamTru.Size = new Size(25, 21);
+            lblDCTamTru.TabIndex = 12;
+            lblDCTamTru.Text = ".....";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label8.Location = new Point(393, 94);
+            label8.Name = "label8";
+            label8.Size = new Size(136, 21);
+            label8.TabIndex = 13;
+            label8.Text = "Địa chỉ thường trú";
+            // 
+            // lbQuocTich
+            // 
+            lbQuocTich.AutoSize = true;
+            lbQuocTich.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lbQuocTich.Location = new Point(535, 94);
+            lbQuocTich.Name = "lbQuocTich";
+            lbQuocTich.Size = new Size(25, 21);
+            lbQuocTich.TabIndex = 14;
+            lbQuocTich.Text = ".....";
+            // 
             // ucQLGiaoVien
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -468,20 +469,17 @@
         #endregion
 
         private Panel panel6;
-        private Label lbQuocTich;
-        private Label label8;
-        private Label lbDanToc;
         private Label label7;
         private Label lbNoiSinh;
         private Label label5;
         private Label lbNgaySinh;
-        private Label label4;
+        private Label lbl3;
         private Label lbGioiTinh;
         private Label label3;
         private Label lbTen;
         private Label lbHo;
-        private Label label2;
-        private Label label1;
+        private Label lbl2;
+        private Label lbl1;
         private Label lbMSHS;
         private Panel panel8;
         private DataGridView dgvGiaoVien;
@@ -500,5 +498,9 @@
         private TableLayoutPanel tableLayoutPanel3;
         private Panel panel3;
         private TableLayoutPanel tableLayoutPanel1;
+        private Label lbQuocTich;
+        private Label label8;
+        private Label lblDCTamTru;
+        private Label lbl4;
     }
 }
