@@ -404,3 +404,5 @@ C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_S
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.csproj.Up2Date
 E:\Project\QLTruongHoc\Du An\QL_SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLHocSinh.addHocSinh.resources
 C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLHocSinh.addHocSinh.resources
+C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLGIaoVIen.ucQLGiaoVien.resources
+C:\Users\Quan\Desktop\SNAC\QL_SNAC\QL_SNAC\QL_SNAC\obj\Debug\net8.0-windows\QL_SNAC.QLGIaoVIen.addGiaoVien.resources
