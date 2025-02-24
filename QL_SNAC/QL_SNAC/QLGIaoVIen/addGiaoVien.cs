@@ -37,6 +37,9 @@ namespace QL_SNAC.QLGIaoVIen
 
         GiaoVienEntity GiaoVienEntity = new GiaoVienEntity();
         GiaoVienManager GiaoVienManager = new GiaoVienManager();
+        ImgManager ImgManager = new ImgManager();
+        ImgEntity ImgEntity = new ImgEntity();
+
         private string error = "";
         private void btnSave_Click(object sender, EventArgs e)
         {
@@ -64,8 +67,11 @@ namespace QL_SNAC.QLGIaoVIen
             GiaoVienEntity.BHXH = txtBHXH.Text;
             GiaoVienEntity.MaSoThue = txtMst.Text;
             GiaoVienEntity.MSGV = GiaoVienManager.LayMaSogv(ref error);
+            
+            ImgEntity.Id = GiaoVienEntity.MSGV;
+            ImgManager.ThemAnh(ImgEntity, ref error);
             GiaoVienManager.ThemGiaoVien(GiaoVienEntity, ref error);
-
+            
             this.Close(); 
         }
         private void label2_Click(object sender, EventArgs e)
@@ -82,7 +88,7 @@ namespace QL_SNAC.QLGIaoVIen
         {
 
         }
-
+        string base32 = "";
         private async void btnChon_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -97,7 +103,8 @@ namespace QL_SNAC.QLGIaoVIen
                     // Read image and encode to Base32
                     byte[] imageBytes = File.ReadAllBytes(imagePath);
                     string base32String = Convert.ToBase64String(imageBytes); // Simulating Base32 with Base64 for simplicity
-
+                    base32 = base32String;
+                    ImgEntity.ImgBase32 = base32String;
                     // Show "Loading..." text
                     pnHinh.BackgroundImage = null;
                     pnHinh.Controls.Clear();

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Entity
 {
-    class ImgEntity
+    public class ImgEntity
     {
         public string Id { get; set; }
-        public string Date { get; set; }
+        public string ImgBase32 { get; set; }
         
     }
 }

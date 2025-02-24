@@ -110,6 +110,58 @@ namespace DataAccessLayer.Responsitories
         }
 
 
+        public bool CapNhatGiaoVien(GiaoVienEntity gv, ref string error)
+        {
+            try
+            {
+                string sql = @"UPDATE THONG_TIN_GIAO_VIEN 
+                       SET HO = @HO, TEN = @TEN, GIOITINH = @GIOITINH, NGAY_SINH = @NGAY_SINH, 
+                           DAN_TOC = @DAN_TOC, QUOC_TICH = @QUOC_TICH, TON_GIAO = @TON_GIAO, 
+                           DIA_CHI_THUONG_TRU = @DIA_CHI_THUONG_TRU, DIA_CHI_TAM_TRU = @DIA_CHI_TAM_TRU, 
+                           MA_SO_THUE = @MA_SO_THUE, BHXH = @BHXH, CCCD = @CCCD, SDT = @SDT, 
+                           NGAY_VAO_LAM = @NGAY_VAO_LAM, EMAIL = @EMAIL, CHUYEN_NGANH_HOC = @CHUYEN_NGANH_HOC, 
+                           NAM_TOT_NGHIEP = @NAM_TOT_NGHIEP, LOAI_BANG = @LOAI_BANG, TRUONG = @TRUONG, 
+                           CHUYEN_MON_DAY = @CHUYEN_MON_DAY, TO_CHUYEN_MON = @TO_CHUYEN_MON, 
+                           CHUC_VU = @CHUC_VU, TRINHDO = @TRINHDO
+                       WHERE MSGV = @MSGV";
+
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+            new SqlParameter("@MSGV", gv.MSGV),
+            new SqlParameter("@HO", gv.Ho),
+            new SqlParameter("@TEN", gv.Ten),
+            new SqlParameter("@GIOITINH", gv.GioiTinh),
+            new SqlParameter("@NGAY_SINH", gv.NgaySinh),
+            new SqlParameter("@DAN_TOC", gv.DanToc),
+            new SqlParameter("@QUOC_TICH", gv.QuocTich),
+            new SqlParameter("@TON_GIAO", gv.TonGiao),
+            new SqlParameter("@DIA_CHI_THUONG_TRU", gv.DiaChiThuongTru),
+            new SqlParameter("@DIA_CHI_TAM_TRU", gv.DiaChiTamTru),
+            new SqlParameter("@MA_SO_THUE", gv.MaSoThue),
+            new SqlParameter("@BHXH", gv.BHXH),
+            new SqlParameter("@CCCD", gv.CCCD),
+            new SqlParameter("@SDT", gv.SDT),
+            new SqlParameter("@NGAY_VAO_LAM", gv.NgayVaoLam),
+            new SqlParameter("@EMAIL", gv.Email),
+            new SqlParameter("@CHUYEN_NGANH_HOC", gv.ChuyenNganhHoc),
+            new SqlParameter("@NAM_TOT_NGHIEP", gv.NamTotNghiep),
+            new SqlParameter("@LOAI_BANG", gv.LoaiBang),
+            new SqlParameter("@TRUONG", gv.Truong),
+            new SqlParameter("@CHUYEN_MON_DAY", gv.ChuyenMonDay),
+            new SqlParameter("@TO_CHUYEN_MON", gv.ToChuyenMon),
+            new SqlParameter("@CHUC_VU", gv.ChucVu),
+            new SqlParameter("@TRINHDO", gv.TrinhDo)
+                };
+
+                return DB.ProcessData(sql, CommandType.Text, ref error, parameters);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi cập nhật giáo viên: " + ex.Message;
+                return false;
+            }
+        }
+
 
     }
 }

@@ -84,5 +84,11 @@ namespace BusinessLogicLayer.Manager
                 return false;
             }
         }
+
+        public bool CapNhatGiaoVien(GiaoVienEntity gv, ref string error)
+        {
+            return process.CapNhatGiaoVien(gv, ref error);
+        }
+
     }
 }
