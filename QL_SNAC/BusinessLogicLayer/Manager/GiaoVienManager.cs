@@ -31,10 +31,19 @@ namespace BusinessLogicLayer.Manager
             }
         }
 
+        public bool XoaGiaoVien(string msgv, ref string error)
+        {
+            try {
+                return process.XoaGiaoVien(msgv, ref error);
+            }
+            catch { return false; }
+
+        }
         public DataTable HienThiDSGVFull(ref string error)
         {
             try
             {
+
                 return process.HienThiDSGVFull(ref error);
             }
             catch (Exception ex)
@@ -65,15 +74,15 @@ namespace BusinessLogicLayer.Manager
         {
             try
             {
-                // 1. Get MSHS using LayMaSoHS
-                string msgv = LayMaSogv(ref error); // Assuming hs.NgaySinh is a string
+                
+                string msgv = LayMaSogv(ref error); 
 
-                if (msgv == null) // Check for errors during MSHS generation
+                if (msgv == null) 
                 {
-                    return false; // Or throw an exception
+                    return false; 
                 }
 
-                gv.MSGV = msgv; // Set the generated MSHS to the HocSinhEntity
+                gv.MSGV = msgv; 
 
                 // 2. Call the repository to add the student
                 return process.ThemGiaoVien(gv, ref error);

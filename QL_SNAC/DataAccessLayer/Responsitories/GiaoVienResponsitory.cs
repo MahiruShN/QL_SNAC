@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
+using System.Diagnostics;
 
 namespace DataAccessLayer.Responsitories
 {
@@ -69,7 +70,9 @@ namespace DataAccessLayer.Responsitories
 
         public bool ThemGiaoVien(GiaoVienEntity gv, ref string error)
         {
-            string sql = @"INSERT INTO THONG_TIN_GIAO_VIEN 
+            try
+            {
+                string sql = @"INSERT INTO THONG_TIN_GIAO_VIEN 
                    (MSGV, HO, TEN, GIOITINH, NGAY_SINH, DAN_TOC, QUOC_TICH, TON_GIAO, DIA_CHI_THUONG_TRU, DIA_CHI_TAM_TRU, 
                     MA_SO_THUE, BHXH, CCCD, SDT, NGAY_VAO_LAM, EMAIL, CHUYEN_NGANH_HOC, NAM_TOT_NGHIEP, LOAI_BANG, TRUONG, 
                     CHUYEN_MON_DAY, TO_CHUYEN_MON, CHUC_VU, TRINHDO)
@@ -78,13 +81,15 @@ namespace DataAccessLayer.Responsitories
                     @MA_SO_THUE, @BHXH, @CCCD, @SDT, @NGAY_VAO_LAM, @EMAIL, @CHUYEN_NGANH_HOC, @NAM_TOT_NGHIEP, @LOAI_BANG, @TRUONG, 
                     @CHUYEN_MON_DAY, @TO_CHUYEN_MON, @CHUC_VU, @TRINHDO)";
 
-            SqlParameter[] parameters = new SqlParameter[]
-            {
+                SqlParameter[] parameters = new SqlParameter[]
+                {
             new SqlParameter("@MSGV", gv.MSGV),
             new SqlParameter("@HO", gv.Ho),
             new SqlParameter("@TEN", gv.Ten),
             new SqlParameter("@GIOITINH", gv.GioiTinh),
             new SqlParameter("@NGAY_SINH", gv.NgaySinh),
+            //new SqlParameter("@NGAY_SINH", gv.NgaySinh != default ? gv.NgaySinh.ToString("dd-MM-yyyy") : (object)DBNull.Value),
+
             new SqlParameter("@DAN_TOC", gv.DanToc),
             new SqlParameter("@QUOC_TICH", gv.QuocTich),
             new SqlParameter("@TON_GIAO", gv.TonGiao),
@@ -94,6 +99,7 @@ namespace DataAccessLayer.Responsitories
             new SqlParameter("@BHXH", gv.BHXH),
             new SqlParameter("@CCCD", gv.CCCD),
             new SqlParameter("@SDT", gv.SDT),
+            //new SqlParameter("@NGAY_VAO_LAM", gv.NgayVaoLam != default ? gv.NgayVaoLam.ToString("dd-MM-yyyy") : (object)DBNull.Value),
             new SqlParameter("@NGAY_VAO_LAM", gv.NgayVaoLam),
             new SqlParameter("@EMAIL", gv.Email),
             new SqlParameter("@CHUYEN_NGANH_HOC", gv.ChuyenNganhHoc),
@@ -104,9 +110,33 @@ namespace DataAccessLayer.Responsitories
             new SqlParameter("@TO_CHUYEN_MON", gv.ToChuyenMon),
             new SqlParameter("@CHUC_VU", gv.ChucVu),
             new SqlParameter("@TRINHDO", gv.TrinhDo)
-            };
+                };
 
-            return DB.ProcessData(sql, CommandType.Text, ref error, parameters);
+                return DB.ProcessData(sql, CommandType.Text, ref error, parameters);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi cập nhật giáo viên: " + ex.Message;
+                return false;
+            }
+        }
+
+        public bool XoaGiaoVien (string msgv, ref string error)
+        {
+            try
+            {
+                string sql = "DELETE FROM THONG_TIN_GIAO_VIEN WHERE MSGV = @MSGV";
+                SqlParameter[] parameters = new SqlParameter[]
+                {
+                    new SqlParameter("@MSGV", msgv)
+                };
+                return DB.ProcessData(sql, CommandType.Text, ref error, parameters);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi xóa giáo viên: " + ex.Message;
+                return false;
+            }
         }
 
 
@@ -132,6 +162,7 @@ namespace DataAccessLayer.Responsitories
             new SqlParameter("@TEN", gv.Ten),
             new SqlParameter("@GIOITINH", gv.GioiTinh),
             new SqlParameter("@NGAY_SINH", gv.NgaySinh),
+            //new SqlParameter("@NGAY_SINH", gv.NgaySinh != default ? gv.NgaySinh.ToString("dd-MM-yyyy") : (object)DBNull.Value),
             new SqlParameter("@DAN_TOC", gv.DanToc),
             new SqlParameter("@QUOC_TICH", gv.QuocTich),
             new SqlParameter("@TON_GIAO", gv.TonGiao),
@@ -142,6 +173,7 @@ namespace DataAccessLayer.Responsitories
             new SqlParameter("@CCCD", gv.CCCD),
             new SqlParameter("@SDT", gv.SDT),
             new SqlParameter("@NGAY_VAO_LAM", gv.NgayVaoLam),
+            //new SqlParameter("@NGAY_VAO_LAM", gv.NgayVaoLam != default ? gv.NgayVaoLam.ToString("dd-MM-yyyy") : (object)DBNull.Value),
             new SqlParameter("@EMAIL", gv.Email),
             new SqlParameter("@CHUYEN_NGANH_HOC", gv.ChuyenNganhHoc),
             new SqlParameter("@NAM_TOT_NGHIEP", gv.NamTotNghiep),
