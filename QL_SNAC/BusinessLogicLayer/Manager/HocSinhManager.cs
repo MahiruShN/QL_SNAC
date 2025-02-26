@@ -24,7 +24,7 @@ namespace BusinessLogicLayer.Manager
             }
             catch (Exception ex)
             {
-                error = "Lỗi khi lấy dữ liệu tài khoản: " + ex.Message; // Gán lỗi cho biến error
+                error = "Lỗi khi lấy dữ liệu học sinh: " + ex.Message; // Gán lỗi cho biến error
                                                                         // Ghi log lỗi (nếu cần)
                                                                         // ...
                 return null; // Hoặc throw; nếu muốn lỗi lan lên ucQLTaiKhoan

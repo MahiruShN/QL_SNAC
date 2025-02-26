@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,14 +22,27 @@ namespace QL_SNAC.QLGIaoVIen
             InitializeComponent();
             this.giaoVien = gv;
             LoadThongTinGiaoVien();
+
+
         }
+
+
         private void LoadThongTinGiaoVien()
         {
             txtMSGV.Text = giaoVien.MSGV;
             txtHo.Text = giaoVien.Ho;
             txtTen.Text = giaoVien.Ten;
             cbGender.Text = giaoVien.GioiTinh;
-            dtNgaySinh.Value = giaoVien.NgaySinh.ToDateTime(TimeOnly.MinValue);
+            if (giaoVien.NgaySinh.ToDateTime(TimeOnly.MinValue) >= dtNgaySinh.MinDate &&
+            giaoVien.NgaySinh.ToDateTime(TimeOnly.MinValue) <= dtNgaySinh.MaxDate)
+            {
+                dtNgaySinh.Value = giaoVien.NgaySinh.ToDateTime(TimeOnly.MinValue);
+            }
+            else
+            {
+                dtNgaySinh.Value = dtNgaySinh.MinDate; // or set to a default valid date
+            }
+            //dtNgaySinh.Value = giaoVien.NgaySinh.ToDateTime(TimeOnly.MinValue);
             txtDanToc.Text = giaoVien.DanToc;
             txtQuocTich.Text = giaoVien.QuocTich;
             txtTonGiao.Text = giaoVien.TonGiao;
@@ -38,8 +52,16 @@ namespace QL_SNAC.QLGIaoVIen
             txtBHXH.Text = giaoVien.BHXH;
             txtCCCD.Text = giaoVien.CCCD;
             txtSDT.Text = giaoVien.SDT;
-            dtNgayVaoLam.Value = giaoVien.NgayVaoLam.ToDateTime(TimeOnly.MinValue);
-
+            //dtNgayVaoLam.Value = giaoVien.NgayVaoLam.ToDateTime(TimeOnly.MinValue);
+            if (giaoVien.NgayVaoLam.ToDateTime(TimeOnly.MinValue) >= dtNgayVaoLam.MinDate &&
+            giaoVien.NgayVaoLam.ToDateTime(TimeOnly.MinValue) <= dtNgayVaoLam.MaxDate)
+            {
+                dtNgayVaoLam.Value = giaoVien.NgayVaoLam.ToDateTime(TimeOnly.MinValue);
+            }
+            else
+            {
+                dtNgayVaoLam.Value = dtNgayVaoLam.MinDate; // or set to a default valid date
+            }
             txtEmail.Text = giaoVien.Email;
             txtChuyenNganh.Text = giaoVien.ChuyenNganhHoc;
             cbNamtotnghiep.Text = giaoVien.NamTotNghiep.ToString();
@@ -53,6 +75,33 @@ namespace QL_SNAC.QLGIaoVIen
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            // Kiểm tra tất cả các ô nhập liệu
+            if (string.IsNullOrWhiteSpace(txtHo.Text) ||
+                string.IsNullOrWhiteSpace(txtTen.Text) ||
+                string.IsNullOrWhiteSpace(cbGender.Text) ||
+                string.IsNullOrWhiteSpace(txtDanToc.Text) ||
+                string.IsNullOrWhiteSpace(txtQuocTich.Text) ||
+                string.IsNullOrWhiteSpace(txtTonGiao.Text) ||
+                string.IsNullOrWhiteSpace(txtDCThuongTru.Text) ||
+                string.IsNullOrWhiteSpace(txtDCTamTru.Text) ||
+                string.IsNullOrWhiteSpace(txtMst.Text) ||
+                string.IsNullOrWhiteSpace(txtBHXH.Text) ||
+                string.IsNullOrWhiteSpace(txtCCCD.Text) ||
+                string.IsNullOrWhiteSpace(txtSDT.Text) ||
+                string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                string.IsNullOrWhiteSpace(txtChuyenNganh.Text) ||
+                string.IsNullOrWhiteSpace(cbNamtotnghiep.Text) ||
+                string.IsNullOrWhiteSpace(txtLoaiBang.Text) ||
+                string.IsNullOrWhiteSpace(txtTruong.Text) ||
+                string.IsNullOrWhiteSpace(txtChuyenMon.Text) ||
+                string.IsNullOrWhiteSpace(txtToChuyenMon.Text) ||
+                string.IsNullOrWhiteSpace(txtChucVu.Text) ||
+                string.IsNullOrWhiteSpace(txtTrinhDo.Text))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string error = "";
             giaoVien.Ho = txtHo.Text;
             giaoVien.Ten = txtTen.Text;
@@ -89,6 +138,11 @@ namespace QL_SNAC.QLGIaoVIen
             {
                 MessageBox.Show("Lỗi: " + error, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

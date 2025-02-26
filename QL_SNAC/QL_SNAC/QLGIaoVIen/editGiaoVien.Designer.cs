@@ -326,7 +326,7 @@
             // 
             // btnChon
             // 
-            btnChon.Location = new Point(25, 14);
+            btnChon.Location = new Point(47, 11);
             btnChon.Margin = new Padding(3, 2, 3, 2);
             btnChon.Name = "btnChon";
             btnChon.Size = new Size(82, 28);
@@ -348,16 +348,17 @@
             // 
             // btnThoat
             // 
-            btnThoat.Location = new Point(25, 63);
+            btnThoat.Location = new Point(47, 64);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(82, 26);
             btnThoat.TabIndex = 28;
             btnThoat.Text = "Thoát";
             btnThoat.UseVisualStyleBackColor = true;
+            btnThoat.Click += btnThoat_Click;
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(25, 20);
+            btnSave.Location = new Point(47, 23);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(82, 26);
             btnSave.TabIndex = 27;

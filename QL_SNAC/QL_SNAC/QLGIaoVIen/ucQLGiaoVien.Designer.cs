@@ -29,21 +29,22 @@
         private void InitializeComponent()
         {
             panel6 = new Panel();
-            lbQuocTich = new Label();
+            pnAvatar = new Panel();
+            pbAvatar = new PictureBox();
+            lblChucVu = new Label();
             label8 = new Label();
-            lblDCTamTru = new Label();
+            lblToCuyenMon = new Label();
             lbl4 = new Label();
-            lbNoiSinh = new Label();
+            lblChuyenMonDay = new Label();
             label5 = new Label();
-            lbNgaySinh = new Label();
+            lblNgaySinh = new Label();
             lbl3 = new Label();
-            lbGioiTinh = new Label();
+            lblGioiTinh = new Label();
             label3 = new Label();
-            lbTen = new Label();
-            lbHo = new Label();
+            lblHoTen = new Label();
             lbl2 = new Label();
             lbl1 = new Label();
-            lbMSHS = new Label();
+            lblMaGiaoVien = new Label();
             panel8 = new Panel();
             dgvGiaoVien = new DataGridView();
             panel4 = new Panel();
@@ -62,6 +63,8 @@
             panel3 = new Panel();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel6.SuspendLayout();
+            pnAvatar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pbAvatar).BeginInit();
             panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvGiaoVien).BeginInit();
             panel4.SuspendLayout();
@@ -76,21 +79,21 @@
             // 
             // panel6
             // 
-            panel6.Controls.Add(lbQuocTich);
+            panel6.Controls.Add(pnAvatar);
+            panel6.Controls.Add(lblChucVu);
             panel6.Controls.Add(label8);
-            panel6.Controls.Add(lblDCTamTru);
+            panel6.Controls.Add(lblToCuyenMon);
             panel6.Controls.Add(lbl4);
-            panel6.Controls.Add(lbNoiSinh);
+            panel6.Controls.Add(lblChuyenMonDay);
             panel6.Controls.Add(label5);
-            panel6.Controls.Add(lbNgaySinh);
+            panel6.Controls.Add(lblNgaySinh);
             panel6.Controls.Add(lbl3);
-            panel6.Controls.Add(lbGioiTinh);
+            panel6.Controls.Add(lblGioiTinh);
             panel6.Controls.Add(label3);
-            panel6.Controls.Add(lbTen);
-            panel6.Controls.Add(lbHo);
+            panel6.Controls.Add(lblHoTen);
             panel6.Controls.Add(lbl2);
             panel6.Controls.Add(lbl1);
-            panel6.Controls.Add(lbMSHS);
+            panel6.Controls.Add(lblMaGiaoVien);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(3, 2);
             panel6.Margin = new Padding(3, 2, 3, 2);
@@ -98,131 +101,137 @@
             panel6.Size = new Size(1257, 211);
             panel6.TabIndex = 0;
             // 
-            // lbQuocTich
+            // pnAvatar
             // 
-            lbQuocTich.AutoSize = true;
-            lbQuocTich.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbQuocTich.Location = new Point(535, 94);
-            lbQuocTich.Name = "lbQuocTich";
-            lbQuocTich.Size = new Size(25, 21);
-            lbQuocTich.TabIndex = 14;
-            lbQuocTich.Text = ".....";
+            pnAvatar.Controls.Add(pbAvatar);
+            pnAvatar.Location = new Point(32, 22);
+            pnAvatar.Name = "pnAvatar";
+            pnAvatar.Size = new Size(136, 166);
+            pnAvatar.TabIndex = 15;
+            // 
+            // pbAvatar
+            // 
+            pbAvatar.Location = new Point(0, 0);
+            pbAvatar.Name = "pbAvatar";
+            pbAvatar.Size = new Size(136, 166);
+            pbAvatar.TabIndex = 16;
+            pbAvatar.TabStop = false;
+            // 
+            // lblChucVu
+            // 
+            lblChucVu.AutoSize = true;
+            lblChucVu.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblChucVu.Location = new Point(744, 137);
+            lblChucVu.Name = "lblChucVu";
+            lblChucVu.Size = new Size(25, 21);
+            lblChucVu.TabIndex = 14;
+            lblChucVu.Text = ".....";
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label8.Location = new Point(393, 94);
+            label8.Location = new Point(602, 137);
             label8.Name = "label8";
-            label8.Size = new Size(136, 21);
+            label8.Size = new Size(66, 21);
             label8.TabIndex = 13;
-            label8.Text = "Địa chỉ thường trú";
+            label8.Text = "Chức vụ";
             // 
-            // lblDCTamTru
+            // lblToCuyenMon
             // 
-            lblDCTamTru.AutoSize = true;
-            lblDCTamTru.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblDCTamTru.Location = new Point(160, 94);
-            lblDCTamTru.Name = "lblDCTamTru";
-            lblDCTamTru.Size = new Size(25, 21);
-            lblDCTamTru.TabIndex = 12;
-            lblDCTamTru.Text = ".....";
+            lblToCuyenMon.AutoSize = true;
+            lblToCuyenMon.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblToCuyenMon.Location = new Point(369, 137);
+            lblToCuyenMon.Name = "lblToCuyenMon";
+            lblToCuyenMon.Size = new Size(25, 21);
+            lblToCuyenMon.TabIndex = 12;
+            lblToCuyenMon.Text = ".....";
             // 
             // lbl4
             // 
             lbl4.AutoSize = true;
             lbl4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl4.Location = new Point(31, 94);
+            lbl4.Location = new Point(240, 137);
             lbl4.Name = "lbl4";
-            lbl4.Size = new Size(112, 21);
+            lbl4.Size = new Size(117, 21);
             lbl4.TabIndex = 11;
-            lbl4.Text = "Địa chỉ tạm trú";
+            lbl4.Text = "Tổ chuyên môn";
             // 
-            // lbNoiSinh
+            // lblChuyenMonDay
             // 
-            lbNoiSinh.AutoSize = true;
-            lbNoiSinh.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbNoiSinh.Location = new Point(508, 62);
-            lbNoiSinh.Name = "lbNoiSinh";
-            lbNoiSinh.Size = new Size(25, 21);
-            lbNoiSinh.TabIndex = 10;
-            lbNoiSinh.Text = ".....";
+            lblChuyenMonDay.AutoSize = true;
+            lblChuyenMonDay.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblChuyenMonDay.Location = new Point(744, 105);
+            lblChuyenMonDay.Name = "lblChuyenMonDay";
+            lblChuyenMonDay.Size = new Size(25, 21);
+            lblChuyenMonDay.TabIndex = 10;
+            lblChuyenMonDay.Text = ".....";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label5.Location = new Point(393, 62);
+            label5.Location = new Point(602, 105);
             label5.Name = "label5";
-            label5.Size = new Size(78, 21);
+            label5.Size = new Size(128, 21);
             label5.TabIndex = 9;
-            label5.Text = "Nơi Sinh :";
+            label5.Text = "Chuyên môn dạy";
             // 
-            // lbNgaySinh
+            // lblNgaySinh
             // 
-            lbNgaySinh.AutoSize = true;
-            lbNgaySinh.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbNgaySinh.Location = new Point(160, 62);
-            lbNgaySinh.Name = "lbNgaySinh";
-            lbNgaySinh.Size = new Size(25, 21);
-            lbNgaySinh.TabIndex = 8;
-            lbNgaySinh.Text = ".....";
+            lblNgaySinh.AutoSize = true;
+            lblNgaySinh.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblNgaySinh.Location = new Point(369, 105);
+            lblNgaySinh.Name = "lblNgaySinh";
+            lblNgaySinh.Size = new Size(25, 21);
+            lblNgaySinh.TabIndex = 8;
+            lblNgaySinh.Text = ".....";
             // 
             // lbl3
             // 
             lbl3.AutoSize = true;
             lbl3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl3.Location = new Point(31, 62);
+            lbl3.Location = new Point(240, 105);
             lbl3.Name = "lbl3";
             lbl3.Size = new Size(89, 21);
             lbl3.TabIndex = 7;
             lbl3.Text = "Ngày Sinh :";
             // 
-            // lbGioiTinh
+            // lblGioiTinh
             // 
-            lbGioiTinh.AutoSize = true;
-            lbGioiTinh.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbGioiTinh.Location = new Point(508, 28);
-            lbGioiTinh.Name = "lbGioiTinh";
-            lbGioiTinh.Size = new Size(25, 21);
-            lbGioiTinh.TabIndex = 6;
-            lbGioiTinh.Text = ".....";
+            lblGioiTinh.AutoSize = true;
+            lblGioiTinh.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblGioiTinh.Location = new Point(744, 71);
+            lblGioiTinh.Name = "lblGioiTinh";
+            lblGioiTinh.Size = new Size(25, 21);
+            lblGioiTinh.TabIndex = 6;
+            lblGioiTinh.Text = ".....";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(393, 28);
+            label3.Location = new Point(602, 71);
             label3.Name = "label3";
             label3.Size = new Size(77, 21);
             label3.TabIndex = 5;
             label3.Text = "Giới tính :";
             // 
-            // lbTen
+            // lblHoTen
             // 
-            lbTen.AutoSize = true;
-            lbTen.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbTen.Location = new Point(310, 28);
-            lbTen.Name = "lbTen";
-            lbTen.Size = new Size(25, 21);
-            lbTen.TabIndex = 4;
-            lbTen.Text = ".....";
-            // 
-            // lbHo
-            // 
-            lbHo.AutoSize = true;
-            lbHo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbHo.Location = new Point(160, 28);
-            lbHo.Name = "lbHo";
-            lbHo.Size = new Size(25, 21);
-            lbHo.TabIndex = 3;
-            lbHo.Text = ".....";
+            lblHoTen.AutoSize = true;
+            lblHoTen.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblHoTen.Location = new Point(369, 71);
+            lblHoTen.Name = "lblHoTen";
+            lblHoTen.Size = new Size(25, 21);
+            lblHoTen.TabIndex = 3;
+            lblHoTen.Text = ".....";
             // 
             // lbl2
             // 
             lbl2.AutoSize = true;
             lbl2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl2.Location = new Point(31, 28);
+            lbl2.Location = new Point(240, 71);
             lbl2.Name = "lbl2";
             lbl2.Size = new Size(84, 21);
             lbl2.TabIndex = 2;
@@ -232,21 +241,21 @@
             // 
             lbl1.AutoSize = true;
             lbl1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbl1.Location = new Point(31, 1);
+            lbl1.Location = new Point(240, 44);
             lbl1.Name = "lbl1";
-            lbl1.Size = new Size(105, 21);
+            lbl1.Size = new Size(99, 21);
             lbl1.TabIndex = 1;
-            lbl1.Text = "Mã Học Sinh :";
+            lbl1.Text = "Mã giáo viên";
             // 
-            // lbMSHS
+            // lblMaGiaoVien
             // 
-            lbMSHS.AutoSize = true;
-            lbMSHS.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lbMSHS.Location = new Point(160, 1);
-            lbMSHS.Name = "lbMSHS";
-            lbMSHS.Size = new Size(25, 21);
-            lbMSHS.TabIndex = 0;
-            lbMSHS.Text = ".....";
+            lblMaGiaoVien.AutoSize = true;
+            lblMaGiaoVien.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblMaGiaoVien.Location = new Point(369, 44);
+            lblMaGiaoVien.Name = "lblMaGiaoVien";
+            lblMaGiaoVien.Size = new Size(25, 21);
+            lblMaGiaoVien.TabIndex = 0;
+            lblMaGiaoVien.Text = ".....";
             // 
             // panel8
             // 
@@ -267,8 +276,10 @@
             dgvGiaoVien.Name = "dgvGiaoVien";
             dgvGiaoVien.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgvGiaoVien.RowHeadersWidth = 51;
+            dgvGiaoVien.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvGiaoVien.Size = new Size(1257, 857);
             dgvGiaoVien.TabIndex = 0;
+            dgvGiaoVien.CellClick += dgvGiaoVien_CellClick;
             dgvGiaoVien.CellContentClick += dgvGiaoVien_CellContentClick;
             // 
             // panel4
@@ -305,6 +316,7 @@
             btnXoa.TabIndex = 2;
             btnXoa.Text = "Xóa giáo viên";
             btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnThem
             // 
@@ -429,6 +441,7 @@
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.BackColor = SystemColors.ActiveCaption;
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
@@ -452,6 +465,8 @@
             Size = new Size(1586, 1080);
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
+            pnAvatar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pbAvatar).EndInit();
             panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvGiaoVien).EndInit();
             panel4.ResumeLayout(false);
@@ -471,17 +486,16 @@
 
         private Panel panel6;
         private Label label7;
-        private Label lbNoiSinh;
+        private Label lblChuyenMonDay;
         private Label label5;
-        private Label lbNgaySinh;
+        private Label lblNgaySinh;
         private Label lbl3;
-        private Label lbGioiTinh;
+        private Label lblGioiTinh;
         private Label label3;
-        private Label lbTen;
-        private Label lbHo;
+        private Label lblHoTen;
         private Label lbl2;
         private Label lbl1;
-        private Label lbMSHS;
+        private Label lblMaGiaoVien;
         private Panel panel8;
         private DataGridView dgvGiaoVien;
         private Panel panel4;
@@ -499,9 +513,11 @@
         private TableLayoutPanel tableLayoutPanel3;
         private Panel panel3;
         private TableLayoutPanel tableLayoutPanel1;
-        private Label lbQuocTich;
+        private Label lblChucVu;
         private Label label8;
-        private Label lblDCTamTru;
+        private Label lblToCuyenMon;
         private Label lbl4;
+        private Panel pnAvatar;
+        private PictureBox pbAvatar;
     }
 }

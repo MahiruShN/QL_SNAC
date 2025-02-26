@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QL_SNAC.QLDaoTao;
 using QL_SNAC.QLGIaoVIen;
 using QL_SNAC.QLHocSinh;
 using QL_SNAC.QLTaiKhoan;
@@ -30,6 +31,7 @@ namespace QL_SNAC.MainForm
         private ucQLTaiKhoan ucQLTK;
         private ucQLHocSinh ucQLHocSinh;
         private ucQLGiaoVien ucQLGiaoVien;
+        private ucQLDaoTao ucQLDaoTao;
 
 
         //private void họcSinhToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,22 +118,43 @@ namespace QL_SNAC.MainForm
 
         private void quảnLýThôngTinToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ucQLGiaoVien == null) 
+            if (ucQLGiaoVien == null)
             {
                 ucQLGiaoVien = new ucQLGiaoVien();
                 ucQLGiaoVien.Dock = DockStyle.Fill;
                 pnMain.Controls.Add(ucQLGiaoVien);
             }
 
-           
+
             if (ucQLGiaoVien.Visible)
             {
                 ucQLGiaoVien.Hide();
             }
             else
             {
-                ucQLGiaoVien.Show(); 
-                ucQLGiaoVien.BringToFront(); 
+                ucQLGiaoVien.Show();
+                ucQLGiaoVien.BringToFront();
+            }
+        }
+
+        private void quảnLýĐàoTạoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ucQLDaoTao == null)
+            {
+                ucQLDaoTao = new ucQLDaoTao();
+                ucQLDaoTao.Dock = DockStyle.Fill;
+                pnMain.Controls.Add(ucQLDaoTao);
+            }
+
+
+            if (ucQLDaoTao.Visible)
+            {
+                ucQLDaoTao.Hide();
+            }
+            else
+            {
+                ucQLDaoTao.Show();
+                ucQLDaoTao.BringToFront();
             }
         }
     }

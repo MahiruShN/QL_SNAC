@@ -55,5 +55,18 @@ namespace BusinessLogicLayer.Manager
                 return false;
             }
         }
+
+        public string LayAnh(int id, ref string error)
+        {
+            try
+            {
+                return process.LayAnh(id, ref error);
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi lấy ảnh: " + ex.Message;
+                return null;
+            }
+        }
     }
 }

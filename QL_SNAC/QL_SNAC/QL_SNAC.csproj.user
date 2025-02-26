@@ -7,6 +7,9 @@
     <Compile Update="MainForm\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="QLDaoTao\ucQLDaoTao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="QLGIaoVIen\addGiaoVien.cs">
       <SubType>Form</SubType>
     </Compile>

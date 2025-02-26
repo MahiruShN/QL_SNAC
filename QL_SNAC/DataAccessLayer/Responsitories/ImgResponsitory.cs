@@ -67,6 +67,28 @@ namespace DataAccessLayer.Responsitories
                 error = "Lỗi khi xóa ảnh: " + ex.Message;
                 return false;
             }
+        
         }
+
+        public string LayAnh(int id, ref string error)
+        {
+            try
+            {
+                string sql = "SELECT ImgBase32 FROM ImgData WHERE id = @id";
+                SqlParameter[] parameters = { new SqlParameter("@id", id) };
+                DataTable dt = DB.GetDataFromDB(sql, CommandType.Text, ref error, parameters);
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    return dt.Rows[0]["ImgBase32"].ToString();
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                error = "Lỗi khi lấy ảnh: " + ex.Message;
+                return null;
+            }
+        }
+
     }
 }
