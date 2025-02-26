@@ -333,6 +333,7 @@
             btnChon.TabIndex = 0;
             btnChon.Text = "Chọn ảnh";
             btnChon.UseVisualStyleBackColor = true;
+            btnChon.Click += btnChon_Click;
             // 
             // panel5
             // 

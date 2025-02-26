@@ -83,40 +83,40 @@ namespace DataAccessLayer.Responsitories
 
                 SqlParameter[] parameters = new SqlParameter[]
                 {
-            new SqlParameter("@MSGV", gv.MSGV),
-            new SqlParameter("@HO", gv.Ho),
-            new SqlParameter("@TEN", gv.Ten),
-            new SqlParameter("@GIOITINH", gv.GioiTinh),
-            new SqlParameter("@NGAY_SINH", gv.NgaySinh),
-            //new SqlParameter("@NGAY_SINH", gv.NgaySinh != default ? gv.NgaySinh.ToString("dd-MM-yyyy") : (object)DBNull.Value),
+                    new SqlParameter("@MSGV", gv.MSGV),
+                    new SqlParameter("@HO", gv.Ho),
+                    new SqlParameter("@TEN", gv.Ten),
+                    new SqlParameter("@GIOITINH", gv.GioiTinh),
+                    //new SqlParameter("@NGAY_SINH", gv.NgaySinh),
+                    new SqlParameter("@NGAY_SINH", gv.NgaySinh != default ? gv.NgaySinh.ToString("dd-MM-yyyy") : (object)DBNull.Value),
 
-            new SqlParameter("@DAN_TOC", gv.DanToc),
-            new SqlParameter("@QUOC_TICH", gv.QuocTich),
-            new SqlParameter("@TON_GIAO", gv.TonGiao),
-            new SqlParameter("@DIA_CHI_THUONG_TRU", gv.DiaChiThuongTru),
-            new SqlParameter("@DIA_CHI_TAM_TRU", gv.DiaChiTamTru),
-            new SqlParameter("@MA_SO_THUE", gv.MaSoThue),
-            new SqlParameter("@BHXH", gv.BHXH),
-            new SqlParameter("@CCCD", gv.CCCD),
-            new SqlParameter("@SDT", gv.SDT),
-            //new SqlParameter("@NGAY_VAO_LAM", gv.NgayVaoLam != default ? gv.NgayVaoLam.ToString("dd-MM-yyyy") : (object)DBNull.Value),
-            new SqlParameter("@NGAY_VAO_LAM", gv.NgayVaoLam),
-            new SqlParameter("@EMAIL", gv.Email),
-            new SqlParameter("@CHUYEN_NGANH_HOC", gv.ChuyenNganhHoc),
-            new SqlParameter("@NAM_TOT_NGHIEP", gv.NamTotNghiep),
-            new SqlParameter("@LOAI_BANG", gv.LoaiBang),
-            new SqlParameter("@TRUONG", gv.Truong),
-            new SqlParameter("@CHUYEN_MON_DAY", gv.ChuyenMonDay),
-            new SqlParameter("@TO_CHUYEN_MON", gv.ToChuyenMon),
-            new SqlParameter("@CHUC_VU", gv.ChucVu),
-            new SqlParameter("@TRINHDO", gv.TrinhDo)
+                    new SqlParameter("@DAN_TOC", gv.DanToc),
+                    new SqlParameter("@QUOC_TICH", gv.QuocTich),
+                    new SqlParameter("@TON_GIAO", gv.TonGiao),
+                    new SqlParameter("@DIA_CHI_THUONG_TRU", gv.DiaChiThuongTru),
+                    new SqlParameter("@DIA_CHI_TAM_TRU", gv.DiaChiTamTru),
+                    new SqlParameter("@MA_SO_THUE", gv.MaSoThue),
+                    new SqlParameter("@BHXH", gv.BHXH),
+                    new SqlParameter("@CCCD", gv.CCCD),
+                    new SqlParameter("@SDT", gv.SDT),
+                    new SqlParameter("@NGAY_VAO_LAM", gv.NgayVaoLam != default ? gv.NgayVaoLam.ToString("dd-MM-yyyy") : (object)DBNull.Value),
+                    //new SqlParameter("@NGAY_VAO_LAM", gv.NgayVaoLam),
+                    new SqlParameter("@EMAIL", gv.Email),
+                    new SqlParameter("@CHUYEN_NGANH_HOC", gv.ChuyenNganhHoc),
+                    new SqlParameter("@NAM_TOT_NGHIEP", gv.NamTotNghiep),
+                    new SqlParameter("@LOAI_BANG", gv.LoaiBang),
+                    new SqlParameter("@TRUONG", gv.Truong),
+                    new SqlParameter("@CHUYEN_MON_DAY", gv.ChuyenMonDay),
+                    new SqlParameter("@TO_CHUYEN_MON", gv.ToChuyenMon),
+                    new SqlParameter("@CHUC_VU", gv.ChucVu),
+                    new SqlParameter("@TRINHDO", gv.TrinhDo)
                 };
-
+                Debug.Print(sql);
                 return DB.ProcessData(sql, CommandType.Text, ref error, parameters);
             }
             catch (Exception ex)
             {
-                error = "Lỗi khi cập nhật giáo viên: " + ex.Message;
+                error = "Lỗi khi thêm giáo viên: " + ex.Message;
                 return false;
             }
         }

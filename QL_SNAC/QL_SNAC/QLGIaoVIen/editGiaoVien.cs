@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer.Manager;
 using DataAccessLayer.Entity;
 using System;
+using System.Buffers.Text;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -128,7 +129,8 @@ namespace QL_SNAC.QLGIaoVIen
             giaoVien.TrinhDo = txtTrinhDo.Text;
 
             bool success = giaoVienManager.CapNhatGiaoVien(giaoVien, ref error);
-
+            ImgEntity.Id = giaoVien.MSGV;
+            ImgManager.CapNhatAnh(ImgEntity, ref error);
             if (success)
             {
                 MessageBox.Show("Cập nhật giáo viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -143,6 +145,55 @@ namespace QL_SNAC.QLGIaoVIen
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        ImgManager ImgManager = new ImgManager();
+        ImgEntity ImgEntity = new ImgEntity();
+        string base32 = "";
+        private async void btnChon_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
+                ofd.Title = "Chọn ảnh học sinh";
+
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    string imagePath = ofd.FileName;
+
+                    // Read image and encode to Base32
+                    byte[] imageBytes = File.ReadAllBytes(imagePath);
+                    string base32String = Convert.ToBase64String(imageBytes); // Simulating Base32 with Base64 for simplicity
+                    base32 = base32String;
+                    ImgEntity.ImgBase32 = base32String;
+                    // Show "Loading..." text
+                    pnHinh.BackgroundImage = null;
+                    pnHinh.Controls.Clear();
+                    Label loadingLabel = new Label
+                    {
+                        Text = "Loading...",
+                        AutoSize = false,
+                        TextAlign = ContentAlignment.MiddleCenter,
+                        Dock = DockStyle.Fill,
+                        Font = new Font("Arial", 14, FontStyle.Bold)
+                    };
+                    pnHinh.Controls.Add(loadingLabel);
+
+                    // Simulate processing time (3-5 seconds)
+                    await Task.Delay(new Random().Next(500, 1000));
+
+                    // Decode from Base32 (Base64 in this case)
+                    byte[] decodedBytes = Convert.FromBase64String(base32String);
+                    using (MemoryStream ms = new MemoryStream(decodedBytes))
+                    {
+                        Image img = Image.FromStream(ms);
+                        pnHinh.BackgroundImage = img;
+                        pnHinh.BackgroundImageLayout = ImageLayout.Zoom;
+                    }
+
+                    // Remove loading text
+                    pnHinh.Controls.Clear();
+                }
+            }
         }
     }
 }

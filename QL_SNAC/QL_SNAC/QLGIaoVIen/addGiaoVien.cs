@@ -96,7 +96,7 @@ namespace QL_SNAC.QLGIaoVIen
                 GiaoVienEntity.BHXH = txtBHXH.Text;
                 GiaoVienEntity.MaSoThue = txtMst.Text;
                 GiaoVienEntity.MSGV = GiaoVienManager.LayMaSogv(ref error);
-                Debug.Print(GiaoVienEntity.MSGV);
+                
 
                 ImgEntity.Id = GiaoVienEntity.MSGV;
                 ImgManager.ThemAnh(ImgEntity, ref error);

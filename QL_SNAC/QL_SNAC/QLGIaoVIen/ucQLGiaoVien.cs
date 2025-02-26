@@ -104,12 +104,12 @@ namespace QL_SNAC.QLGIaoVIen
                 Ten = row.Cells["TEN"].Value?.ToString() ?? "",
                 GioiTinh = row.Cells["GIOITINH"].Value?.ToString() ?? "",
                 NgaySinh = DateTime.TryParseExact(
-    row.Cells["NGAY_SINH"].Value?.ToString(),
-    new[] { "dd/MM/yyyy", "d/M/yyyy", "yyyy-MM-dd", "MM-dd-yyyy" }, // Các định dạng có thể có
-    CultureInfo.InvariantCulture,
-    DateTimeStyles.None,
-    out DateTime ngaySinhValue
-) ? DateOnly.FromDateTime(ngaySinhValue) : default,
+                row.Cells["NGAY_SINH"].Value?.ToString(),
+                new[] { "dd/MM/yyyy", "d/M/yyyy", "yyyy-MM-dd", "MM-dd-yyyy" }, // Các định dạng có thể có
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out DateTime ngaySinhValue
+                ) ? DateOnly.FromDateTime(ngaySinhValue) : default,
                 DanToc = row.Cells["DAN_TOC"].Value?.ToString() ?? "",
                 QuocTich = row.Cells["QUOC_TICH"].Value?.ToString() ?? "",
                 TonGiao = row.Cells["TON_GIAO"].Value?.ToString() ?? "",
@@ -120,12 +120,12 @@ namespace QL_SNAC.QLGIaoVIen
                 CCCD = row.Cells["CCCD"].Value?.ToString() ?? "",
                 SDT = row.Cells["SDT"].Value?.ToString() ?? "",
                 NgayVaoLam = DateTime.TryParseExact(
-    row.Cells["NGAY_VAO_LAM"].Value?.ToString(),
-    new[] { "dd/MM/yyyy", "d/M/yyyy", "yyyy-MM-dd", "MM-dd-yyyy" }, // Các định dạng có thể có
-    CultureInfo.InvariantCulture,
-    DateTimeStyles.None,
-    out DateTime ngayVaoLamValue
-) ? DateOnly.FromDateTime(ngayVaoLamValue) : default,
+                row.Cells["NGAY_VAO_LAM"].Value?.ToString(),
+                new[] { "dd/MM/yyyy", "d/M/yyyy", "yyyy-MM-dd", "MM-dd-yyyy" }, // Các định dạng có thể có
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out DateTime ngayVaoLamValue
+                ) ? DateOnly.FromDateTime(ngayVaoLamValue) : default,
 
                 Email = row.Cells["EMAIL"].Value?.ToString() ?? "",
                 ChuyenNganhHoc = row.Cells["CHUYEN_NGANH_HOC"].Value?.ToString() ?? "",
@@ -212,8 +212,8 @@ namespace QL_SNAC.QLGIaoVIen
                     if (confirm == DialogResult.Yes)
                     {
                         string error = "";
+                        imgManager.XoaAnh(int.Parse(msgv), ref error);
                         bool isDeleted = GvManager.XoaGiaoVien(msgv, ref error); // Gọi hàm xóa
-
                         if (isDeleted)
                         {
                             MessageBox.Show("Xóa giáo viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);

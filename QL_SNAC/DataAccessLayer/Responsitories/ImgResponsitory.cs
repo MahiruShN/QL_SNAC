@@ -67,7 +67,7 @@ namespace DataAccessLayer.Responsitories
                 error = "Lỗi khi xóa ảnh: " + ex.Message;
                 return false;
             }
-        
+
         }
 
         public string LayAnh(int id, ref string error)
@@ -90,5 +90,6 @@ namespace DataAccessLayer.Responsitories
             }
         }
 
+       
     }
 }
